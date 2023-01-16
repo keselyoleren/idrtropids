@@ -14,6 +14,7 @@ import os
 from decouple import config
 import os
 import pymysql
+from datetime import *
 pymysql.install_as_MySQLdb()
 
 
@@ -46,6 +47,8 @@ INSTALLED_APPS = [
 
     'drf_yasg',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt.token_blacklist',
 
     'users.apps.UsersConfig',
 
@@ -155,3 +158,14 @@ JAZZMIN_SETTINGS = {
 
 
 AUTH_USER_MODEL = 'users.UserAccount'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
+}
