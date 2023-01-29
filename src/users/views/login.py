@@ -15,11 +15,6 @@ from users.models import UserAccount
 
 from users.serializers.login import LoginSerialize
 
-
-
-
-
-
 class LoginApiView(generics.CreateAPIView):
     serializer_class = LoginSerialize
 

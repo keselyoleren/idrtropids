@@ -45,12 +45,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'ckeditor_uploader',
+    'ckeditor',
+
+
     'drf_yasg',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt.token_blacklist',
 
     'users.apps.UsersConfig',
+    'disease',
 
 
 ]
@@ -71,7 +76,9 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(os.path.dirname(BASE_DIR), 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,6 +87,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+                'costom_tag': 'helper.customtag',
+            }
         },
     },
 ]
@@ -169,3 +179,17 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
     ]
 }
+
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+ 
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+ 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Full',
+        'width': '100%', 
+    },
+}
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

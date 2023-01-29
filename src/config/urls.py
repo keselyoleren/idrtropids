@@ -14,14 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.shortcuts import render
 from django.urls import path, include
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic import TemplateView
 
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
+
+from disease.models import News
+from disease.views.news import HomeDetailView, HomeView
+
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -34,6 +40,8 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
+    path("<int:pk>/", HomeDetailView.as_view(), name='detail'),
+    path("", HomeView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('api/v1/', include([
         path('auth/', include('users.urls'))
