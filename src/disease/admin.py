@@ -4,6 +4,10 @@ from disease.models import *
 
 # Register your models here.
 
+@admin.register(Category)
+class CategoryAdminView(admin.ModelAdmin):
+    list_display = ('name',)
+
 @admin.register(Disease)
 class DiseaseAdminView(admin.ModelAdmin):
     list_display = ['disease_name', 'disease_prevention', 'description', 'medicine', 'diagnose', 'lab_check', 'cause_of_disease']
