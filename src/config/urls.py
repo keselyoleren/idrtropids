@@ -25,7 +25,6 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
-from disease.models import News
 from disease.views.news import HomeDetailView, HomeView
 
 
@@ -44,7 +43,8 @@ urlpatterns = [
     path("", HomeView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('api/v1/', include([
-        path('auth/', include('users.urls'))
+        path('', include('disease.urls')),
+        path('auth/', include('users.urls')),
     ]))
 ]
 
