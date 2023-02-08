@@ -39,6 +39,24 @@ class HomeDetailView(DetailView):
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)
 
+class NewsListView(ListView):
+    model = News
+    context_object_name = 'news'
+    template_name = "news/list.html"
+    paginate_by = 2
+    
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(**kwargs)
+
+class NewsDdetailView(DetailView):
+    model = News
+    context_object_name = 'news'
+    template_name = "news/detail.html"
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'
+    
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(**kwargs)
 
 class NewsApiView(generics.ListAPIView, generics.RetrieveAPIView, viewsets.ModelViewSet):
     serializer_class = NewsSerializer

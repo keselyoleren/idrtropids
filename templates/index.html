@@ -3,6 +3,11 @@
 
 {% block content %}
 	
-		{{ news.content|safe }}
+	<ul>
+		<li><a href="{% url 'news' %}">News</a></li>
+		<li><a href="{% url 'article' %} ">Article</a></li>
+		<li><a href="{% url 'book' %}">Book</a></li>
+		<li><a href="{% url 'report' %}">Report</a></li>
+	</ul>
 	
 {% endblock  %}

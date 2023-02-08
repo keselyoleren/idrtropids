@@ -1,0 +1,5 @@
+{% for item in articles %}
+    <ul>
+        <li><a href="{% url 'detail-article' item.slug %}">{{ item.title }}</a></li>
+    </ul>
+{% endfor %}

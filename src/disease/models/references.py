@@ -2,13 +2,14 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.models import BaseModel
 from disease.models.diseases import Disease
+from disease.models.news import Keyword
 from users.models import UserAccount
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 
 class Article(BaseModel):
     title = models.CharField(_("Title"),max_length=200)
-    slug = models.SlugField(unique=True)
+    slug = models.CharField(unique=True, max_length=255)
     abstract = RichTextField(_("Abstract"))
     volume = models.CharField(_("Volume"), max_length=100)
     pages_article = models.CharField(_("Pages Article"), max_length=100)
@@ -31,7 +32,7 @@ class Article(BaseModel):
 
 class Book(BaseModel):
     title = models.CharField(_("Title"),max_length=200)
-    slug = models.SlugField(unique=True)
+    slug = models.CharField(unique=True, max_length=255)
     year_publish = models.DateField()
     pages = models.CharField(_("Pages"), max_length=100)
     publisher = models.CharField(_("Publisher"), max_length=100)
@@ -50,3 +51,24 @@ class Book(BaseModel):
     class Meta:
         verbose_name = "Book"
         verbose_name_plural = 'Book'
+
+class Report(BaseModel):
+    title = models.CharField(_("Report Title"), max_length=200)
+    slug = models.CharField(unique=True, max_length=255)
+    institution = models.CharField(_("Report institution"), max_length=200)
+    publisher = models.CharField(_("Report Publisher"), max_length=100)
+    abstract = RichTextField(_("Abstract"))
+    author = models.CharField(_("Author"), max_length=100)
+    type = models.CharField(_('Report Type'), max_length=255)
+    date = models.DateTimeField(_('Report date'))
+    url = models.URLField()
+    city = models.CharField(_('Report City'), max_length=255)
+    keyword = models.ManyToManyField(Keyword, blank=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
+    
+    class Meta:
+        verbose_name = "Report"
+        verbose_name_plural = 'Report'
