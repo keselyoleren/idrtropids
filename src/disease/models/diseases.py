@@ -28,6 +28,7 @@ class Disease(BaseModel):
     diagnose = models.TextField(_("Diagnose"))
     lab_check = models.TextField(_("Lab Check"))
     cause_of_disease = models.CharField(_("Caouse of disease"), max_length=255)
+    content = RichTextField(_('content'))
 
     def __str__(self) -> str:
         return self.disease_name
@@ -40,10 +41,4 @@ class Disease(BaseModel):
         verbose_name = "Disease"
         verbose_name_plural = 'Disease'
         
-
-class Symptoms(BaseModel):
-    disease = models.ForeignKey(Disease, on_delete=models.CASCADE)
-    name = models.CharField(_("Name"), max_length=100)
-
-    def __str__(self) -> str:
-        return self.name
+        
