@@ -41,8 +41,10 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("<int:pk>/", HomeDetailView.as_view(), name='detail'),
     path("", HomeView.as_view(), name='home'),
-    path('', include('disease.urls')),
     path('admin/', admin.site.urls),
+    path('page/', include([
+        path('', include('disease.urls')),
+    ])),
     path('api/v1/', include([
         path('auth/', include('users.urls')),
     ]))
