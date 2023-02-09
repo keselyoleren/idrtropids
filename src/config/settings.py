@@ -56,8 +56,6 @@ INSTALLED_APPS = [
 
     'users.apps.UsersConfig',
     'disease.apps.DiseaseConfig',
-
-
 ]
 
 MIDDLEWARE = [
@@ -194,3 +192,4 @@ CKEDITOR_CONFIGS = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+

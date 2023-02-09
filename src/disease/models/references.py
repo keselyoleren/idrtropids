@@ -20,6 +20,7 @@ class Article(BaseModel):
     doi = models.CharField(_("Doi"), max_length=100)
     author = models.CharField(_("Author"), max_length=100)
     url = models.URLField()
+    visits = models.PositiveIntegerField(default=0)
 
 
     def save(self, *args, **kwargs):
@@ -42,6 +43,7 @@ class Book(BaseModel):
     url = models.URLField()
     issn = models.CharField(_("Issn"), max_length=100)
     abstract = RichTextField(_("Abstract"))
+    visits = models.PositiveIntegerField(default=0)
     
 
     def save(self, *args, **kwargs):
@@ -64,6 +66,7 @@ class Report(BaseModel):
     url = models.URLField()
     city = models.CharField(_('Report City'), max_length=255)
     keyword = models.ManyToManyField(Keyword, blank=True)
+    visits = models.PositiveIntegerField(default=0)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

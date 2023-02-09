@@ -1,0 +1,22 @@
+{{ diseases.disease_name }}
+
+<h1>views {{ diseases.visits }}</h1>
+
+
+<h1>Question and Answer System</h1>
+
+  <h2>{{ question.question_text }}</h2>
+  <p>Asked by {{ question.author }} on {{ question.pub_date|date:"F j, Y" }}</p>
+
+  <h3>Answers</h3>
+  {% for answer in question.answer_set.all %}
+    <p>{{ answer.answer_text }}</p>
+    <p>Answered by {{ answer.author }} on {{ answer.pub_date|date:"F j, Y" }}</p>
+  {% endfor %}
+
+  <h3>Add an Answer</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+  </form>

@@ -21,6 +21,7 @@ class Category(BaseModel):
 
 class Disease(BaseModel):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    slug = models.CharField(unique=True, max_length=255)
     disease_name = models.CharField(_("Disease Name"),max_length=255)
     disease_prevention = models.TextField("Disease Prevention")
     description = models.TextField(_("Description"))
@@ -29,6 +30,8 @@ class Disease(BaseModel):
     lab_check = models.TextField(_("Lab Check"))
     cause_of_disease = models.CharField(_("Caouse of disease"), max_length=255)
     content = RichTextField(_('content'))
+    visits = models.PositiveIntegerField(default=0)
+
 
     def __str__(self) -> str:
         return self.disease_name

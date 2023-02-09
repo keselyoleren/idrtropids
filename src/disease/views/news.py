@@ -56,6 +56,9 @@ class NewsDdetailView(DetailView):
     slug_url_kwarg = 'slug'
     
     def get_context_data(self, **kwargs):
+        instance = self.get_object()
+        instance.visits += 1
+        instance.save()
         return super().get_context_data(**kwargs)
 
 class NewsApiView(generics.ListAPIView, generics.RetrieveAPIView, viewsets.ModelViewSet):

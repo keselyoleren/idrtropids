@@ -27,6 +27,7 @@ class News(BaseModel):
     author = models.ForeignKey(UserAccount, related_name='author', on_delete=models.CASCADE, blank=True, null=True)
     editor = models.ForeignKey(UserAccount, related_name='editor', on_delete=models.CASCADE, blank=True, null=True)
     keyword = models.ManyToManyField(Keyword, blank=True)
+    visits = models.PositiveIntegerField(default=0)
 
     def __str__(self) -> str:
         return self.title
