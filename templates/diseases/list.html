@@ -1,0 +1,5 @@
+{% for item in diseases %}
+    <li class="list-group-item nav-lvl1">
+        <a href="{% url 'diseases-detail' item.slug %}">{{ item.disease_name }}</a>
+    </li>
+{% endfor %}

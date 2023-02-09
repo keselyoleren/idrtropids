@@ -45,3 +45,13 @@ class BookAdminView(admin.ModelAdmin):
 @admin.register(Keyword)
 class KeywordAdminView(admin.ModelAdmin):
     list_display = ['name']
+
+
+@admin.register(Question)
+class QuestionAdminView(admin.ModelAdmin):
+    list_display = ['question', ]
+
+
+@admin.register(Answer)
+class AnswerAdminView(admin.ModelAdmin):
+    list_display = ['id', 'question', 'answer']
