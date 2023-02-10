@@ -83,6 +83,7 @@ class BaseAPIResponseMiddleware(MiddlewareMixin):
 
 
     def process_response(self, request, response):
+        print(request.META['PATH_INFO'])
         if request.META['PATH_INFO'] == '/redoc/':
             return response
         

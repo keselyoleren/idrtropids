@@ -1,9 +1,14 @@
 from rest_framework import routers
+from disease.apiviewset.article import ArticleApiView
+from disease.apiviewset.book import BookApiView
+from disease.apiviewset.diseases import DiseasesApiView
+from disease.apiviewset.news import NewsApiView
+from disease.apiviewset.report import ReportApiView
 from disease.views.article import ArticleDetailView, ArticleView
 from disease.views.book import BookDetailView, BookListView
-from disease.views.diseases import DiseasesApiView, DiseasesDetailView, DiseasesListView
+from disease.views.diseases import  DiseasesDetailView, DiseasesListView
 
-from disease.views.news import NewsApiView, NewsDdetailView, NewsListView
+from disease.views.news import NewsDdetailView, NewsListView
 from django.urls import path, include
 
 from disease.views.report import ReportDetailView, ReportListView
@@ -11,6 +16,12 @@ from disease.views.report import ReportDetailView, ReportListView
 route = routers.DefaultRouter()
 route.register('news', NewsApiView)
 route.register('diseases', DiseasesApiView)
+route.register('book', BookApiView)
+route.register('report', ReportApiView)
+route.register('article', ArticleApiView)
+
+page_urls = route.urls
+
 
 urlpatterns = [
     path('diseases/', DiseasesListView.as_view(), name='diseases'),
