@@ -1,7 +1,9 @@
+from dataclasses import fields
 from rest_framework import serializers
 from disease.models.diseases import Disease
 from disease.models.news import News
 from disease.serializer.news import NewsSerializer
+from users.serializers.user import UserSerialize
 
 class DiseaseSerialize(serializers.ModelSerializer):
     news = serializers.SerializerMethodField()
@@ -13,4 +15,16 @@ class DiseaseSerialize(serializers.ModelSerializer):
     def get_news(self, obj):
         instance = News.objects.filter(disease=obj)
         return NewsSerializer(instance, many=True).data
-    
+
+
+class DiseasesSerializer(serializers.ModelSerializer):
+    author = UserSerialize(many=False)
+    class Meta:
+        model = Disease
+        exclude = ('content',)
+
+class GetDiseasesRetriveSerialize(serializers.ModelSerializer):
+    author = UserSerialize(many=False)
+    class Meta:
+        model = Disease
+        fields = "__all__"

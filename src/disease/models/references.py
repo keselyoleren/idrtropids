@@ -66,6 +66,7 @@ class Report(BaseModel):
     url = models.URLField()
     city = models.CharField(_('Report City'), max_length=255)
     keyword = models.ManyToManyField(Keyword, blank=True)
+    content = RichTextField(_("Content Report"))
     visits = models.PositiveIntegerField(default=0)
 
     def save(self, *args, **kwargs):

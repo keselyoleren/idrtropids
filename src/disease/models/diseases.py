@@ -20,6 +20,7 @@ class Category(BaseModel):
         verbose_name_plural = 'Category'
 
 class Disease(BaseModel):
+    author = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     slug = models.CharField(unique=True, max_length=255)
     disease_name = models.CharField(_("Disease Name"),max_length=255)

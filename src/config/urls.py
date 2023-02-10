@@ -26,7 +26,7 @@ from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
 from disease.views.news import HomeDetailView, HomeView
-
+from disease.urls import page_urls
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -46,6 +46,7 @@ urlpatterns = [
         path('', include('disease.urls')),
     ])),
     path('api/v1/', include([
+        path('page/', include(page_urls)),
         path('auth/', include('users.urls')),
     ]))
 ]
