@@ -2,6 +2,7 @@ from rest_framework import routers
 from disease.apiviewset.article import ArticleApiView
 from disease.apiviewset.book import BookApiView
 from disease.apiviewset.diseases import DiseasesApiView
+from disease.apiviewset.disqus.question import QuestionDiseasesApiView
 from disease.apiviewset.news import NewsApiView
 from disease.apiviewset.report import ReportApiView
 from disease.views.article import ArticleDetailView, ArticleView
@@ -15,6 +16,7 @@ from disease.views.report import ReportDetailView, ReportListView
 
 route = routers.DefaultRouter()
 route.register('news', NewsApiView)
+route.register(r'diseases/(?P<diseases_id>\d+)/question', QuestionDiseasesApiView)
 route.register('diseases', DiseasesApiView)
 route.register('book', BookApiView)
 route.register('report', ReportApiView)

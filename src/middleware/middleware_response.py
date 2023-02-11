@@ -21,7 +21,7 @@ class BaseAPIResponseMiddleware(MiddlewareMixin):
                                  'page_size', 'current_page', 'next',
                                  'previous', 'result', 'results', "data")
 
-        key = 'data' if response.status_code == 200 else 'errors'
+        key = 'data' if response.status_code in [200, 201] else 'errors'
         response_data = copy.deepcopy({key:response.data})
         
         # setup default message into response data
