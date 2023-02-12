@@ -19,7 +19,7 @@ from rest_framework import (
 )
 from disease.models.news import News
 
-from disease.serializer.news import NewsSerializer, RetriveNewsSerialize
+from disease.serializer.news import GetNewsSerialize, NewsSerializer
 from helper.pagination import ResponsePagination
 
 class HomeView(ListView):
@@ -71,6 +71,6 @@ class NewsApiView(generics.ListAPIView, generics.RetrieveAPIView, viewsets.Model
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.queryset.get(slug=self.kwargs['pk'])
-        serialize = RetriveNewsSerialize(instance).data
+        serialize = GetNewsSerialize(instance).data
         return response.Response(serialize)
 
