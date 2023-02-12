@@ -6,11 +6,13 @@ from users.serializers.user import UserSerialize
 
 
 class NewsSerializer(serializers.ModelSerializer):
+    keyword = KeywordSerialize(many=True)
+    author = UserSerialize(many=False)
     class Meta:
         model = News
         exclude = ('content', )
 
-class RetriveNewsSerialize(serializers.ModelSerializer):
+class GetNewsSerialize(serializers.ModelSerializer):
     keyword = KeywordSerialize(many=True)
     author = UserSerialize(many=False)
     class Meta:

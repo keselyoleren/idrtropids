@@ -10,7 +10,7 @@ from disease.models.references import Book
 
 
 from disease.serializer.book import BookRetriefSerialize, BookSerializer
-from disease.serializer.news import NewsSerializer, RetriveNewsSerialize
+from disease.serializer.news import NewsSerializer
 from helper.pagination import ResponsePagination
 
 class BookApiView(generics.ListAPIView, generics.RetrieveAPIView, viewsets.ModelViewSet):

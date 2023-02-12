@@ -8,7 +8,7 @@ from rest_framework import (
 )
 
 from disease.models.news import News
-from disease.serializer.news import NewsSerializer, RetriveNewsSerialize
+from disease.serializer.news import GetNewsSerialize, NewsSerializer
 from helper.pagination import ResponsePagination
 
 class NewsApiView(generics.ListAPIView, generics.RetrieveAPIView, viewsets.ModelViewSet):
@@ -23,5 +23,5 @@ class NewsApiView(generics.ListAPIView, generics.RetrieveAPIView, viewsets.Model
         instance = self.get_object()
         instance.visits += 1
         instance.save()
-        serialize = RetriveNewsSerialize(instance).data
+        serialize = GetNewsSerialize(instance).data
         return response.Response(serialize)
