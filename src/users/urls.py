@@ -3,16 +3,18 @@ from django.urls import URLPattern, path, include
 from rest_framework import routers
 from django.contrib.auth import views as auth_views
 
-from users.views.login import LoginApiView
-from users.views.logout import LogoutJWTViewsets
+from users.views.login import GoogleSocialAuthView, LoginApiView
+from users.views.logout import LogoutAPIviewset
 from rest_framework_simplejwt.views import TokenRefreshView
 
 
 
 urlpatterns = [
-    path('login/', LoginApiView.as_view(), name="login"),
+    # path('login/', LoginApiView.as_view(), name="login"),
+    path('login/', GoogleSocialAuthView.as_view(), name="login"),
+
     path('refresh/token/',TokenRefreshView.as_view(), name="refresh_token"),
-    path('logout/', LogoutJWTViewsets.as_view(), name="logout"),
+    path('logout/', LogoutAPIviewset.as_view(), name="logout"),
     # path("password/reset/", password.ResetPasswordViewsets.as_view(), name=""),
     # path("password/reset/confirm/",
     #      password.ConfirmResetPasswordViewsets.as_view(), name=""),

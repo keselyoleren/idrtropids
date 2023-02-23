@@ -1,0 +1,66 @@
+{% load static %}
+<!doctype html>
+<!--
+* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
+* @version 1.0.0-beta4
+* @link https://tabler.io
+* Copyright 2018-2021 The Tabler Authors
+* Copyright 2018-2021 codecalm.net Paweł Kuna
+* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
+-->
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+        <!-- CSS files -->
+        <link href="{% static 'tabler/css/tabler.min.css'%}" rel="stylesheet"/>
+        <link href="{% static 'tabler/css/tabler-flags.min.css'%}" rel="stylesheet"/>
+        <link href="{% static 'tabler/css/tabler-payments.min.css'%}" rel="stylesheet"/>
+        <link href="{% static 'tabler/css/tabler-vendors.min.css'%}" rel="stylesheet"/>
+        <link href="{% static 'tabler/css/demo.min.css'%}" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+        {% comment %} <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+        {% comment %} <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css"> {% endcomment %}
+        {% block css %}{% endblock  %}
+    </head>
+    <body class="antialiased">
+        <div class="wrapper">
+            <aside class="navbar navbar-vertical navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <h1 class="navbar-brand navbar-brand-autodark">
+                    <a href=".">
+                    <img src="/static/logo-white.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                    </a>
+                </h1>
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    {% include 'admin/layout/sidebar.html' %}
+                </div>
+                </div>
+            </aside>
+            <div class="page-wrapper">
+                <div class="container-xl">
+                    {% block page_header %}{% endblock  %}
+                    <div class="page-body">
+                        {% block content %}{% endblock  %}
+                    </div>
+                    {% include 'admin/layout/footer.html' %}
+                </div>
+            </div>
+            
+        </div>
+        <script src="{% static 'tabler/libs/apexcharts/dist/apexcharts.min.js'%}"></script>
+        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#datatable').DataTable();
+            });
+        </script>
+        {% block js %}{% endblock  %}
+    </body>
+</html>

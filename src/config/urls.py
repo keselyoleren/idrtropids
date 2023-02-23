@@ -41,10 +41,19 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("<int:pk>/", HomeDetailView.as_view(), name='detail'),
     path("", HomeView.as_view(), name='home'),
+    # path("", TemplateView.as_view(template_name='admin/page/profile.html')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('page/', include([
         path('', include('disease.urls')),
     ])),
+
+    path('contributor/', include([
+        path("", TemplateView.as_view(template_name='admin/page/profile.html'), name='contributor_profile'),
+        path("profile", TemplateView.as_view(template_name='admin/page/profile.html'), name='contributor_profile'),
+        path("article", TemplateView.as_view(template_name='admin/page/article/list.html'), name='contributor_list_article'),
+    ])),
+
     path('api/v1/', include([
         path('page/', include(page_urls)),
         path('auth/', include('users.urls')),
