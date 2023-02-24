@@ -52,6 +52,15 @@ urlpatterns = [
         path("", TemplateView.as_view(template_name='admin/page/profile.html'), name='contributor_profile'),
         path("profile", TemplateView.as_view(template_name='admin/page/profile.html'), name='contributor_profile'),
         path("article", TemplateView.as_view(template_name='admin/page/article/list.html'), name='contributor_list_article'),
+        path("book", TemplateView.as_view(template_name='admin/page/book/list.html'), name='contributor_list_book'),
+        path("report", TemplateView.as_view(template_name='admin/page/report/list.html'), name='contributor_list_report'),
+        path("qna", TemplateView.as_view(template_name='admin/page/qna/list.html'), name='contributor_list_qna'),
+        path("disiases", TemplateView.as_view(template_name='admin/page/disiases/list.html'), name='contributor_list_disiases'),
+        path("form", TemplateView.as_view(template_name='admin/form/create.html'), name='form'),
+        path('auth/', include([
+            path("login", TemplateView.as_view(template_name='admin/auth/login.html'), name='contributor_login'),
+            path("register", TemplateView.as_view(template_name='admin/auth/register.html'), name='contributor_register'),
+        ]))
     ])),
 
     path('api/v1/', include([
