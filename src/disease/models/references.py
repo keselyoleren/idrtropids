@@ -20,6 +20,7 @@ class Article(BaseModel):
     doi = models.CharField(_("Doi"), max_length=100)
     author = models.CharField(_("Author"), max_length=100)
     url = models.URLField()
+    created_by = models.ForeignKey(UserAccount, on_delete=models.CASCADE, blank=True, null=True)
     visits = models.PositiveIntegerField(default=0)
 
 
@@ -43,6 +44,7 @@ class Book(BaseModel):
     url = models.URLField()
     issn = models.CharField(_("Issn"), max_length=100)
     abstract = RichTextField(_("Abstract"))
+    created_by = models.ForeignKey(UserAccount, on_delete=models.CASCADE, blank=True, null=True)
     visits = models.PositiveIntegerField(default=0)
     
 
@@ -67,6 +69,7 @@ class Report(BaseModel):
     city = models.CharField(_('Report City'), max_length=255)
     keyword = models.ManyToManyField(Keyword, blank=True)
     content = RichTextField(_("Content Report"))
+    created_by = models.ForeignKey(UserAccount, on_delete=models.CASCADE, blank=True, null=True)
     visits = models.PositiveIntegerField(default=0)
 
     def save(self, *args, **kwargs):

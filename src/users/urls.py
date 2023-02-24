@@ -15,6 +15,7 @@ urlpatterns = [
 
     path('refresh/token/',TokenRefreshView.as_view(), name="refresh_token"),
     path('logout/', LogoutAPIviewset.as_view(), name="logout"),
+    
     # path("password/reset/", password.ResetPasswordViewsets.as_view(), name=""),
     # path("password/reset/confirm/",
     #      password.ConfirmResetPasswordViewsets.as_view(), name=""),

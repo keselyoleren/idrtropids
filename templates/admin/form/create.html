@@ -1,78 +1,64 @@
 {% extends 'admin/layout/main.html' %}
 {% load static %}
-
+{% block css %}{{ form.media.css }}{% endblock %}
 {% block content %}
-<div class="container-xl">
-    <div class="col-md-12">
-        <form class="card">
-            <div class="card-header">
-            <h3 class="card-title">Basic form</h3>
-            </div>
-            <div class="card-body">
-            <div class="mb-3">
-                <label class="form-label required">Email address</label>
-                <div>
-                <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
-                <small class="form-hint">We'll never share your email with anyone else.</small>
+
+<section id="content" class="content">
+    <div class="row">
+        <div id="content-main" class="col-12">
+            <form action="." method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 col-lg-9">
+                        <div class="card card-primary card-outline">
+                            <div class="card-header">
+                                <div class="card-title">{{ card_title }}</div>
+                            </div>
+                            <div class="card-body">
+                                {% for fields in form.visible_fields %}
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-sm-2 text-left"  for="{{ fields.label_tag.id }}">
+                                                {{ fields.label_tag }}
+                                                {% if fields.field.required %}<span class="text-red">*</span>{% endif %}
+                                            </label>
+                                            <div class="col-sm-10">
+                                                {{ fields.help_text }}
+                                                <span class="text-red">{{ fields.errors }}</span>
+                                                {{ fields }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- action -->
+                    <div class="col-12 col-lg-3">
+                        <div class="card card-primary card-outline">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="fas fa-edit"></i>
+                                    Actions
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <input type="submit"
+                                            value="Save"
+                                            class="btn btn-outline-success form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label required">Password</label>
-                <div>
-                <input type="password" class="form-control" placeholder="Password">
-                <small class="form-hint">
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain
-                    spaces, special characters, or emoji.
-                </small>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Select</label>
-                <div>
-                <select class="form-select">
-                    <option>Option 1</option>
-                    <optgroup label="Optgroup 1">
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    </optgroup>
-                    <option>Option 2</option>
-                    <optgroup label="Optgroup 2">
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    </optgroup>
-                    <optgroup label="Optgroup 3">
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    </optgroup>
-                    <option>Option 3</option>
-                    <option>Option 4</option>
-                </select>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Checkboxes</label>
-                <div>
-                <label class="form-check">
-                    <input class="form-check-input" type="checkbox" checked="">
-                    <span class="form-check-label">Option 1</span>
-                </label>
-                <label class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <span class="form-check-label">Option 2</span>
-                </label>
-                <label class="form-check">
-                    <input class="form-check-input" type="checkbox" disabled="">
-                    <span class="form-check-label">Option 3</span>
-                </label>
-                </div>
-            </div>
-            </div>
-            <div class="card-footer text-end">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
+</section>
 
-</div>
+{% endblock  %}
 
+{% block js %}
+{{ form.media.js }}
 {% endblock  %}
