@@ -30,6 +30,7 @@ class DiseasesListView(ListView):
     template_name = "diseases/list.html"
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
+    paginate_by = 10
 
 class DiseasesDetailView(DetailView):
     model = Disease

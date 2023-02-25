@@ -3,13 +3,14 @@ from django.utils.translation import gettext_lazy as _
 from config.models import BaseModel
 from disease.models.diseases import Disease
 from disease.models.news import Keyword
+from helper.choices import StatusChoice
 from users.models import UserAccount
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 
 class Article(BaseModel):
     title = models.CharField(_("Title"),max_length=200)
-    slug = models.CharField(unique=True, max_length=255)
+    slug = models.CharField(unique=True, max_length=255, blank=True, null=True)
     abstract = RichTextField(_("Abstract"))
     volume = models.CharField(_("Volume"), max_length=100)
     pages_article = models.CharField(_("Pages Article"), max_length=100)
@@ -20,7 +21,9 @@ class Article(BaseModel):
     doi = models.CharField(_("Doi"), max_length=100)
     author = models.CharField(_("Author"), max_length=100)
     url = models.URLField()
-    visits = models.PositiveIntegerField(default=0)
+    created_by = models.ForeignKey(UserAccount, on_delete=models.CASCADE, blank=True, null=True)
+    visits = models.PositiveIntegerField(default=0, blank=True, null=True)
+    status = models.CharField(_("Status"), max_length=100,  choices=StatusChoice.choices, default=StatusChoice.PENDING, blank=True, null=True)
 
 
     def save(self, *args, **kwargs):
@@ -33,7 +36,7 @@ class Article(BaseModel):
 
 class Book(BaseModel):
     title = models.CharField(_("Title"),max_length=200)
-    slug = models.CharField(unique=True, max_length=255)
+    slug = models.CharField(unique=True, max_length=255, blank=True, null=True)
     year_publish = models.DateField()
     pages = models.CharField(_("Pages"), max_length=100)
     publisher = models.CharField(_("Publisher"), max_length=100)
@@ -43,7 +46,9 @@ class Book(BaseModel):
     url = models.URLField()
     issn = models.CharField(_("Issn"), max_length=100)
     abstract = RichTextField(_("Abstract"))
-    visits = models.PositiveIntegerField(default=0)
+    created_by = models.ForeignKey(UserAccount, on_delete=models.CASCADE, blank=True, null=True)
+    visits = models.PositiveIntegerField(default=0, blank=True, null=True)
+    status = models.CharField(_("Status"), max_length=100,  choices=StatusChoice.choices, default=StatusChoice.PENDING, blank=True, null=True)
     
 
     def save(self, *args, **kwargs):
@@ -56,7 +61,7 @@ class Book(BaseModel):
 
 class Report(BaseModel):
     title = models.CharField(_("Report Title"), max_length=200)
-    slug = models.CharField(unique=True, max_length=255)
+    slug = models.CharField(unique=True, max_length=255, blank=True, null=True)
     institution = models.CharField(_("Report institution"), max_length=200)
     publisher = models.CharField(_("Report Publisher"), max_length=100)
     abstract = RichTextField(_("Abstract"))
@@ -67,7 +72,9 @@ class Report(BaseModel):
     city = models.CharField(_('Report City'), max_length=255)
     keyword = models.ManyToManyField(Keyword, blank=True)
     content = RichTextField(_("Content Report"))
-    visits = models.PositiveIntegerField(default=0)
+    created_by = models.ForeignKey(UserAccount, on_delete=models.CASCADE, blank=True, null=True)
+    visits = models.PositiveIntegerField(default=0, blank=True, null=True)
+    status = models.CharField(_("Status"), max_length=100,  choices=StatusChoice.choices, default=StatusChoice.PENDING, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

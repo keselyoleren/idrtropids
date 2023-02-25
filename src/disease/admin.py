@@ -3,7 +3,7 @@ from django.contrib import admin
 from disease.models import *
 from disease.models.diseases import Category, Disease
 from disease.models.news import Keyword, News
-from disease.models.references import Article, Book
+from disease.models.references import Article, Book, Report
 
 # Register your models here.
 
@@ -15,9 +15,13 @@ class CategoryAdminView(admin.ModelAdmin):
 class DiseaseAdminView(admin.ModelAdmin):
     list_display = ['disease_name', 'disease_prevention', 'description', 'medicine', 'diagnose', 'lab_check', 'cause_of_disease']
 
+@admin.register(Report)
+class ReportAdminView(admin.ModelAdmin):
+    list_display = ['title', 'publisher', 'status' , 'created_by']
+
 @admin.register(News)
 class NewsAdminView(admin.ModelAdmin):
-    list_display = ['title', 'disease', 'author']
+    list_display = ['title',  'created_by']
 
     def get_form(self, request, obj=None, **kwargs):
         self.exclude = ("slug", )

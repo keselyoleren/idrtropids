@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistem Informasi Manajemen PLP dan KKNDik FKIP UMS </title>
+  <link rel="shortcut icon" href="{% static 'img/logo_fkip.png' %}" type="image/x-icon">
+
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css'%}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css'%}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css'%}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{% static 'plugins/jqvmap/jqvmap.min.css'%}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'plugins/css/adminlte.min.css'%}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css'%}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.min.css' %}">
+  <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  {% block css %} {% endblock css %}
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  {% include 'admin/layout/navbar.html' %}
+  <!-- /.navbar -->
+
+
+  <!-- Main Sidebar Container -->
+  {% comment %} {% include 'layouts/sidebar.html' %} {% endcomment %}
+  {% include 'admin/layout/sidebar.html' %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    {% include 'admin/layout/header.html' %}
+    <!-- /.content-header -->
+  
+    {% comment %} flash message {% endcomment %}
+    
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        {% block content %} {% endblock content %}
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    <!-- modal -->
+    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">              
+              <div class="modal-body">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <img src="" class="imagepreview" style="width: 100%;" >
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  {% include 'admin/layout/footer.html' %}
+  {% comment %} {% include 'layouts/footer.html' %} {% endcomment %}
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js'%}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{% static 'plugins/jquery-ui/jquery-ui.min.js'%}"></script>
+<script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    $('.pop').on('click', function() {
+			$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+			$('#imagemodal').modal('show');   
+		});		
+
+  })
+</script>
+<script>
+  $(document).ready(function(){
+    $("#id_thn_akademik").mask('0000/0000')
+    $("#alert").fadeTo(2000, 500).slideUp(500, function(){
+      $("#alert").slideUp(500);
+    });
+  })
+</script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+<!-- ChartJS -->
+<script src="{% static 'plugins/chart.js/Chart.min.js'%}"></script>
+<!-- Sparkline -->
+<script src="{% static 'plugins/sparklines/sparkline.js'%}"></script>
+<!-- JQVMap -->
+<script src="{% static 'plugins/jqvmap/jquery.vmap.min.js'%}"></script>
+<script src="{% static 'plugins/jqvmap/maps/jquery.vmap.usa.js'%}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{% static 'plugins/jquery-knob/jquery.knob.min.js'%}"></script>
+<!-- daterangepicker -->
+<script src="{% static 'plugins/moment/moment.min.js'%}"></script>
+<script src="{% static 'plugins/daterangepicker/daterangepicker.js'%}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js'%}"></script>
+<!-- Summernote -->
+<script src="{% static 'plugins/summernote/summernote-bs4.min.js'%}"></script>
+<!-- overlayScrollbars -->
+<script src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js'%}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'plugins/js/adminlte.js'%}"></script>
+<script src="{% static 'plugins/js/pages/dashboard.js'%}"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#datatable').DataTable();
+  });
+</script>
+{% block js %} {% endblock js %}
+</body>
+</html>
