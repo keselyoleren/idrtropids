@@ -42,6 +42,12 @@ class CreateArticle(LoginAdminRequiredMixin, CreateView):
         context['header'] = 'Article'
         context['nav_article'] = True
         return context
+    
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        form.save()
+        return super().form_valid(form)    
+
 
    
 class UpdateArticle(LoginAdminRequiredMixin, UpdateView):
@@ -58,6 +64,12 @@ class UpdateArticle(LoginAdminRequiredMixin, UpdateView):
         context['header'] = 'Article'
         context['nav_article'] = True
         return context
+    
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        form.save()
+        return super().form_valid(form)    
+
 
 class DeleteArticle(LoginAdminRequiredMixin, DeleteView):
     model = Article

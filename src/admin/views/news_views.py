@@ -31,7 +31,7 @@ class CreateNews(LoginAdminRequiredMixin, CreateView):
     form_class = NewsForm
     context_object_name = 'News'
     template_name = "admin/form/create.html"
-    success_url = reverse_lazy('list_news')
+    success_url = reverse_lazy('contributor_list_news')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -47,7 +47,7 @@ class UpdateNews(LoginAdminRequiredMixin, UpdateView):
     form_class = NewsForm
     context_object_name = 'News'
     template_name = "admin/form/update.html"
-    success_url = reverse_lazy('list_news')
+    success_url = reverse_lazy('contributor_list_news')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -60,7 +60,7 @@ class UpdateNews(LoginAdminRequiredMixin, UpdateView):
 class DeleteNews(LoginAdminRequiredMixin, DeleteView):
     model = News
     template_name = 'admin/form/delete.html'
-    success_url = reverse_lazy('list_news')
+    success_url = reverse_lazy('contributor_list_news')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

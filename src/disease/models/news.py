@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.models import BaseModel
 from disease.models.diseases import Disease
+from helper.choices import StatusChoice
 from users.models import UserAccount
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
@@ -20,14 +21,15 @@ class Keyword(BaseModel):
         return self.name
 
 class News(BaseModel):
-    disease = models.ForeignKey(Disease, on_delete=models.CASCADE, blank=True, null=True)
+    # disease = models.ForeignKey(Disease, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(_("News Title"),max_length=200)
     content = RichTextField(_('News Content'))
-    slug = models.SlugField(unique=True)
-    author = models.ForeignKey(UserAccount, related_name='author', on_delete=models.CASCADE, blank=True, null=True)
+    slug = models.CharField(unique=True, max_length=255, blank=True, null=True)
+    created_by = models.ForeignKey(UserAccount, related_name='author', on_delete=models.CASCADE, blank=True, null=True)
     editor = models.ForeignKey(UserAccount, related_name='editor', on_delete=models.CASCADE, blank=True, null=True)
     keyword = models.ManyToManyField(Keyword, blank=True)
-    visits = models.PositiveIntegerField(default=0)
+    visits = models.PositiveIntegerField(default=0, blank=True, null=True)
+    status = models.CharField(_("Status"), max_length=100,  choices=StatusChoice.choices, default=StatusChoice.PENDING, blank=True, null=True)
 
     def __str__(self) -> str:
         return self.title

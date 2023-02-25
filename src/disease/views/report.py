@@ -11,7 +11,7 @@ class ReportListView(ListView):
     model = Report
     context_object_name = 'reports'
     template_name = "report/list.html"
-    paginate_by = 2
+    paginate_by = 10
     
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)

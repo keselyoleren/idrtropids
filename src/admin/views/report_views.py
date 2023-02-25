@@ -40,6 +40,12 @@ class CreateReport(LoginAdminRequiredMixin, CreateView):
         context['nav_report'] = True
         return context
 
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        form.save()
+        return super().form_valid(form)    
+
+
    
 class UpdateReport(LoginAdminRequiredMixin, UpdateView):
     model = Report
@@ -55,6 +61,12 @@ class UpdateReport(LoginAdminRequiredMixin, UpdateView):
         context['header'] = 'Report'
         context['nav_report'] = True
         return context
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        form.save()
+        return super().form_valid(form)    
+
 
 class DeleteReport(LoginAdminRequiredMixin, DeleteView):
     model = Report
