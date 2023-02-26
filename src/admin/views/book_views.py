@@ -9,12 +9,12 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 
-from helper.permission import LoginAdminRequiredMixin
+from helper.permission import IsContributor, LoginAdminRequiredMixin
 
 
 
 
-class ListBook(LoginAdminRequiredMixin, ListView):
+class ListBook(IsContributor, ListView):
     model = Book
     context_object_name = 'book'
     template_name = "admin/page/book/list.html"
@@ -31,7 +31,7 @@ class ListBook(LoginAdminRequiredMixin, ListView):
         context['nav_book'] = True
         return context
 
-class CreateBook(LoginAdminRequiredMixin, CreateView):
+class CreateBook(IsContributor, CreateView):
     model = Book
     form_class = BookForm
     context_object_name = 'book'
@@ -53,7 +53,7 @@ class CreateBook(LoginAdminRequiredMixin, CreateView):
         return super().form_valid(form)    
 
    
-class UpdateBook(LoginAdminRequiredMixin, UpdateView):
+class UpdateBook(IsContributor, UpdateView):
     model = Book
     form_class = BookForm
     context_object_name = 'book'
@@ -74,7 +74,7 @@ class UpdateBook(LoginAdminRequiredMixin, UpdateView):
         return super().form_valid(form)    
 
 
-class DeleteBook(LoginAdminRequiredMixin, DeleteView):
+class DeleteBook(IsContributor, DeleteView):
     model = Book
     template_name = 'admin/form/delete.html'
     success_url = reverse_lazy('contributor_list_book')

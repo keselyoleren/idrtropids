@@ -10,12 +10,12 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 
-from helper.permission import LoginAdminRequiredMixin
+from helper.permission import IsContributor, LoginAdminRequiredMixin
 
 
 
 
-class ListArticle(LoginAdminRequiredMixin, ListView):
+class ListArticle(LoginAdminRequiredMixin, IsContributor, ListView):
     model = Article
     context_object_name = 'article'
     template_name = "admin/page/article/list.html"
@@ -28,7 +28,7 @@ class ListArticle(LoginAdminRequiredMixin, ListView):
         context['nav_article'] = True
         return context
 
-class CreateArticle(LoginAdminRequiredMixin, CreateView):
+class CreateArticle(LoginAdminRequiredMixin, IsContributor, CreateView):
     model = Article
     form_class = ArticleForm
     context_object_name = 'article'
@@ -50,7 +50,7 @@ class CreateArticle(LoginAdminRequiredMixin, CreateView):
 
 
    
-class UpdateArticle(LoginAdminRequiredMixin, UpdateView):
+class UpdateArticle(LoginAdminRequiredMixin, IsContributor, UpdateView):
     model = Article
     form_class = ArticleForm
     context_object_name = 'article'
@@ -71,7 +71,7 @@ class UpdateArticle(LoginAdminRequiredMixin, UpdateView):
         return super().form_valid(form)    
 
 
-class DeleteArticle(LoginAdminRequiredMixin, DeleteView):
+class DeleteArticle(LoginAdminRequiredMixin, IsContributor, DeleteView):
     model = Article
     template_name = 'admin/form/delete.html'
     success_url = reverse_lazy('contributor_list_article')

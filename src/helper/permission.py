@@ -5,6 +5,8 @@ from django.core.exceptions import ImproperlyConfigured, PermissionDenied
 from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.shortcuts import redirect, render
 
+from helper.choices import StatusVerified
+
 
 
 class AccessMixin:
@@ -12,8 +14,8 @@ class AccessMixin:
     Abstract CBV mixin that gives access mixins the same customizable
     functionality.
     """
-    login_url = "/admin-panel/auth/login/"
-    login_user_url = '/account/login/'
+    login_url = "/accounts/google/login/"
+    login_user_url = '/account/google/login/'
     permission_denied_message = 'Hayoo mau ngapain.. awas lo.. kena uu ITE..!!'
     raise_exception = False
     redirect_field_name = REDIRECT_FIELD_NAME
@@ -83,5 +85,11 @@ class LoginViewMixinUser(AccessMixin):
 class LoginAdminRequiredMixin(AccessMixin):
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
+
+class IsContributor(AccessMixin):
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.profile.status_verified != StatusVerified.VERIFIED:
             return self.handle_no_permission()
         return super().dispatch(request, *args, **kwargs)

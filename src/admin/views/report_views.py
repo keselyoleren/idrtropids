@@ -9,10 +9,10 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 
-from helper.permission import LoginAdminRequiredMixin
+from helper.permission import IsContributor, LoginAdminRequiredMixin
 
 
-class ListReport(LoginAdminRequiredMixin, ListView):
+class ListReport(IsContributor, ListView):
     model = Report
     context_object_name = 'report'
     template_name = "admin/page/report/list.html"
@@ -25,7 +25,7 @@ class ListReport(LoginAdminRequiredMixin, ListView):
         context['nav_report'] = True
         return context
 
-class CreateReport(LoginAdminRequiredMixin, CreateView):
+class CreateReport(IsContributor, CreateView):
     model = Report
     form_class = ReportForm
     context_object_name = 'report'
@@ -47,7 +47,7 @@ class CreateReport(LoginAdminRequiredMixin, CreateView):
 
 
    
-class UpdateReport(LoginAdminRequiredMixin, UpdateView):
+class UpdateReport(IsContributor, UpdateView):
     model = Report
     form_class = ReportForm
     context_object_name = 'report'
@@ -68,7 +68,7 @@ class UpdateReport(LoginAdminRequiredMixin, UpdateView):
         return super().form_valid(form)    
 
 
-class DeleteReport(LoginAdminRequiredMixin, DeleteView):
+class DeleteReport(IsContributor, DeleteView):
     model = Report
     template_name = 'admin/form/delete.html'
     success_url = reverse_lazy('contributor_list_report')

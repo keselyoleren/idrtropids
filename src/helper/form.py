@@ -17,10 +17,25 @@ class AbstractForm(forms.ModelForm):
                 self.fields['editor'].widget = forms.HiddenInput()
             if field == 'visits':
                 self.fields['visits'].widget = forms.HiddenInput()
+
+            if field == 'user':
+                self.fields['user'].widget = forms.HiddenInput()
+
+            if field == 'status_verified':
+                self.fields['status_verified'].widget = forms.HiddenInput()
+
+            if field == 'profile_url':
+                self.fields['profile_url'].widget = forms.HiddenInput()
             
             self.fields[field].widget.attrs['class'] = 'form-control'
             if field == 'year_publish':
                 self.fields['year_publish'].widget = AdminDateWidget(attrs={
+                    'type':'date',
+                    'class': 'form-control',
+                })
+
+            if field == 'tgl_lahir':
+                self.fields['tgl_lahir'].widget = AdminDateWidget(attrs={
                     'type':'date',
                     'class': 'form-control',
                 })

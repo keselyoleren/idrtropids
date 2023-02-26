@@ -28,7 +28,7 @@ class UserAdmin(BaseUserAdmin):
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ['full_name', 'gender', 'profesi', 'role', 'status_verified']
     fieldsets = (
-        (None, {'fields': ('full_name', 'gender', 'profesi', 'tempat_lahir', 'deskirpsi', 'tgl_lahir',  'alamat', 'role', 'status_verified')}),
+        (None, {'fields': ('user','profile_pic','full_name', 'gender', 'profesi', 'tempat_lahir', 'deskirpsi', 'tgl_lahir',  'alamat', 'role', 'status_verified')}),
         (_('Researcher'), {'fields': ('scholar', 'sinta', 'scopus', 'orcid', 'affiliation', 'expertise', 'researcher_institute')}),
         (_('Practitioner'), {
             'fields': ('office_name', 'office_address', 'doctor_id'),

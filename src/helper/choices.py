@@ -15,3 +15,9 @@ class GenderChoice(models.TextChoices):
 class StatusVerified(models.TextChoices):
     VERIFIED = 'Verified'
     WAITING = 'Waiting'
+
+
+class RoleChoice(models.TextChoices):
+    RESEARCHER = 'Researcher'
+    PRACTITIONER = 'Practitioner'
+

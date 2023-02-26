@@ -8,7 +8,7 @@ from django.utils.translation import gettext as _
 from django.db import models
 from ckeditor.fields import RichTextField
 
-from helper.choices import GenderChoice, StatusVerified
+from helper.choices import GenderChoice, RoleChoice, StatusVerified
 
 from PIL import Image
 from io import BytesIO
@@ -45,7 +45,7 @@ class Profile(models.Model):
     alamat = models.CharField(_("Alamat"), max_length=255, blank=True, null=True)
     profesi = models.CharField(_("Profesi"), max_length=255, blank=True, null=True)
     deskirpsi = RichTextField(_("Deskripsi"), blank=True, null=True)
-    role = models.CharField(_("Role"), max_length=50,  choices=TYPE, default='visitor')
+    role = models.CharField(_("Role"), max_length=50,  choices=RoleChoice.choices, blank=True, null=True)
     
     # researcher
     scholar = models.CharField(_("Scholar"), max_length=255, blank=True, null=True)
@@ -60,7 +60,7 @@ class Profile(models.Model):
     office_name = models.CharField(_("Nama Kantor / Instansi"), max_length=255, blank=True, null=True)
     office_address = models.CharField(_("Alamat Kantor / Instansi"), max_length=255, blank=True, null=True)
     doctor_id = models.CharField(_("Nomor ID Doktor"), max_length=255, blank=True, null=True)
-    status_verified = models.CharField(_("Status Verified"), max_length=50, choices=StatusVerified.choices, default=StatusVerified.WAITING)
+    status_verified = models.CharField(_("Status Verified"), max_length=50, choices=StatusVerified.choices, blank=True, null=True)
     
     
     def save(self, *args, **kwargs):
