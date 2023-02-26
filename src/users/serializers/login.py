@@ -10,6 +10,23 @@ from helper.google import Google
 from django.conf import settings
 from users.models import UserAccount
 
+
+from django import forms
+from django.contrib.auth.forms import AuthenticationForm, UsernameField
+
+
+
+class LoginForm(AuthenticationForm):
+    username = UsernameField(widget=forms.TextInput(attrs={'autofocus': True, 'class':'form-control'}))
+    password = forms.CharField(
+        label=_("Password"),
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'class':'form-control'}),
+    )
+
+    
+    
+
 class RegisterGoogle:
 
     def register_social_user(self, provider, user_id, email, name):
@@ -49,7 +66,7 @@ class GoogleSocialAuthSerializer(serializers.Serializer):
         email = user_data['email']
         name = user_data['name']
         provider = 'google'
-
+        
         return RegisterGoogle().register_social_user(provider=provider, 
                                                 user_id=user_id, 
                                                 email=email, 

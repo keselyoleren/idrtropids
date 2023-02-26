@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext as _
 
-from users.models import UserAccount
+from users.models import Profile, UserAccount
 
 
 # Register your models here.
@@ -21,5 +21,16 @@ class UserAdmin(BaseUserAdmin):
         (None, {
             'classes': ('wide',),
             'fields': ('username', 'password1', 'password2', 'role'),
+        }),
+    )
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['full_name', 'gender', 'profesi', 'role', 'status_verified']
+    fieldsets = (
+        (None, {'fields': ('full_name', 'gender', 'profesi', 'tempat_lahir', 'deskirpsi', 'tgl_lahir',  'alamat', 'role', 'status_verified')}),
+        (_('Researcher'), {'fields': ('scholar', 'sinta', 'scopus', 'orcid', 'affiliation', 'expertise', 'researcher_institute')}),
+        (_('Practitioner'), {
+            'fields': ('office_name', 'office_address', 'doctor_id'),
         }),
     )

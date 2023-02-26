@@ -14,9 +14,10 @@ from users.models import UserAccount
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
 from django.conf import settings
+from django.contrib.auth.views import LoginView
 
 
-from users.serializers.login import GoogleSocialAuthSerializer, LoginSerialize
+from users.serializers.login import GoogleSocialAuthSerializer, LoginForm, LoginSerialize
 
 class GoogleSocialAuthView(generics.GenericAPIView):
 
@@ -37,8 +38,12 @@ class GoogleSocialAuthView(generics.GenericAPIView):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         data = ((serializer.validated_data)['auth_token'])
-        new_user = authenticate(email=data['email'], password=settings.SOCIAL_SECRET)
+        print(data)
         return Response(data, status=status.HTTP_200_OK)
+
+class UserLoginView(LoginView):
+    template_name = 'users/login.html'
+    form_class = LoginForm
 
 
 class LoginApiView(generics.CreateAPIView):

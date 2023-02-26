@@ -22,9 +22,12 @@
           <a href="."><img src="/static/logo/logo%20ruanglab-aja%20backg%20pth.png" height="75" alt="" /></a>
         </div>
         <form class="card card-md" method="POST" id="login">
-          <input type="hidden" name="csrfmiddlewaretoken" value="46DbxT5oTwP0871ZeCbPAETLOI3Q2dXfbUGbM3kjdmgEWIkwSELZHBUQsTo8l20L" />
+          {% csrf_token %}
           <div class="card-body">
             <h2 class="card-title text-center mb-4">Login to your account</h2>
+            {% for fields in form.visible_fields %}                                    
+              <span class="text-red">{{ fields.errors }} </span>                    
+            {% endfor %}
             <div class="mb-3">
               <label class="form-label">Email</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" />
@@ -33,7 +36,7 @@
             <div class="mb-2">
               <label class="form-label">
                 Password
-                <span class="form-label-description"><a href="./forgot-password.html">I forgot password</a></span>
+                <span class="form-label-description"><a href="password">I forgot password</a></span>
               </label>
               <div class="input-group input-group-flat">
                 <input type="password" id="password" class="form-control" name="password" placeholder="Password" autocomplete="off" />
@@ -61,7 +64,7 @@
           </div>
         </form>
         <div class="text-center text-muted mt-3">
-          Don't have account yet? <a href="{% url 'contributor_register' %}" tabindex="-1">Sign up</a>
+          Don't have account yet? <a href="" tabindex="-1">Sign up</a>
         </div>
       </div>
     </div>

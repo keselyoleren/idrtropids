@@ -82,6 +82,6 @@ class LoginViewMixinUser(AccessMixin):
 
 class LoginAdminRequiredMixin(AccessMixin):
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated or not request.user.is_superuser:
+        if not request.user.is_authenticated:
             return self.handle_no_permission()
         return super().dispatch(request, *args, **kwargs)

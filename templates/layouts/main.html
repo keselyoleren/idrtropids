@@ -130,8 +130,14 @@
 				search</a>
 		</div>
 		<div class="header-language-bar container text-right pt-1 pb-1 fs0875">
-			<a href="/spanish/">Indonesia</a><span class="link-divider"> | </span>
-			<a href="https://wwwn.cdc.gov/pubs/other-languages/">Other Languages</a>
+			{% if user.is_authenticated %}
+				<a href="{% url 'contributor_profile' %}">Contributor</a><span class="link-divider"> | </span>
+				<a href="{% url 'account_logout' %}" >Logout</a>
+			{% else %}
+				<a href="/accounts/google/login/">Contributor</a><span class="link-divider"> | </span>
+				<a href="/accounts/google/login/">Login</a>	
+			{% endif %}
+	
 		</div>
 
 

@@ -3,69 +3,56 @@
 
 {% block content %}
 <section id="content" class="content">
+    <div class="alert alert-warning alert-dismissible">
+        <h4><i class="icon fa fa-info"></i> Info!</h4>
+        Account anda terdaftar sebagi Viewer.. jika ingin menjadi contributor silahkan lengkapi profile di bawah ini
+    </div>
+
     <div class="row">
         <div class="col">
             <div class="row row-cards">
                 <div class="col-12">
-                    <div class="card card-primary card-outline">
-                        <div class="card-body box-profile">
-                            <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="https://picsum.photos/640/480" alt="User profile picture">
+                    <div class="col-12">
+                        <div class="card card-widget widget-user-2 shadow-sm">
+                            <div class="widget-user-header bg-default">
+                                <div class="widget-user-image">
+                                    <img class="img-circle elevation-2" src="https://adminlte.io/themes/v3/dist/img/user7-128x128.jpg" alt="User Avatar">
+                                </div>
+
+                                <h3 class="widget-user-username">Nadia Carmichael</h3>
+                                <h5 class="widget-user-desc">Lead Developer</h5>
+                                <span class="float-right">
+                                    <a href="{% url 'update_profile' request.user.profile.id %}" class="btn btn-primary"> Edit Profile</a>
+                                </span>
                             </div>
-                            <h3 class="profile-username text-center">Nina Mcintire</h3>
-                            <p class="text-muted text-center">Software Engineer</p>
-                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                    <div class="card-title">Basic info</div>
-                    <div class="mb-2">
-                        <!-- Download SVG icon from http://tabler-icons.io/i/book -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path><path d="M3 6l0 13"></path><path d="M12 6l0 13"></path><path d="M21 6l0 13"></path></svg>
-                        Went to: <strong>University of Ljubljana</strong>
+                        <div class="card-title"></div>
+                            <div class="mb-2">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l-2 0l9 -9l9 9l-2 0"></path><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></svg>
+                                Alamat: <strong>{{ request.user.profile.alamat }}</strong>
+                            </div>
+                            <div class="mb-2">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M16 3l0 4"></path><path d="M8 3l0 4"></path><path d="M4 11l16 0"></path><path d="M11 15l1 0"></path><path d="M12 15l0 3"></path></svg>
+                                Tanggal Lahir: <strong>{{ request.user.profile.tgl_lahir }}</strong>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-2">
-                        <!-- Download SVG icon from http://tabler-icons.io/i/briefcase -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
-                        Worked at: <strong>Devpulse</strong>
-                    </div>
-                    <div class="mb-2">
-                        <!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l-2 0l9 -9l9 9l-2 0"></path><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></svg>
-                        Lives in: <strong>Šentilj v Slov. Goricah, Slovenia</strong>
-                    </div>
-                    <div class="mb-2">
-                        <!-- Download SVG icon from http://tabler-icons.io/i/map-pin -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 11m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path></svg>
-                        From: <strong><span class="flag flag-country-si"></span>
-                        Slovenia</strong>
-                    </div>
-                    <div class="mb-2">
-                        <!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M16 3l0 4"></path><path d="M8 3l0 4"></path><path d="M4 11l16 0"></path><path d="M11 15l1 0"></path><path d="M12 15l0 3"></path></svg>
-                        Birth date: <strong>13/01/1985</strong>
-                    </div>
-                    <div>
-                        <!-- Download SVG icon from http://tabler-icons.io/i/clock -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path><path d="M12 7l0 5l3 3"></path></svg>
-                        Time zone: <strong>Europe/Ljubljana</strong>
-                    </div>
-                    </div>
-                </div>
                 </div>
                 <div class="col-12">
                 <div class="card">
                     <div class="card-body">
                     <h2 class="card-title">About Me</h2>
                     <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid beatae eaque eius
-                        esse fugit, hic id illo itaque modi molestias nemo perferendis quae rerum soluta. Blanditiis
-                        laborum minima molestiae molestias nemo nesciunt nisi pariatur quae sapiente ut. Aut consectetur
-                        doloremque, error impedit, ipsum labore laboriosam minima non omnis perspiciatis possimus
-                        praesentium provident quo recusandae suscipit tempore totam.
+                        <br>
+                        <p>
+                            {{request.user.profile.deskirpsi | safe}}
                         </p>
                     </div>
                     </div>
