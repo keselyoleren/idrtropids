@@ -9,6 +9,7 @@ from django.utils import translation
 from helper.google import Google
 from django.conf import settings
 from users.models import UserAccount
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 from django import forms
@@ -24,10 +25,12 @@ class LoginForm(AuthenticationForm):
         widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'class':'form-control'}),
     )
 
-    
-    
 
 class RegisterGoogle:
+    def get_tokens_for_user(self, user):
+        refresh = RefreshToken.for_user(user)
+        return str(refresh), str(refresh.access_token)
+
 
     def register_social_user(self, provider, user_id, email, name):
         filtered_user_by_email = UserAccount.objects.filter(email=email)
@@ -42,8 +45,10 @@ class RegisterGoogle:
                 'password': settings.SOCIAL_SECRET}
 
             user = UserAccount.objects.create_user(**user)
-            new_user = authenticate(email=email, password=settings.SOCIAL_SECRET)
+        refresh, access = self.get_tokens_for_user(user)
         return {
+            'access':access,
+            'refresh':refresh,
             'email': user.email, 
             'username': user.username, 
         }

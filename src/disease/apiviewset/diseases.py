@@ -17,6 +17,7 @@ class DiseasesApiView(generics.ListAPIView, generics.RetrieveAPIView, viewsets.M
     serializer_class = DiseasesSerializer
     queryset = Disease.objects.all()
     pagination_class = ResponsePagination
+    
 
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)

@@ -15,6 +15,7 @@ class NewsApiView(generics.ListAPIView, generics.RetrieveAPIView, viewsets.Model
     serializer_class = NewsSerializer
     queryset = News.objects.all()
     pagination_class = ResponsePagination
+    permission_classes = [permissions.IsAuthenticated, ]
 
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
