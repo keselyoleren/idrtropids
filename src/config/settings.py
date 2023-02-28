@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
 
     'users.apps.UsersConfig',
-    'disease.apps.DiseaseConfig'
+    'disease.apps.DiseaseConfig',
 ]
 
 MIDDLEWARE = [
