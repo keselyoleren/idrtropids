@@ -10,6 +10,7 @@ from helper.google import Google
 from django.conf import settings
 from users.models import UserAccount
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.authtoken.models import Token
 
 
 from django import forms
@@ -45,10 +46,10 @@ class RegisterGoogle:
                 'password': settings.SOCIAL_SECRET}
 
             user = UserAccount.objects.create_user(**user)
-        refresh, access = self.get_tokens_for_user(user)
+
+        token, created = Token.objects.get_or_create(user=user)
         return {
-            'access':access,
-            'refresh':refresh,
+            'token':token.key,
             'email': user.email, 
             'username': user.username, 
         }

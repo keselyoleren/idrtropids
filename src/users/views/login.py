@@ -71,11 +71,11 @@ class LoginApiView(generics.CreateAPIView):
                 "Unable to log in with provided credentials.")
         
 
-        refresh, access = self.get_tokens_for_user(user)
+        token, created = Token.objects.get_or_create(user=user)
+
 
         resp =  {
-            'access': access, 
-            'refresh': refresh, 
+            'token': token.key, 
             'email': user.email, 
             'username': user.username, 
         }

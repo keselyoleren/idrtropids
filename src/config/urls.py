@@ -41,7 +41,6 @@ schema_view = get_schema_view(
 urlpatterns = [
     # path("<int:pk>/", HomeDetailView.as_view(), name='detail'),
     path("", HomeView.as_view(), name='home'),
-    # path("", TemplateView.as_view(template_name='auth.html')),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     
