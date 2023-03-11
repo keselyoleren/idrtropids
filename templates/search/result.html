@@ -1,0 +1,66 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-general pt-12">
+    <div class="container pt-3">
+        <div class="search-component">
+            <div class="container max-md">
+                <div class="search">
+                    <div class="input-field">
+                        <form action="{% url 'search' %}" method="GET">
+                            <i class="material-icons search-icon prefix">search</i> 
+                            <input type="text" name="keyword" placeholder="Search whatever you want...">
+                        </form>
+                    </div>
+                </div>
+
+                <h6>Result returned for {{ key_result }}</h6> <br>
+                {% for item in object_diseases %}
+                    <div class="pb-4">
+                        <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
+                            <a href="{% url 'diseases-detail' item.slug %}">{{ item.disease_name }}</a>
+                        </h1>
+                        <div class="text-base leading-5 tracking-wide text-gray-500">
+                            <span class="bg-brand-100 text-brand-900 px-2">Disease</span>  {{item.created_at}} —  {{ item.disease_name }}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for item in object_news %}
+                    <div class="pb-4">
+                        <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
+                            <a href="{% url 'news-detail' item.slug %}">{{ item.title }}</a>
+                        </h1>
+                        <div class="text-base leading-5 tracking-wide text-gray-500">
+                            <span class="bg-brand-100 text-brand-900 px-2">Berita</span>  {{item.created_at}} —  {{ item.title }}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for item in object_report %}
+                    <div class="pb-4">
+                        <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
+                            <a href="{% url 'report-detail' item.slug %}">{{ item.title }}</a>
+                        </h1>
+                        <div class="text-base leading-5 tracking-wide text-gray-500">
+                            <span class="bg-brand-100 text-brand-900 px-2">Report</span>  {{item.created_at}} —  {{ item.title }}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for item in object_book %}
+                    <div class="pb-4">
+                        <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
+                            <a href="{% url 'report-detail' item.slug %}">{{ item.title }}</a>
+                        </h1>
+                        <div class="text-base leading-5 tracking-wide text-gray-500">
+                            <span class="bg-brand-100 text-brand-900 px-2">Report</span>  {{item.created_at}} —  {{ item.title }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock  %}

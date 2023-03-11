@@ -5,14 +5,15 @@ from disease.apiviewset.diseases import DiseasesApiView
 from disease.apiviewset.disqus.question import QuestionDiseasesApiView
 from disease.apiviewset.news import NewsApiView
 from disease.apiviewset.report import ReportApiView
-from disease.views.article import ArticleDetailView, ArticleView
-from disease.views.book import BookDetailView, BookListView
-from disease.views.diseases import  DiseasesDetailView, DiseasesListView
+from disease.views.article_views import ArticleDetailView, ArticleView
+from disease.views.book_views import BookDetailView, BookListView
+from disease.views.diseases_views import  DiseasesDetailView, DiseasesListView
 
-from disease.views.news import NewsDdetailView, NewsListView
+from disease.views.news_views import NewsDdetailView, NewsListView
 from django.urls import path, include
 
-from disease.views.report import ReportDetailView, ReportListView
+from disease.views.report_views import ReportDetailView, ReportListView
+from disease.views.search_views import SearchView
 
 route = routers.DefaultRouter()
 route.register('news', NewsApiView)
@@ -36,4 +37,7 @@ urlpatterns = [
     path('article/<slug:slug>/', ArticleDetailView.as_view(), name='detail-article'),
     path('report/', ReportListView.as_view(), name='report'),
     path('report/<slug:slug>/', ReportDetailView.as_view(), name='detail-report'),
+
+    path('search', SearchView.as_view(), name='search')
+
 ]

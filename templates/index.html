@@ -88,12 +88,13 @@
 			</div>
 			<div class="search-component">
 			  <div class="container max-md">
-					{% comment %} <nav class="slide-nav" id="banner_nav"><a class="active" data-slide="0"><span class="waves-effect"><strong>First Slide</strong>Interdum et malesuada fames ac ante</span></a>
-					<hr class="divider"><a data-slide="1"><span class="waves-effect"><strong>Second Slide</strong>Interdum et malesuada fames ac ante</span></a>
-					<hr class="divider"><a data-slide="2"><span class="waves-effect"><strong>Third Slide</strong>Interdum et malesuada fames ac ante</span></a>
-				  </nav> {% endcomment %}
 				  <div class="search">
-					<div class="input-field"><i class="material-icons search-icon prefix">search</i> <input type="text" placeholder="Search whatever you want..."></div>
+					<div class="input-field">
+						<form action="{% url 'search' %}" method="GET">
+							<i class="material-icons search-icon prefix">search</i> 
+							<input type="text" name="keyword" placeholder="Search whatever you want...">
+						</form>
+					</div>
 				  </div>
 			  </div>
 			</div>

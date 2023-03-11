@@ -25,7 +25,7 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
-from disease.views.news import HomeDetailView, HomeView
+from disease.views.news_views import HomeDetailView, HomeView
 from disease.urls import page_urls
 
 schema_view = get_schema_view(
