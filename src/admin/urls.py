@@ -1,6 +1,7 @@
 
 from django.urls import path, include
 from admin.views.book_views import *
+from admin.views.diseases_views import *
 from admin.views.report_views import *
 from admin.views.news_views import *
 from admin.views.article_views import *
@@ -25,4 +26,9 @@ urlpatterns = [
     path("article/add/", CreateArticle.as_view(), name="contributor_add_article"),
     path("article/<int:pk>/edit/", UpdateArticle.as_view(), name="contributor_update_article"),
     path("article/<int:pk>/delete/", DeleteArticle.as_view(), name="contributor_delete_article"),
+
+    path("diseases/", ListDiseases.as_view(), name="contributor_list_diseases"),
+    path("diseases/add/", CreateDiseases.as_view(), name="contributor_add_diseases"),
+    path("diseases/<int:pk>/edit/", UpdateDiseases.as_view(), name="contributor_update_diseases"),
+    path("diseases/<int:pk>/delete/", DeleteDiseases.as_view(), name="contributor_delete_diseases"),
 ]

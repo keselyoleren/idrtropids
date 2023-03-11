@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.models import BaseModel
+from helper.choices import StatusChoice
 from users.models import UserAccount
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
@@ -20,18 +21,18 @@ class Category(BaseModel):
         verbose_name_plural = 'Category'
 
 class Disease(BaseModel):
-    author = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
-    slug = models.CharField(unique=True, max_length=255)
+    created_by = models.ForeignKey(UserAccount, on_delete=models.CASCADE, blank=True, null=True)
+    slug = models.CharField(unique=True, max_length=255, blank=True, null=True)
     disease_name = models.CharField(_("Disease Name"),max_length=255)
-    disease_prevention = models.TextField("Disease Prevention")
-    description = models.TextField(_("Description"))
-    medicine = models.TextField(_('Medicine'))
-    diagnose = models.TextField(_("Diagnose"))
-    lab_check = models.TextField(_("Lab Check"))
-    cause_of_disease = models.CharField(_("Caouse of disease"), max_length=255)
+    disease_prevention = models.TextField("Disease Prevention", blank=True, null=True)
+    description = models.TextField(_("Description"), blank=True, null=True)
+    medicine = models.TextField(_('Medicine'), blank=True, null=True)
+    diagnose = models.TextField(_("Diagnose"), blank=True, null=True)
+    lab_check = models.TextField(_("Lab Check"), blank=True, null=True)
+    cause_of_disease = models.CharField(_("Caouse of disease"), max_length=255, blank=True, null=True)
     content = RichTextField(_('content'))
-    visits = models.PositiveIntegerField(default=0)
+    status = models.CharField(_("Status"), max_length=100,  choices=StatusChoice.choices, default=StatusChoice.PENDING, blank=True, null=True)
+    visits = models.PositiveIntegerField(default=0, blank=True, null=True)
 
 
     def __str__(self) -> str:

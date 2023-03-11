@@ -17,12 +17,12 @@ from helper.permission import IsContributor, LoginAdminRequiredMixin
 
 class ListArticle(LoginAdminRequiredMixin, IsContributor, ListView):
     model = Article
-    context_object_name = 'article'
     template_name = "admin/page/article/list.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'List Article'
+        context['article'] = Article.objects.filter(created_by=self.request.user)
         context['btn_name'] = 'Tambah Article'
         context['header'] = 'Article'
         context['nav_article'] = True

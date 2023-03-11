@@ -8,6 +8,7 @@ from rest_framework import (
 )
 from disease.models.diseases import Disease
 from disease.serializer.diseases import DiseaseSerialize
+from helper.choices import StatusChoice
 from helper.pagination import ResponsePagination
 
 from django.views.generic import (
@@ -30,7 +31,10 @@ class DiseasesListView(ListView):
     template_name = "diseases/list.html"
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
-    paginate_by = 10
+    paginate_by = 12
+
+    def get_queryset(self):
+        return Disease.objects.filter(status=StatusChoice.APROVED)
 
 class DiseasesDetailView(DetailView):
     model = Disease

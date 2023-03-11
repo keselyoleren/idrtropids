@@ -1,3 +1,4 @@
+from multiprocessing.reduction import AbstractReducer
 from django.views.generic import (
     ListView,
     CreateView, 
@@ -9,12 +10,16 @@ from django.views import View
 from django.urls import reverse_lazy
 from disease.models.news import News
 from disease.models.references import *
+from helper.choices import StatusVerified
 
 class ArticleView(ListView):
     model = Article
     context_object_name = 'articles'
     template_name = "articles/list.html"
     paginate_by = 12
+
+    def get_queryset(self):
+        return Article.objects.filter(status=StatusChoice.APROVED)
     
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)

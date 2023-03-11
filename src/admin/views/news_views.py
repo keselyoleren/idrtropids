@@ -21,6 +21,7 @@ class ListNews(IsContributor, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'List News'
+        context['news'] = News.objects.filter(created_by=self.request.user)
         context['btn_name'] = 'Tambah News'
         context['header'] = 'News'
         context['nav_News'] = True

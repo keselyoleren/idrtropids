@@ -20,6 +20,7 @@ from rest_framework import (
 from disease.models.news import News
 
 from disease.serializer.news import GetNewsSerialize, NewsSerializer
+from helper.choices import StatusChoice
 from helper.pagination import ResponsePagination
 
 class HomeView(ListView):
@@ -44,6 +45,9 @@ class NewsListView(ListView):
     context_object_name = 'news'
     template_name = "news/list.html"
     paginate_by = 12
+
+    def get_queryset(self):
+        return News.objects.filter(status=StatusChoice.APROVED)
     
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)

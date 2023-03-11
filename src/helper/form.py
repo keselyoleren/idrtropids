@@ -13,6 +13,7 @@ class AbstractForm(forms.ModelForm):
                 self.fields['slug'].widget = forms.HiddenInput()
             if field == 'status':
                 self.fields['status'].widget = forms.HiddenInput()
+
             if field == 'editor':
                 self.fields['editor'].widget = forms.HiddenInput()
             if field == 'visits':

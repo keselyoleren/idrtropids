@@ -45,7 +45,7 @@
                         {% for item in book  %}
                             <tr>
                                 <td>
-                                    <a href="{% url 'contributor_update_article' item.id %}">{{ item.title|truncatechars:50 }}</a>
+                                    <a href="{% url 'contributor_update_book' item.id %}">{{ item.title|truncatechars:50 }}</a>
                                 </td>
                                 <td>{{ item.author }}</td>
                                 <td>{{ item.visits }}</td>

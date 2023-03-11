@@ -12,6 +12,9 @@ class ReportListView(ListView):
     context_object_name = 'reports'
     template_name = "report/list.html"
     paginate_by = 12
+
+    def get_queryset(self):
+        return Report.objects.filter(status=StatusChoice.APROVED)
     
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)

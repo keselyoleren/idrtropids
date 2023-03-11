@@ -25,6 +25,7 @@ class ListBook(IsContributor, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'List Buku'
+        context['book'] = Book.objects.filter(created_by=self.request.user)
         context['btn_name'] = 'Tambah Buku'
         context['header'] = 'Buku'
         context['fields'] = Book._meta.fields

@@ -50,13 +50,13 @@ class CreateReport(IsContributor, CreateView):
 class UpdateReport(IsContributor, UpdateView):
     model = Report
     form_class = ReportForm
-    context_object_name = 'report'
     template_name = "admin/form/update.html"
     success_url = reverse_lazy('contributor_list_report')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Edit Report'
+        context['report'] = Report.objects.filter(created_by=self.request.user)
         context['btn_name'] = 'Edit Report'
         context['header'] = 'Report'
         context['nav_report'] = True
