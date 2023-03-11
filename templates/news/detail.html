@@ -1,3 +1,47 @@
-{{ news.content|safe }}
+{% extends 'layouts/main.html' %}
+{% load static %}
 
-{{ news.url }}
+{% block content %}
+  <div class="container-general pt-12">
+    <div class="container pt-3">
+      <div class="row">
+        <!-- ##### ARTICLE ##### -->
+        <div class="col-md-8 px-0 px-sm-3">
+          <div class="blog-style">
+            <h4>{{ news.title }}</h4>
+            <article class="blog-content">{{ news.content|safe }}</article>
+            <br />
+          </div>
+        </div>
+        <div class="col-md-4 px-0 px-sm-3">
+          <div class="blog-style">
+            <div class="sidebar">
+              <div class="py-3"></div>
+              <div class="card paper">
+                <header>
+                  <div class="icon">
+                    <i class="material-icons small">bookmark</i>
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title">Latest Post</span>
+                  </div>
+                </header>
+                <div class="content">
+                  <div>
+                    <div class="collection">
+                      <a class="waves-effect collection-item" href="#!"><span class="d-block">Vestibulum bibendum nisi eget magna</span><span class="caption">Jan 9, 2014</span></a>
+                      <a class="waves-effect collection-item" href="#!"><span class="d-block">Quisque a consequat ante</span><span class="caption">Jan 9, 2014</span></a>
+                      <a class="waves-effect collection-item" href="#!"><span class="d-block">Donec dignissim, odio ac imperdiet luctus</span><span class="caption">Jan 9, 2014</span></a>
+                      <a class="waves-effect collection-item" href="#!"><span class="d-block">Suspendisse eleifend nunc non</span><span class="caption">Jan 9, 2014</span></a>
+                      <a class="waves-effect collection-item" href="#!"><span class="d-block">Vestibulum a massa vestibulum</span><span class="caption">Jan 9, 2014</span></a>
+                    </div><a class="btn waves-effect btn-flat primary-text block">see all</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

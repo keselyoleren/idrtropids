@@ -1,6 +1,59 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
 
-{{ book.title }}
-{{ book.abstract|safe }}
-{{ book.url }}
-
-<h1>Views {{book.visits}} </h1>
+{% block content %}
+<div class="container-general pt-12">
+    <div class="container pt-3">
+        <div class="row">
+            <!-- ##### book ##### -->
+            <div class="col-md-8 px-0 px-sm-3">
+                <div class="blog-style">
+                    <h4 class="" style="text-align: center;">{{ book.title }}</h4><br>
+                    <br><br>
+                    <article class="blog-content">
+                        <h4 class="">Abstract</h4><br>
+                        {{ book.abstract|safe }}
+                    </article>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-4 px-0 px-sm-3">
+                <div class="blog-style">
+                    <div class="sidebar">
+                        <div class="py-3"></div>
+                        <div class="card paper">
+                            <div class="content">
+                                <div>
+                                    <ul class="collection">
+                                        <li class="collection-item">
+                                            <span class="use-text-medium">Author</span>
+                                            <p>{{ book.author }}</p>
+                                        </li>
+                                        <li class="collection-item">
+                                            <span class="use-text-medium">Date</span>
+                                                <p>{{ book.date }}</p>
+                                        </li>
+                                        <li class="collection-item">
+                                            <span class="use-text-medium">Publisher</span>
+                                            <p>{{ book.publisher }}</p>
+                                        </li>
+                                        <li class="collection-item">
+                                            <span class="use-text-medium">City</span>
+                                            <p>{{ book.city }}</p>
+                                        </li>
+                                        <li class="collection-item">
+                                            <span class="use-text-medium">Url</span><p><a
+                                                    href="{{ book.url }}">
+                                                    {{ book.url }}</a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

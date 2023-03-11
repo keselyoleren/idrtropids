@@ -1,5 +1,37 @@
-{% for item in diseases %}
-    <li class="list-group-item nav-lvl1">
-        <a href="{% url 'diseases-detail' item.slug %}">{{ item.disease_name }}</a>
-    </li>
-{% endfor %}
+{% extends 'layouts/main.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+  <div class="container container-front">
+    <div class="container-wrap">
+      <!-- #### SEARCH #### -->
+      <div class="search-content">
+        <div>
+          <div class="">
+            <div class="space-top-short" id="post_p">
+              <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">Penyakit Menular</h4>
+              <div class="row">
+                {% for item in diseases %}
+                    <div class="col-sm-4 px-0 px-sm-2" data-index="0">
+                        <div class="card post-card portrait full">
+                          <div class="properties">
+                            <div class="use-text-subtitle2 text-truncate">
+                              <strong>{{ item.disease_name }}</strong>
+                            </div>
+                            <div class="caption py-4">{{ item.visits }} views {{ item.created_at|naturaltime }} </div>
+                            <div class="card-action">
+                              <a class="btn btn-outlined primary action-btn waves-effect" href="{% url 'diseases-detail' item.slug %}">read more</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>      
+                {% endfor %}                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

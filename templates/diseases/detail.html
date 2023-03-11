@@ -1,22 +1,121 @@
-{{ diseases.disease_name }}
+{% extends 'layouts/main.html' %}
+{% load static %}
 
-<h1>views {{ diseases.visits }}</h1>
-
-
-<h1>Question and Answer System</h1>
-
-  <h2>{{ question.question_text }}</h2>
-  <p>Asked by {{ question.author }} on {{ question.pub_date|date:"F j, Y" }}</p>
-
-  <h3>Answers</h3>
-  {% for answer in question.answer_set.all %}
-    <p>{{ answer.answer_text }}</p>
-    <p>Answered by {{ answer.author }} on {{ answer.pub_date|date:"F j, Y" }}</p>
-  {% endfor %}
-
-  <h3>Add an Answer</h3>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-  </form>
+{% block content %}
+  <div class="container-general pt-12">
+    <div class="container pt-3">
+      <div class="row">
+        <!-- ##### ARTICLE ##### -->
+        <div class="col-md-8 px-0 px-sm-3">
+          <div class="blog-style">
+            <article class="blog-content">
+              {{diseases.content|safe}}
+            </article>
+          </div>
+          <div class="comment">
+            <h6 class="use-text-primary use-text-bold mb-3">Write Comments</h6><div class="comments-style">
+              <div class="form-comment">
+                <div class="write">
+                  <div class="avatar-img">
+                    <img src="../assets/images/avatars/pp_boy3.svg" alt="avatar" />
+                  </div>
+                  <div class="input-field">
+                    <input id="write_comment" placeholder="Write Comments" type="text" /> <button class="btn btn-small waves-effect primary send-btn"><span class="hidden-xs-down">Send Message</span><i class="material-icons icon show-xs-down">send</i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="collection border-0">
+              <div class="comments-style">
+                <div class="comment-list">
+                  <div class="collection-item avatar">
+                    <img class="circle" src="../assets/images/avatars/pp_boy4.svg" alt="John Doe" /> <span class="title font-weight-medium">John Doe</span><div>
+                      <span class="caption">13 Dec 2021</span><p class="mt-2">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam. Vestibulum feugiat rhoncus metus. In non erat et ipsum molestie porta sit amet ut felis. Vestibulum a massa vestibulum, gravida odio id, fringilla ipsum.</p>
+                    </div>
+                  </div>
+                  <hr class="divider" />
+                </div>
+                <div class="comment-list">
+                  <div class="collection-item avatar">
+                    <img class="circle" src="../assets/images/avatars/pp_boy4.svg" alt="John Doe" /> <span class="title font-weight-medium">John Doe</span><div>
+                      <span class="caption">13 Dec 2021</span><p class="mt-2">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam. Vestibulum feugiat rhoncus metus. In non erat et ipsum molestie porta sit amet ut felis. Vestibulum a massa vestibulum, gravida odio id, fringilla ipsum.</p>
+                    </div>
+                  </div>
+                  <hr class="divider" />
+                </div>
+                <div class="comment-list">
+                  <div class="collection-item avatar">
+                    <img class="circle" src="../assets/images/avatars/pp_boy4.svg" alt="John Doe" /> <span class="title font-weight-medium">John Doe</span><div>
+                      <span class="caption">13 Dec 2021</span><p class="mt-2">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam. Vestibulum feugiat rhoncus metus. In non erat et ipsum molestie porta sit amet ut felis. Vestibulum a massa vestibulum, gravida odio id, fringilla ipsum.</p>
+                    </div>
+                  </div>
+                  <hr class="divider" />
+                </div>
+                <div class="comment-list">
+                  <div class="collection-item avatar">
+                    <img class="circle" src="../assets/images/avatars/pp_boy4.svg" alt="John Doe" /> <span class="title font-weight-medium">John Doe</span><div>
+                      <span class="caption">13 Dec 2021</span><p class="mt-2">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam. Vestibulum feugiat rhoncus metus. In non erat et ipsum molestie porta sit amet ut felis. Vestibulum a massa vestibulum, gravida odio id, fringilla ipsum.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ##### EMD ARTICLE ##### -->
+        <!-- ##### SIDEBAR ##### -->
+        <div class="col-md-4 px-0 px-sm-3">
+          <div class="blog-style">
+            <div class="sidebar">
+              <div class="py-3"></div>
+              <div class="card paper">
+                <header>
+                  <div class="icon">
+                    <i class="material-icons small">account_circle</i>
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title">About Us</span><p>commodo augue. In dictum leo nec odio euismod pretium.</p>
+                  </div>
+                </header>
+                <div class="content">
+                  <div>
+                    <ul class="collection">
+                      <li class="collection-item avatar">
+                        <i class="circle icon primary material-icons grey lighten-3">date_range</i> <span class="use-text-medium">Born</span><p>Jan 9, 1974</p>
+                      </li>
+                      <li class="collection-item avatar">
+                        <i class="circle icon primary material-icons grey lighten-3">local_phone</i> <span class="use-text-medium">Phone</span><p>(+62)8765432190</p>
+                      </li>
+                      <li class="collection-item avatar">
+                        <i class="circle icon primary material-icons grey lighten-3">location_on</i> <span class="use-text-medium">Address</span><p>Chicendo Street no.105 Block A/5A - Barcelona, Spain</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="py-3"></div>
+              <div class="card paper">
+                <header>
+                  <div class="icon">
+                    <i class="material-icons small">bookmark</i>
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title">Latest Post</span>
+                  </div>
+                </header>
+                <div class="content">
+                  <div>
+                    <div class="collection">
+                      <a class="waves-effect collection-item" href="#!"><span class="d-block">Vestibulum bibendum nisi eget magna</span><span class="caption">Jan 9, 2014</span></a><a class="waves-effect collection-item" href="#!"><span class="d-block">Quisque a consequat ante</span><span class="caption">Jan 9, 2014</span></a><a class="waves-effect collection-item" href="#!"><span class="d-block">Donec dignissim, odio ac imperdiet luctus</span><span class="caption">Jan 9, 2014</span></a><a class="waves-effect collection-item" href="#!"><span class="d-block">Suspendisse eleifend nunc non</span><span class="caption">Jan 9, 2014</span></a><a class="waves-effect collection-item" href="#!"><span class="d-block">Vestibulum a massa vestibulum</span><span class="caption">Jan 9, 2014</span></a>
+                    </div><a class="btn waves-effect btn-flat primary-text block">see all</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ##### END SIDEBAR ##### -->
+      </div>
+    </div>
+  </div>
+{% endblock %}

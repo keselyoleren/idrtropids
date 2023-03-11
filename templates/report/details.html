@@ -1,3 +1,61 @@
-{{ report.content|safe }}
+{% extends 'layouts/main.html' %}
+{% load static %}
 
-<h1>views {{ content.visits }}</h1>
+{% block content %}
+<div class="container-general pt-12">
+    <div class="container pt-3">
+        <div class="row">
+            <!-- ##### report ##### -->
+            <div class="col-md-8 px-0 px-sm-3">
+                <div class="blog-style">
+                    <report class="blog-content">
+                        <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">{{ report.title }}</h4>
+                        {{ report.content|safe }}
+                    </report>
+                    <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">Abstract</h4>
+                    <report class="blog-content">
+                        {{ report.abstract|safe }}
+                    </report>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-4 px-0 px-sm-3">
+                <div class="blog-style">
+                    <div class="sidebar">
+                        <div class="py-3"></div>
+                        <div class="card paper">
+                            <div class="content">
+                                <div>
+                                    <ul class="collection">
+                                        <li class="collection-item">
+                                            <span class="use-text-medium">Author</span>
+                                            <p>{{ report.author }}</p>
+                                        </li>
+                                        <li class="collection-item">
+                                            <span class="use-text-medium">Report Date</span>
+                                                <p>{{ report.date }}</p>
+                                        </li>
+                                        <li class="collection-item">
+                                            <span class="use-text-medium">Publisher</span>
+                                            <p>{{ report.publisher }}</p>
+                                        </li>
+                                        <li class="collection-item">
+                                            <span class="use-text-medium">Report City</span>
+                                            <p>{{ report.city }}</p>
+                                        </li>
+                                        <li class="collection-item">
+                                            <span class="use-text-medium">Url</span><p><a
+                                                    href="{{ report.url }}">
+                                                    {{ report.url }}</a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
