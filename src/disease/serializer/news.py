@@ -7,14 +7,14 @@ from users.serializers.user import UserSerialize
 
 class NewsSerializer(serializers.ModelSerializer):
     keyword = KeywordSerialize(many=True)
-    author = UserSerialize(many=False)
+    created_by = UserSerialize(many=False)
     class Meta:
         model = News
         exclude = ('content', )
 
 class GetNewsSerialize(serializers.ModelSerializer):
     keyword = KeywordSerialize(many=True)
-    author = UserSerialize(many=False)
+    created_by = UserSerialize(many=False)
     class Meta:
         model = News
         fields = "__all__"
