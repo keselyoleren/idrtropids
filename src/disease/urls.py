@@ -5,6 +5,7 @@ from disease.apiviewset.diseases import DiseasesApiView
 from disease.apiviewset.disqus.question import QuestionDiseasesApiView
 from disease.apiviewset.news import NewsApiView
 from disease.apiviewset.report import ReportApiView
+from disease.apiviewset.search import SearchApiView
 from disease.views.article_views import ArticleDetailView, ArticleView
 from disease.views.book_views import BookDetailView, BookListView
 from disease.views.diseases_views import  DiseasesDetailView, DiseasesListView
@@ -22,8 +23,10 @@ route.register('diseases', DiseasesApiView)
 route.register('book', BookApiView)
 route.register('report', ReportApiView)
 route.register('article', ArticleApiView)
+route.register('search', SearchApiView, basename='api-serach')
 
 page_urls = route.urls
+
 
 
 urlpatterns = [
@@ -37,7 +40,6 @@ urlpatterns = [
     path('article/<slug:slug>/', ArticleDetailView.as_view(), name='detail-article'),
     path('report/', ReportListView.as_view(), name='report'),
     path('report/<slug:slug>/', ReportDetailView.as_view(), name='detail-report'),
-
     path('search', SearchView.as_view(), name='search')
 
 ]

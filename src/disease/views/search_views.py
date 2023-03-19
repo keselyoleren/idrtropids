@@ -34,4 +34,3 @@ class SearchView(View):
         }
         return render(request, 'search/result.html', context=context)
         
-

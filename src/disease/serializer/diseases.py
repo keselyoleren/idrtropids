@@ -18,7 +18,7 @@ class DiseaseSerialize(serializers.ModelSerializer):
 
 
 class DiseasesSerializer(serializers.ModelSerializer):
-    author = UserSerialize(many=False)
+    created_by = UserSerialize(many=False)
     class Meta:
         model = Disease
         exclude = ('content',)
