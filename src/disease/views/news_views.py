@@ -32,7 +32,7 @@ class HomeView(ListView):
         context['news'] = News.objects.all().first()
         return context
 
-class HomeDetailView(DetailView):
+class HomeDetailView(DetailView):       
     model = News
     context_object_name = 'news'
     template_name = "detail.html"
