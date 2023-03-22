@@ -1,3 +1,4 @@
+import contextlib
 from difflib import restore
 from django.views.generic import (
     ListView,
@@ -17,19 +18,34 @@ from rest_framework import (
     response,
     viewsets
 )
+from disease.models.diseases import Disease
 from disease.models.news import News
+from disease.models.references import Article, Book
 
 from disease.serializer.news import GetNewsSerialize, NewsSerializer
 from helper.choices import StatusChoice
 from helper.pagination import ResponsePagination
+from users.models import UserAccount
 
 class HomeView(ListView):
-    model = News
     template_name = "index.html"
+    context_object_name = 'artikel'
+    ordering = '-created_at'
+
+    def get_queryset(self):
+        try:
+            return Article.objects.filter(status=StatusChoice.APROVED).order_by('-created_at')[:6]
+        except Exception:
+            return Article.objects.filter(status=StatusChoice.APROVED).order_by('-created_at')
     
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['news'] = News.objects.all().first()
+        with contextlib.suppress(Exception):
+            context['news'] = News.objects.filter(status=StatusChoice.APROVED)[:6]
+        context['diseases_count'] = Disease.objects.filter(status=StatusChoice.APROVED).count()
+        context['book_count'] = Book.objects.filter(status=StatusChoice.APROVED).count()
+        context['user_count'] = UserAccount.objects.count()
         return context
 
 class HomeDetailView(DetailView):       
@@ -45,9 +61,10 @@ class NewsListView(ListView):
     context_object_name = 'news'
     template_name = "news/list.html"
     paginate_by = 12
+    ordering = "-created_at"
 
     def get_queryset(self):
-        return News.objects.filter(status=StatusChoice.APROVED)
+        return News.objects.filter(status=StatusChoice.APROVED).order_by('-created_at')
     
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)

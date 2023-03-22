@@ -1,3 +1,4 @@
+import contextlib
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.models import BaseModel
@@ -5,6 +6,7 @@ from helper.choices import StatusChoice
 from users.models import UserAccount
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
+from PIL import Image
 
 # Create your models here.
 class Category(BaseModel):
@@ -21,6 +23,7 @@ class Category(BaseModel):
         verbose_name_plural = 'Category'
 
 class Disease(BaseModel):
+    thumbnail = models.ImageField(upload_to="thumbnail/", default='thumbnail/default-thumbnail.png')
     created_by = models.ForeignKey(UserAccount, on_delete=models.CASCADE, blank=True, null=True)
     slug = models.CharField(unique=True, max_length=255, blank=True, null=True)
     disease_name = models.CharField(_("Disease Name"),max_length=255)
@@ -40,7 +43,14 @@ class Disease(BaseModel):
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.disease_name)
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+        with contextlib.suppress(Exception):
+            img = Image.open(self.thumbnail.path)
+            if img.width > 800:
+                new_size = (800, 800)
+                img.thumbnail(new_size)
+                img.save(self.thumbnail.path)
+
     
     class Meta:
         verbose_name = "Disease"

@@ -21,6 +21,9 @@
               {% for item in reports %}
               <div class="col-sm-4 px-0 px-sm-2" data-index="0">
                 <div class="card post-card portrait full">
+                  <div class="card-image figure">
+                    <div class="responsive-img" style="background-image:url({{ item.thumbnail.url }});"></div>
+                  </div>
                   <div class="properties">
                     <div class="use-text-subtitle2 text-truncate">
                       <strong>{{ item.title }}</strong>

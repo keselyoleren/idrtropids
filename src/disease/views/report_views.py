@@ -12,9 +12,10 @@ class ReportListView(ListView):
     context_object_name = 'reports'
     template_name = "report/list.html"
     paginate_by = 12
+    ordering = "-created_at"
 
     def get_queryset(self):
-        return Report.objects.filter(status=StatusChoice.APROVED)
+        return Report.objects.filter(status=StatusChoice.APROVED).order_by('-created_at')
     
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)

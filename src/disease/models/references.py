@@ -1,3 +1,4 @@
+import contextlib
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.models import BaseModel
@@ -7,8 +8,12 @@ from helper.choices import StatusChoice
 from users.models import UserAccount
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
+from PIL import Image
+from django.conf import settings
+
 
 class Article(BaseModel):
+    thumbnail = models.ImageField(upload_to="thumbnail/", default='thumbnail/default-thumbnail.png')
     title = models.CharField(_("Title"),max_length=200)
     slug = models.CharField(unique=True, max_length=255, blank=True, null=True)
     abstract = RichTextField(_("Abstract"))
@@ -28,13 +33,21 @@ class Article(BaseModel):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+        with contextlib.suppress(Exception):
+            img = Image.open(self.thumbnail.path)
+            if img.width > 800:
+                new_size = (800, 800)
+                img.thumbnail(new_size)
+                img.save(self.thumbnail.path)
+
     
     class Meta:
         verbose_name = "Article"
         verbose_name_plural = 'Article'
 
 class Book(BaseModel):
+    thumbnail = models.ImageField(upload_to="thumbnail/", default='thumbnail/default-thumbnail.png')
     title = models.CharField(_("Title"),max_length=200)
     slug = models.CharField(unique=True, max_length=255, blank=True, null=True)
     year_publish = models.DateField()
@@ -53,13 +66,21 @@ class Book(BaseModel):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+        with contextlib.suppress(Exception):
+            img = Image.open(self.thumbnail.path)
+            if img.width > 800:
+                new_size = (800, 800)
+                img.thumbnail(new_size)
+                img.save(self.thumbnail.path)
+
     
     class Meta:
         verbose_name = "Book"
         verbose_name_plural = 'Book'
 
 class Report(BaseModel):
+    thumbnail = models.ImageField(upload_to="thumbnail/", default='thumbnail/default-thumbnail.png')
     title = models.CharField(_("Report Title"), max_length=200)
     slug = models.CharField(unique=True, max_length=255, blank=True, null=True)
     institution = models.CharField(_("Report institution"), max_length=200)
@@ -78,7 +99,14 @@ class Report(BaseModel):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+        with contextlib.suppress(Exception):
+            img = Image.open(self.thumbnail.path)
+            if img.width > 800:
+                new_size = (800, 800)
+                img.thumbnail(new_size)
+                img.save(self.thumbnail.path)
+
     
     class Meta:
         verbose_name = "Report"

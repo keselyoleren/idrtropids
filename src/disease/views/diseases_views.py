@@ -32,9 +32,10 @@ class DiseasesListView(ListView):
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
     paginate_by = 12
+    ordering = "-created_at"
 
     def get_queryset(self):
-        return Disease.objects.filter(status=StatusChoice.APROVED)
+        return Disease.objects.filter(status=StatusChoice.APROVED).order_by('-created_at')
 
 class DiseasesDetailView(DetailView):
     model = Disease

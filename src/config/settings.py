@@ -33,7 +33,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,7 +47,7 @@ INSTALLED_APPS = [
 
     'ckeditor_uploader',
     'ckeditor',
-
+    
     # auth user
     'django.contrib.sites',  # make sure sites is included
 
