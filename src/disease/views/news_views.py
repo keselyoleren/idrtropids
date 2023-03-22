@@ -67,7 +67,16 @@ class NewsListView(ListView):
         return News.objects.filter(status=StatusChoice.APROVED).order_by('-created_at')
     
     def get_context_data(self, **kwargs):
-        return super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        paginator = context['paginator']
+        page_numbers_range = 5  # Display 5 pages range by default
+        # Calculate the current page number and the index of the first page in the range
+        current_page = context['page_obj'].number
+        first_page_in_range = max(current_page - page_numbers_range, 1)
+
+        # Add the page range to the context
+        context['page_range'] = range(first_page_in_range, paginator.num_pages + 1)[:page_numbers_range*2]
+        return context
 
 class NewsDdetailView(DetailView):
     model = News

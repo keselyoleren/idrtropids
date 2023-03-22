@@ -37,6 +37,21 @@
                 </div>
               </div>
               {% endfor %}
+              {% if is_paginated %}
+              <ul class="slick-dots" style="" role="tablist">
+                {% for i in page_range %} 
+                  {% if page_obj.number == i %}
+                    <li role="presentation" class="slick-active">
+                      <button type="button" role="tab" id="slick-slide-control43" aria-controls="slick-slide43" aria-label="4 of 3" tabindex="0" aria-selected="true">4</button>
+                    </li>
+                  {% else %}
+                    <li class="" role="presentation">
+                      <a href="?page={{ i }}" id="slick-slide-control{{i}}"  aria-controls="slick-slide{{i}}" role="tab" tabindex="-1">{{ i }}</a>
+                    </li>  
+                  {% endif %}
+                {% endfor %}
+              {% endif %}       
+              <br><br><br>
             </div>
           </div>
         </div>
