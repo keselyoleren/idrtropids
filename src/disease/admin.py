@@ -53,7 +53,7 @@ class KeywordAdminView(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionAdminView(admin.ModelAdmin):
-    list_display = ['question', ]
+    list_display = ['user', 'title']
 
 
 @admin.register(Answer)

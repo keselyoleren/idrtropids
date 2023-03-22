@@ -12,52 +12,23 @@
               {{diseases.content|safe}}
             </article>
           </div>
+          <br><br><br>
           <div class="comment">
-            <h6 class="use-text-primary use-text-bold mb-3">Write Comments</h6><div class="comments-style">
-              <div class="form-comment">
-                <div class="write">
-                  <div class="avatar-img">
-                    <img src="../assets/images/avatars/pp_boy3.svg" alt="avatar" />
-                  </div>
-                  <div class="input-field">
-                    <input id="write_comment" placeholder="Write Comments" type="text" /> <button class="btn btn-small waves-effect primary send-btn"><span class="hidden-xs-down">Send Message</span><i class="material-icons icon show-xs-down">send</i></button>
-                  </div>
-                </div>
-              </div>
+            <h1 class="use-text-primary use-text-bold mb-3">Diskusi Terkait</h1>
+            <div class="comments-style">
             </div>
             <div class="collection border-0">
               <div class="comments-style">
+                {% for question in questions  %}
                 <div class="comment-list">
                   <div class="collection-item avatar">
-                    <img class="circle" src="../assets/images/avatars/pp_boy4.svg" alt="John Doe" /> <span class="title font-weight-medium">John Doe</span><div>
-                      <span class="caption">13 Dec 2021</span><p class="mt-2">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam. Vestibulum feugiat rhoncus metus. In non erat et ipsum molestie porta sit amet ut felis. Vestibulum a massa vestibulum, gravida odio id, fringilla ipsum.</p>
+                    <img class="circle" src="{{ question.user.profile.profile_pic }}" alt="John Doe" /> <span class="title font-weight-medium">{{ question.user.username }}</span><div>
+                      <span class="caption">{{ question.created_at }}</span><p class="mt-2">{{ question.title }}</p>
                     </div>
                   </div>
                   <hr class="divider" />
                 </div>
-                <div class="comment-list">
-                  <div class="collection-item avatar">
-                    <img class="circle" src="../assets/images/avatars/pp_boy4.svg" alt="John Doe" /> <span class="title font-weight-medium">John Doe</span><div>
-                      <span class="caption">13 Dec 2021</span><p class="mt-2">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam. Vestibulum feugiat rhoncus metus. In non erat et ipsum molestie porta sit amet ut felis. Vestibulum a massa vestibulum, gravida odio id, fringilla ipsum.</p>
-                    </div>
-                  </div>
-                  <hr class="divider" />
-                </div>
-                <div class="comment-list">
-                  <div class="collection-item avatar">
-                    <img class="circle" src="../assets/images/avatars/pp_boy4.svg" alt="John Doe" /> <span class="title font-weight-medium">John Doe</span><div>
-                      <span class="caption">13 Dec 2021</span><p class="mt-2">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam. Vestibulum feugiat rhoncus metus. In non erat et ipsum molestie porta sit amet ut felis. Vestibulum a massa vestibulum, gravida odio id, fringilla ipsum.</p>
-                    </div>
-                  </div>
-                  <hr class="divider" />
-                </div>
-                <div class="comment-list">
-                  <div class="collection-item avatar">
-                    <img class="circle" src="../assets/images/avatars/pp_boy4.svg" alt="John Doe" /> <span class="title font-weight-medium">John Doe</span><div>
-                      <span class="caption">13 Dec 2021</span><p class="mt-2">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam. Vestibulum feugiat rhoncus metus. In non erat et ipsum molestie porta sit amet ut felis. Vestibulum a massa vestibulum, gravida odio id, fringilla ipsum.</p>
-                    </div>
-                  </div>
-                </div>
+                {% endfor %}
               </div>
             </div>
           </div>

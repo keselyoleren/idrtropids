@@ -7,6 +7,7 @@ from rest_framework import (
     response,
 )
 from disease.models.diseases import Disease
+from disease.models.disqus import Question
 from disease.serializer.diseases import DiseaseSerialize
 from helper.choices import StatusChoice
 from helper.pagination import ResponsePagination
@@ -60,4 +61,6 @@ class DiseasesDetailView(DetailView):
         instance = self.get_object()
         instance.visits += 1
         instance.save()
-        return super().get_context_data(**kwargs)
+        context =  super().get_context_data(**kwargs)
+        context['questions'] = Question.objects.filter(diseases=instance)[:5]
+        return context

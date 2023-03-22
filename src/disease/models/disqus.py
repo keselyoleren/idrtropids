@@ -10,15 +10,16 @@ class Question(BaseModel):
     diseases = models.ForeignKey(Disease, on_delete=models.CASCADE, blank=True, null=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name="question_parent", blank=True, null=True)
     user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
-    question = RichTextField()
+    title = models.CharField(_('Judul Pertanyaan'), max_length=255, blank=True, null=True)
+    question = RichTextField(_('Konten Pertanyaan'))
     is_validate = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return self.question
+        return self.title
     
     class Meta:
         verbose_name = 'Question'
-        verbose_name_plural = "Questiin"
+        verbose_name_plural = "Question"
 
 
 class Answer(BaseModel):
@@ -27,7 +28,7 @@ class Answer(BaseModel):
     answer = RichTextField()
 
     def __str__(self) -> str:
-        return self.question.question
+        return self.question.title
     
     class Meta:
         verbose_name = 'Answer'
