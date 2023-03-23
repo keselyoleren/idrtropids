@@ -89,7 +89,9 @@ class NewsDdetailView(DetailView):
         instance = self.get_object()
         instance.visits += 1
         instance.save()
-        return super().get_context_data(**kwargs)
+        context =  super().get_context_data(**kwargs)
+        context['headline_news'] = self.get_queryset()[:5]
+        return context
 
 class NewsApiView(generics.ListAPIView, generics.RetrieveAPIView, viewsets.ModelViewSet):
     serializer_class = NewsSerializer

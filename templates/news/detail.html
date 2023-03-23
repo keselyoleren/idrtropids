@@ -20,24 +20,27 @@
               <div class="card paper">
                 <header>
                   <div class="icon">
-                    <i class="material-icons small">bookmark</i>
+                    <i class="material-icons small">receipt</i>
                   </div>
                   <div class="card-content">
-                    <span class="card-title">Latest Post</span>
+                    <span class="card-title">Headline News</span><p></p>
                   </div>
                 </header>
                 <div class="content">
                   <div>
                     <div class="collection">
-                      <a class="waves-effect collection-item" href="#!"><span class="d-block">Vestibulum bibendum nisi eget magna</span><span class="caption">Jan 9, 2014</span></a>
-                      <a class="waves-effect collection-item" href="#!"><span class="d-block">Quisque a consequat ante</span><span class="caption">Jan 9, 2014</span></a>
-                      <a class="waves-effect collection-item" href="#!"><span class="d-block">Donec dignissim, odio ac imperdiet luctus</span><span class="caption">Jan 9, 2014</span></a>
-                      <a class="waves-effect collection-item" href="#!"><span class="d-block">Suspendisse eleifend nunc non</span><span class="caption">Jan 9, 2014</span></a>
-                      <a class="waves-effect collection-item" href="#!"><span class="d-block">Vestibulum a massa vestibulum</span><span class="caption">Jan 9, 2014</span></a>
-                    </div><a class="btn waves-effect btn-flat primary-text block">see all</a>
+                      {% for item in headline_news  %}
+                      <a class="waves-effect collection-item avatar" href="{% url 'detail-news' item.slug %}">
+                          <img class="round" src="https://res.cloudinary.com/walden-global-services/image/upload/v1544584541/dandelion/13.jpg" alt="Vestibulum bibendum nisi eget magna" /> 
+                          <span class="d-block">{{ item.title }}</span>
+                          <span class="caption">{{ item.created_at }}</span>
+                      </a>
+                      {% endfor %}
+                    </div>
+                    <a href="{% url 'news' %}" class="btn waves-effect text-primary btn-flat block">see all</a>
                   </div>
                 </div>
-              </div>
+              </div>              
             </div>
           </div>
         </div>

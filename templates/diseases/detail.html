@@ -45,20 +45,29 @@
                     <i class="material-icons small">account_circle</i>
                   </div>
                   <div class="card-content">
-                    <span class="card-title">About Us</span><p>commodo augue. In dictum leo nec odio euismod pretium.</p>
+                    <span class="card-title">About Us</span></p>
                   </div>
                 </header>
                 <div class="content">
                   <div>
                     <ul class="collection">
                       <li class="collection-item avatar">
-                        <i class="circle icon primary material-icons grey lighten-3">date_range</i> <span class="use-text-medium">Born</span><p>Jan 9, 1974</p>
+                        <i class="circle icon primary material-icons grey lighten-3">fiber_manual_record</i> <span class="use-text-medium">Disease Prevention</span><p>{{ diseases.disease_prevention}}</p>
                       </li>
                       <li class="collection-item avatar">
-                        <i class="circle icon primary material-icons grey lighten-3">local_phone</i> <span class="use-text-medium">Phone</span><p>(+62)8765432190</p>
+                        <i class="circle icon primary material-icons grey lighten-3">fiber_manual_record</i> <span class="use-text-medium">Description</span><p>{{ diseases.description}}</p>
                       </li>
                       <li class="collection-item avatar">
-                        <i class="circle icon primary material-icons grey lighten-3">location_on</i> <span class="use-text-medium">Address</span><p>Chicendo Street no.105 Block A/5A - Barcelona, Spain</p>
+                        <i class="circle icon primary material-icons grey lighten-3">fiber_manual_record</i> <span class="use-text-medium">Medicine</span><p>{{ diseases.medicine}}</p>
+                      </li>
+                      <li class="collection-item avatar">
+                        <i class="circle icon primary material-icons grey lighten-3">fiber_manual_record</i> <span class="use-text-medium">Diagnose</span><p>{{ diseases.diagnose}}</p>
+                      </li>
+                      <li class="collection-item avatar">
+                        <i class="circle icon primary material-icons grey lighten-3">fiber_manual_record</i> <span class="use-text-medium">Lab Check</span><p>{{ diseases.lab_check}}</p>
+                      </li>
+                      <li class="collection-item avatar">
+                        <i class="circle icon primary material-icons grey lighten-3">fiber_manual_record</i> <span class="use-text-medium">Caouse of disease</span><p>{{ diseases.cause_of_disease}}</p>
                       </li>
                     </ul>
                   </div>
@@ -77,8 +86,13 @@
                 <div class="content">
                   <div>
                     <div class="collection">
-                      <a class="waves-effect collection-item" href="#!"><span class="d-block">Vestibulum bibendum nisi eget magna</span><span class="caption">Jan 9, 2014</span></a><a class="waves-effect collection-item" href="#!"><span class="d-block">Quisque a consequat ante</span><span class="caption">Jan 9, 2014</span></a><a class="waves-effect collection-item" href="#!"><span class="d-block">Donec dignissim, odio ac imperdiet luctus</span><span class="caption">Jan 9, 2014</span></a><a class="waves-effect collection-item" href="#!"><span class="d-block">Suspendisse eleifend nunc non</span><span class="caption">Jan 9, 2014</span></a><a class="waves-effect collection-item" href="#!"><span class="d-block">Vestibulum a massa vestibulum</span><span class="caption">Jan 9, 2014</span></a>
-                    </div><a class="btn waves-effect btn-flat primary-text block">see all</a>
+                      {% for item in latest_post  %}
+                      <a class="waves-effect collection-item" href="{% url 'diseases-detail' item.slug %}">
+                        <span class="d-block">{{ item.disease_name }}</span>
+                        <span class="caption">{{ item.created_at }}</span>
+                      </a>
+                      {% endfor %}                      
+                    </div><a href="{% url 'diseases' %}" class="btn waves-effect btn-flat primary-text block">see all</a>
                   </div>
                 </div>
               </div>
