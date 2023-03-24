@@ -36,7 +36,7 @@ class UserAccount(AbstractUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(UserAccount, on_delete=models.CASCADE, blank=True, null=True)
-    profile_pic = models.ImageField(_("Profile Picture"), upload_to="profile_pic")
+    profile_pic = models.ImageField(_("Profile Picture"), upload_to="profile_pic", default="profile_pic/defaul_profile.jpeg")
     profile_url = models.CharField(_("Profile Url"), max_length=255, blank=True, null=True)
     full_name = models.CharField(_("Nama Lengkap"), max_length=100, blank=True, null=True)
     gender = models.CharField(_("Jenis Kelamin"), choices=GenderChoice.choices, default=GenderChoice.LAKI_LAKI, max_length=15)

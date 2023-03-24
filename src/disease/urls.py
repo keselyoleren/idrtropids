@@ -12,7 +12,7 @@ from disease.views.diseases_views import  DiseasesDetailView, DiseasesListView
 
 from disease.views.news_views import NewsDdetailView, NewsListView
 from django.urls import path, include
-from disease.views.question_views import QuestionDiseasesCreateView, QuestionDiseasesListView
+from disease.views.question_views import QuestionCreateView, QuestionDiseasesAnswerDetailView, QuestionDiseasesCreateView, QuestionDiseasesListView
 
 from disease.views.report_views import ReportDetailView, ReportListView
 from disease.views.search_views import SearchView
@@ -41,8 +41,10 @@ urlpatterns = [
     path('article/<slug:slug>/', ArticleDetailView.as_view(), name='detail-article'),
     path('report/', ReportListView.as_view(), name='report'),
     path('report/<slug:slug>/', ReportDetailView.as_view(), name='detail-report'),
-    path('disqus/question/<str:diseases>/', QuestionDiseasesCreateView.as_view(), name='create_question'),
+    path('disqus/question/<str:diseases>/', QuestionDiseasesCreateView.as_view(), name='create_question_diseases'),
+    path('disqus/question/', QuestionCreateView.as_view(), name='create_diseases'),
     path('disqus/question/list/<str:diseases>/', QuestionDiseasesListView.as_view(), name='list_question_diseases'),
+    path('disqus/question/<int:pk>/answer/', QuestionDiseasesAnswerDetailView.as_view(), name='answer_question_diseases'),
     path('search', SearchView.as_view(), name='search')
 
 ]

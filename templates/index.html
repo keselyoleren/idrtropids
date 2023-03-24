@@ -40,7 +40,7 @@
 						  <div class="text">
 							<h4 class="use-text-title">IDRTROPIDS Tropical Infection Disease</h4>
 							<h5 class="use-text-subtitle">Your one stop disease information.</h5>
-							<div class="btn-area"><a class="btn-flat waves-effect btn-large button primary use-text-secondary" href="#">see detail</a> <a class="btn waves-effect button btn-large primary" href="register.html">get started</a></div>
+							<div class="btn-area"><a class="btn-flat waves-effect btn-large button primary use-text-secondary" href="#">see detail</a> <a class="btn waves-effect button btn-large primary" href="/accounts/google/login/">get started</a></div>
 						  </div>
 						</div>
 						<div class="col-md-5 col-lg-6">
@@ -199,19 +199,7 @@
 			<div class="col-md-6 px-sm-12">
 				<h4 class="use-text-title">Temukan Buku rujukan terpercaya</h4>
 				<p class="desc use-text-subtitle2">The doctors at The Online Clinic are all registered on the General Medical Council.</p>
-				<div class="running-tag">
-				<div class="slick-carousel" id="speciality_carousel">
-					<div class="tag-group"><span class="tag-item">Dentist</span> <span class="tag-item">Padriatic</span> <span class="tag-item">Cardiology</span></div>
-					<div class="tag-group"><span class="tag-item">Othopaedi</span> <span class="tag-item">Traumatologi</span> <span class="tag-item">Anestesiologi</span></div>
-					<div class="tag-group"><span class="tag-item">Reumatologi</span> <span class="tag-item">Andrologi</span> <span class="tag-item">Ortodonsia</span></div>
-					<div class="tag-group"><span class="tag-item">Dentist</span> <span class="tag-item">Padriatic</span> <span class="tag-item">Cardiology</span></div>
-					<div class="tag-group"><span class="tag-item">Othopaedi</span> <span class="tag-item">Traumatologi</span> <span class="tag-item">Anestesiologi</span></div>
-					<div class="tag-group"><span class="tag-item">Reumatologi</span> <span class="tag-item">Andrologi</span> <span class="tag-item">Ortodonsia</span></div>
-					<div class="tag-group"><span class="tag-item">Dentist</span> <span class="tag-item">Padriatic</span> <span class="tag-item">Cardiology</span></div>
-					<div class="tag-group"><span class="tag-item">Othopaedi</span> <span class="tag-item">Traumatologi</span> <span class="tag-item">Anestesiologi</span></div>
-					<div class="tag-group"><span class="tag-item">Reumatologi</span> <span class="tag-item">Andrologi</span> <span class="tag-item">Ortodonsia</span></div>
-				</div>
-				</div>
+				<a class="btn waves-effect button btn-large primary" href="{% url 'book' %}" tabindex="-1">Explore Book</a>
 			</div>
 			<div class="col-md-6 px-6 show-sm-up">
 				<div class="circle-wave">
@@ -231,135 +219,9 @@
 	</section>
 	<!-- ##### END BOOKS #####-->
 	<!-- ##### ASK DOCTORS #####-->
-	<section class="space-top-short" id="ask-doctors">
-		<div class="root">
-		<div class="container">
-			<div class="deco"><img class="img-2d3d" src="https://res.cloudinary.com/skyrev/image/upload/v1613843548/skyrev/medical/footer_3d_2x_npvm8q.png" data-3d="https://res.cloudinary.com/skyrev/image/upload/v1613843548/skyrev/medical/footer_2d_2x_newuee.png" data-2d="https://res.cloudinary.com/skyrev/image/upload/v1613843548/skyrev/medical/footer_3d_2x_npvm8q.png" alt="speciality 3d"></div>
-			<div class="row">
-			<div class="col-md-3 px-sm-6 px-0">
-				<div class="wow fadeInLeftShort" data-offset="-100" data-delay="0.2s" data-duration="0.3s">
-				<div class="side-filter">
-					<h4 class="use-text-title">Tanya Expert</h4>
-					<p class="desc use-text-subtitle2">The Expert at The Online Clinic are all registered on the General Medical Council.</p>
-					<ul class="collection nav" id="case_categories">
-						<li class="collection-item filter"><a class="waves-effect">all</a></li>
-						<li class="collection-item filter active"><a class="waves-effect">Orthopedic</a></li>
-						<li class="collection-item filter"><a class="waves-effect">Nutritionist</a></li>
-						<li class="collection-item filter"><a class="waves-effect">Pediatric</a></li>
-						<li class="collection-item filter"><a class="waves-effect">Anaesthestic</a></li>
-					</ul>
-				</div>
-				</div>
-			</div>
-			<div class="col-lg-8 col-md-9 pa-sm-6 pa-0">
-				<div class="massonry">
-				<div class="row">
-					<div class="col-sm-6 px-lg-4 px-3 py-3">
-					<div class="wow fadeInUpShort" data-wow-delay="0s" data-wow-duration="0.4s">
-						<div class="card doctor-card">
-						<div class="person">
-							<div class="avatar-img avatar"><img src="https://res.cloudinary.com/imajin/image/upload/v1591430110/medical/f1_bep9vx.jpg" alt="Jena Doe"></div>
-							<div class="name">
-							<h4>dr.Jena Doe</h4>
-							<p>Pediatric Surgeon</p>
-							</div>
-						</div>
-						<hr class="divider">
-						<div class="action">
-							<div class="property"><span><i class="ion-thumbsup"></i>&nbsp; 95%</span><span><i class="ion-briefcase"></i>&nbsp; 4 Years</span></div><a class="btn secondary waves-effect" href="#">chat</a></div>
-						</div>
-					</div>
-					</div>
-					<div class="col-sm-6 px-lg-4 px-3 py-3">
-					<div class="wow fadeInUpShort" data-wow-delay="0.2s" data-wow-duration="0.4s">
-						<div class="card doctor-card">
-						<div class="person">
-							<div class="avatar-img avatar"><img src="https://res.cloudinary.com/imajin/image/upload/v1591430110/medical/f2_ov9wma.jpg" alt="John Doe"></div>
-							<div class="name">
-							<h4>dr.John Doe</h4>
-							<p>Pediatric Surgeon</p>
-							</div>
-						</div>
-						<hr class="divider">
-						<div class="action">
-							<div class="property"><span><i class="ion-thumbsup"></i>&nbsp; 95%</span><span><i class="ion-briefcase"></i>&nbsp; 4 Years</span></div><a class="btn secondary waves-effect" href="#">chat</a></div>
-						</div>
-					</div>
-					</div>
-					<div class="col-sm-6 px-lg-4 px-3 py-3">
-					<div class="wow fadeInUpShort" data-wow-delay="0.4s" data-wow-duration="0.4s">
-						<div class="card doctor-card">
-						<div class="person">
-							<div class="avatar-img avatar"><img src="https://res.cloudinary.com/imajin/image/upload/v1591430110/medical/f3_qhwcqe.jpg" alt="Jihan Doe"></div>
-							<div class="name">
-							<h4>dr.Jihan Doe</h4>
-							<p>Pediatric Surgeon</p>
-							</div>
-						</div>
-						<hr class="divider">
-						<div class="action">
-							<div class="property"><span><i class="ion-thumbsup"></i>&nbsp; 95%</span><span><i class="ion-briefcase"></i>&nbsp; 4 Years</span></div><a class="btn secondary waves-effect" href="#">chat</a></div>
-						</div>
-					</div>
-					</div>
-					<div class="col-sm-6 px-lg-4 px-3 py-3">
-					<div class="wow fadeInUpShort" data-wow-delay="0.6000000000000001s" data-wow-duration="0.4s">
-						<div class="card doctor-card">
-						<div class="person">
-							<div class="avatar-img avatar"><img src="https://res.cloudinary.com/imajin/image/upload/v1591430110/medical/m1_qihg3z.jpg" alt="James Doe"></div>
-							<div class="name">
-							<h4>dr.James Doe</h4>
-							<p>Pediatric Surgeon</p>
-							</div>
-						</div>
-						<hr class="divider">
-						<div class="action">
-							<div class="property"><span><i class="ion-thumbsup"></i>&nbsp; 95%</span><span><i class="ion-briefcase"></i>&nbsp; 4 Years</span></div><a class="btn secondary waves-effect" href="#">chat</a></div>
-						</div>
-					</div>
-					</div>
-					<div class="col-sm-6 px-lg-4 px-3 py-3">
-					<div class="wow fadeInUpShort" data-wow-delay="0.8s" data-wow-duration="0.4s">
-						<div class="card doctor-card">
-						<div class="person">
-							<div class="avatar-img avatar"><img src="https://res.cloudinary.com/imajin/image/upload/v1591430110/medical/m2_ovd31s.jpg" alt="Jim Doe"></div>
-							<div class="name">
-							<h4>dr.Jim Doe</h4>
-							<p>Pediatric Surgeon</p>
-							</div>
-						</div>
-						<hr class="divider">
-						<div class="action">
-							<div class="property"><span><i class="ion-thumbsup"></i>&nbsp; 95%</span><span><i class="ion-briefcase"></i>&nbsp; 4 Years</span></div><a class="btn secondary waves-effect" href="#">chat</a></div>
-						</div>
-					</div>
-					</div>
-					<div class="col-sm-6 px-lg-4 px-3 py-3">
-					<div class="wow fadeInUpShort" data-wow-delay="1s" data-wow-duration="0.4s">
-						<div class="card doctor-card">
-						<div class="person">
-							<div class="avatar-img avatar"><img src="https://res.cloudinary.com/imajin/image/upload/v1591430110/medical/m3_akbcum.jpg" alt="Jessy Doe"></div>
-							<div class="name">
-							<h4>dr.Jessy Doe</h4>
-							<p>Pediatric Surgeon</p>
-							</div>
-						</div>
-						<hr class="divider">
-						<div class="action">
-							<div class="property"><span><i class="ion-thumbsup"></i>&nbsp; 95%</span><span><i class="ion-briefcase"></i>&nbsp; 4 Years</span></div><a class="btn secondary waves-effect" href="#">chat</a></div>
-						</div>
-					</div>
-					</div>
-				</div>
-				</div>
-			</div>
-			</div>
-		</div>
-		</div>
-	</section>
 	<!-- ##### END TESTIMONIALS #####-->
 	<!-- ##### TESTIMONIALS #####-->
-	<section class="space-top-short" id="testimonials">
+	{% comment %} <section class="space-top-short" id="testimonials">
 		<!-- #### TESTIMONIALS ####-->
 		<div class="root">
 		<div class="container carousel-header">
@@ -507,42 +369,44 @@
 		</div>
 		</div>
 		<!-- #### END TESTIMONIALS ####-->
-	</section>
+	</section> {% endcomment %}
 	<!-- ##### END TESTIMONIALS #####-->
 	<!-- ##### CALL ACTION #####-->
 	<!-- ##### END CALL ACTION #####-->
 	<!-- ##### CLINICS #####-->
 	<section class="space-top-short space-bottom-short" id="clinics">
 		<div class="root">
-		<div class="container mq-md-up" data-class="fixed-width">
-			<div class="pa-3">
-				<h4 class="use-text-title text-capitalize">Forum diskusi</h4>
-				<p class="use-text-subtitle2">Dapatkan informasi seputarkesehatan, kandungan, aturan, petunjuk penggunaan obat dan vitamin di sini</p>
+			<div class="container mq-md-up" data-class="fixed-width">
+				<div class="pa-3">
+					<h4 class="use-text-title text-capitalize">Forum diskusi</h4>
+					<p class="use-text-subtitle2">Dapatkan informasi seputarkesehatan, kandungan, aturan, petunjuk penggunaan obat dan vitamin di sini</p>
+				</div>
+				<div class="comment">
+					<a class="btn waves-effect primary show-sm-up" href="{% url 'create_diseases' %}">Ajukan Pertanyaan</a>
+					<div class="collection border-0">
+						<div class="comments-style">
+							{% for question in questions  %}
+							<div class="comment-list">
+								<div class="collection-item avatar">
+									<img class="circle" src="{{ question.user.profile.profile_pic.url }}" alt="John Doe" /> 
+									<a href="{% url 'answer_question_diseases'  question.id %}">
+										<span class="title font-weight-medium">{{ question.title }}</span>
+									</a>
+									<div>
+										<span class="caption"> Oleh {{ question.user.username }}  {{ question.created_at }}</span>
+										<p class="mt-2"> </p>
+									</div>
+								</div>
+								<div class="testimonial-card">
+									<p class="text">{{ question.question|safe }}</p>
+								</div>
+								<hr class="divider" />
+							</div>
+							{% endfor %}
+						</div>
+					</div>
 			</div>
-			<div class="comment">
-                <a class="btn waves-effect primary show-sm-up" href="">Ajukan Pertanyaan</a>
-                <div class="collection border-0">
-                    <div class="comments-style">
-                        {% for question in questions  %}
-                        <div class="comment-list">
-                            <div class="collection-item avatar">
-                                <img class="circle" src="{{ question.user.profile.profile_pic }}" alt="John Doe" /> 
-                                <span class="title font-weight-medium">{{ question.title }}</span>
-                                <div>
-                                <span class="caption"> Oleh {{ question.user.username }}  {{ question.created_at }}</span>
-                                <p class="mt-2"> Di jwaab oleh Dr.Supratman</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-card">
-                                <p class="text">{{ question.question|safe }}</p>
-                            </div>
-                            <hr class="divider" />
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-          </div>
-		</div>
+			</div>
 		</div>
 	</section>
 	<!-- ##### END CLINICS #####-->
@@ -560,7 +424,7 @@
 								</div>
 								<div class="col-md-4 px-sm-0">
 									<div class="d-flex align-items-center justify-content-center">
-										<a class="waves-effect btn button white block" href="contact.html">Daftar jadi kontributor!</a>
+										<a class="waves-effect btn button white block" href="/accounts/google/login/">Daftar jadi kontributor!</a>
 									</div>
 								</div>
 							</div>

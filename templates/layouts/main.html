@@ -232,14 +232,19 @@
           {% endblock %}
           <!-- ##### END FOOTER #####-->
           <!-- ##### NOTIFICATIONS #####-->
-          <div class="hidden-md-down">
+          {% for message in messages %}
             <div class="notification alert alert-dismissible fade show" role="alert">
               <div class="wrapper">
                 <div class="content">
-                  <div class="action">Welcome to IDRTROPIDS, yout onestop tropicaldisease portal. Please click the button beside to close this message.</div><button class="btn btn-outlined waves-effect waves-light white" type="button" data-dismiss="alert" aria-label="Close">Accept</button></div>
+                  <div class="action">
+                    {{ message | safe }}
+                  </div>
+                  <button class="btn btn-outlined waves-effect waves-light white" type="button" data-dismiss="alert" aria-label="Close">Close</button>
+                </div>
               </div>
             </div>
-          </div>
+          {% endfor %}
+
           <!-- ##### END NOTIFICATIONS #####-->
           <!-- ##### CORNER #####-->
           <div class="hidden-md-down">

@@ -53,7 +53,7 @@ class KeywordAdminView(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionAdminView(admin.ModelAdmin):
-    list_display = ['user', 'title']
+    list_display = ['user', 'title', 'is_validate']
 
 
 @admin.register(Answer)
