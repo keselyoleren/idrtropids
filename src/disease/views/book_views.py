@@ -4,8 +4,8 @@ from django.views.generic import (
 )
 from django.views import View
 from django.urls import reverse_lazy
-from disease.models.news import News
-from disease.models.references import *
+from disease.models.news_model import News
+from disease.models.references_model import *
 
 class BookListView(ListView):
     model = Book

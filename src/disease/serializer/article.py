@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from disease.models.references import Article
+from disease.models.references_model import Article
 
 
 class ArticleSerializer(serializers.ModelSerializer):

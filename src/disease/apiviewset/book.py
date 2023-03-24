@@ -6,7 +6,7 @@ from rest_framework import (
     views,
     response,
 )
-from disease.models.references import Book
+from disease.models.references_model import Book
 
 
 from disease.serializer.book import BookRetriefSerialize, BookSerializer

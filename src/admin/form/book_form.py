@@ -1,5 +1,5 @@
 from helper.form import AbstractForm
-from disease.models.references import Book
+from disease.models.references_model import Book
 from django import forms
 
 class BookForm(AbstractForm):

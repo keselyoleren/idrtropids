@@ -7,8 +7,8 @@ from rest_framework import (
     views,
     response,
 )
-from disease.models.diseases import Disease
-from disease.models.disqus import Answer, Question
+from disease.models.diseases_model import Disease
+from disease.models.disqus_model import Answer, Question
 from disease.serializer.disqus import AnswerReadonlySerialize, QuestionReadOnlySerialize, QuestionSerialize
 from helper.pagination import ResponsePagination
 

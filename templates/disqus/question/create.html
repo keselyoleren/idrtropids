@@ -1,0 +1,47 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+{% block css %}{{ form.media.css }}{% endblock %}
+
+{% block content %}
+<div class="container container-front">
+    <div class="container-wrap">
+        <br><br><br><br>
+        <div class="hero-banner-wrap">
+            <div class="deco-wrap">
+              <div class="deco bottom s1">&nbsp;</div>
+              <div class="deco top s1">&nbsp;</div>
+            </div>
+          </div>
+        <div class="form-box">
+            <div class="form text-center">
+                <h4 class="use-text-title2 use-text-primary mb-3">Ajukan Pertanyaan</h4><p class="use-text-subtitle2">{{ diseases }}</p>
+                <form id="" action="." method="POST" class="has-validation-callback">
+                    {% csrf_token %}
+                    <div class="row mx-0 spacing6">
+                        {% for fields in form.visible_fields %}
+                        <div class="col-sm-12">
+                            <div class="input-field primary filled">
+                                {{ fields }}
+                                <label for="{{ fields.label_tag.id }}" class="">
+                                    {{ fields.label_tag }}
+                                    {% if fields.field.required %}<span class="text-red">*</span>{% endif %}
+                                </label>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="px-2">
+                        <div class="btn-area">
+                            <input class="btn block primary btn-large waves-effect" type="submit" value="Kirim Pertanyaan">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+{{ form.media.js }}
+{% endblock  %}

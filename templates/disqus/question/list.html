@@ -1,0 +1,42 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container container-front">
+    <div class="container-wrap">
+        <br><br><br><br>
+        <div class="hero-banner-wrap">
+            <div class="deco-wrap">
+                <div class="deco bottom s1">&nbsp;</div>
+                <div class="deco top s1">&nbsp;</div>
+            </div>
+          </div>
+          <div class="comment">
+                <h1 class="use-text-primary use-text-bold mb-3">Diskusi Terkait {{ diseases }}</h1>
+                <a class="btn waves-effect primary show-sm-up" href="{% url 'create_question' diseases.slug  %}">Ajukan Pertanyaan</a>
+                <div class="collection border-0">
+                    <div class="comments-style">
+                        {% for question in questions  %}
+                        <div class="comment-list">
+                            <div class="collection-item avatar">
+                                <img class="circle" src="{{ question.user.profile.profile_pic }}" alt="John Doe" /> 
+                                <span class="title font-weight-medium">{{ question.title }}</span>
+                                <div>
+                                <span class="caption"> Oleh {{ question.user.username }}  {{ question.created_at }}</span>
+                                <p class="mt-2"> Di jwaab oleh Dr.Supratman</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-card">
+                                <p class="text">{{ question.question|safe }}</p>
+                            </div>
+                            <hr class="divider" />
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <a class="btn waves-effect primary show-sm-up" href="{% url 'create_question' diseases.slug  %}">Selanjutnya >></a>
+                </div>
+          </div>
+    </div>
+</div>
+{% endblock %}
+

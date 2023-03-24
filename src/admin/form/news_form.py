@@ -1,5 +1,5 @@
 from helper.form import AbstractForm
-from disease.models.news import News
+from disease.models.news_model import News
 
 class NewsForm(AbstractForm):
     class Meta:

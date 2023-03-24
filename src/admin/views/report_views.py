@@ -1,5 +1,5 @@
 from admin.form.report_form import ReportForm
-from disease.models.references import *
+from disease.models.references_model import *
 
 from django.views.generic import (
     ListView,

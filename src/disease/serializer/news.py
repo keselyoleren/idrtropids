@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from disease.models.news import News
+from disease.models.news_model import News
 from disease.serializer.keyword import KeywordSerialize
 from users.serializers.user import UserSerialize
 

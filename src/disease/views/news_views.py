@@ -18,9 +18,10 @@ from rest_framework import (
     response,
     viewsets
 )
-from disease.models.diseases import Disease
-from disease.models.news import News
-from disease.models.references import Article, Book
+from disease.models.diseases_model import Disease
+from disease.models.disqus_model import Question
+from disease.models.news_model import News
+from disease.models.references_model import Article, Book
 
 from disease.serializer.news import GetNewsSerialize, NewsSerializer
 from helper.choices import StatusChoice
@@ -46,6 +47,7 @@ class HomeView(ListView):
         context['diseases_count'] = Disease.objects.filter(status=StatusChoice.APROVED).count()
         context['book_count'] = Book.objects.filter(status=StatusChoice.APROVED).count()
         context['user_count'] = UserAccount.objects.count()
+        context['questions'] = Question.objects.filter(is_validate=True).order_by('created_at')[:5]
         return context
 
 class HomeDetailView(DetailView):       

@@ -7,7 +7,7 @@ from rest_framework import (
     response,
 )
 
-from disease.models.news import News
+from disease.models.news_model import News
 from disease.serializer.news import GetNewsSerialize, NewsSerializer
 from helper.pagination import ResponsePagination
 

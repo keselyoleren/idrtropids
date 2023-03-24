@@ -1,7 +1,7 @@
 from dataclasses import field
 from rest_framework import serializers
 
-from disease.models.references import Article, Book
+from disease.models.references_model import Article, Book
 
 
 class BookSerializer(serializers.ModelSerializer):

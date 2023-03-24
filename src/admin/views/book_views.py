@@ -1,5 +1,5 @@
 from admin.form.book_form import BookForm
-from disease.models.references import *
+from disease.models.references_model import *
 
 from django.views.generic import (
     ListView,

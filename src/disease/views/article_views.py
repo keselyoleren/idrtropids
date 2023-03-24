@@ -6,11 +6,10 @@ from django.views.generic import (
     DeleteView,
     DetailView
 )
-from django.views import View
-from django.urls import reverse_lazy
-from disease.models.news import News
-from disease.models.references import *
-from helper.choices import StatusVerified
+
+
+from disease.models.references_model import *
+
 
 class ArticleView(ListView):
     model = Article

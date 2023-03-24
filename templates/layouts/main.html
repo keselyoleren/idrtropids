@@ -52,6 +52,7 @@
   <title>IDRTROPIDS</title>
   <!-- Styles-->
   <link href="{% static '/assets/css/medical-bundle.min.css' %}" rel="stylesheet">
+  {% block css %}{% endblock  %}
 </head>
 
 <body>
@@ -301,6 +302,7 @@
 		});
 	  };
   </script>
+  {% block js %}{% endblock  %}
 </body>
 
 </html>

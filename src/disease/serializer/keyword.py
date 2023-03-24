@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from disease.models.news import Keyword
+from disease.models.news_model import Keyword
 
 class KeywordSerialize(serializers.ModelSerializer):
     class Meta:

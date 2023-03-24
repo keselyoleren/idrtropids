@@ -1,6 +1,6 @@
-from disease.models.diseases import Disease
+from disease.models.diseases_model import Disease
 from helper.form import AbstractForm
-from disease.models.references import Book, Report
+from disease.models.references_model import Book, Report
 
 class DiseaseForm(AbstractForm):
     class Meta:

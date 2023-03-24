@@ -1,5 +1,5 @@
 from django import template
-from disease.models.news import *
+from disease.models.news_model import *
 
 register = template.Library()
 

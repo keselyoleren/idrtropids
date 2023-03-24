@@ -1,6 +1,6 @@
 
 from admin.form.article_form import ArticleForm
-from disease.models.references import *
+from disease.models.references_model import *
 
 from django.views.generic import (
     ListView,

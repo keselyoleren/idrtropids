@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 from disease.models import *
-from disease.models.diseases import Category, Disease
-from disease.models.news import Keyword, News
-from disease.models.references import Article, Book, Report
+from disease.models.diseases_model import Category, Disease
+from disease.models.news_model import Keyword, News
+from disease.models.references_model import Article, Book, Report
 
 # Register your models here.
 

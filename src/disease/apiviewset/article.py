@@ -6,7 +6,7 @@ from rest_framework import (
     views,
     response,
 )
-from disease.models.references import Article
+from disease.models.references_model import Article
 from disease.serializer.article import ArticleSerializer, GetArticleSerialize
 from helper.pagination import ResponsePagination
 

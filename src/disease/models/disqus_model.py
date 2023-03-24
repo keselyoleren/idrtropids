@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.models import BaseModel
-from disease.models.diseases import Disease
+from disease.models.diseases_model import Disease
 from users.models import UserAccount
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
@@ -9,9 +9,9 @@ from ckeditor.fields import RichTextField
 class Question(BaseModel):
     diseases = models.ForeignKey(Disease, on_delete=models.CASCADE, blank=True, null=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name="question_parent", blank=True, null=True)
-    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(_('Judul Pertanyaan'), max_length=255, blank=True, null=True)
-    question = RichTextField(_('Konten Pertanyaan'))
+    question = models.TextField(_('Konten Pertanyaan'))
     is_validate = models.BooleanField(default=False)
 
     def __str__(self) -> str:

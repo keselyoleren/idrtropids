@@ -1,7 +1,7 @@
 from dataclasses import fields
 from rest_framework import serializers
-from disease.models.diseases import Disease
-from disease.models.news import News
+from disease.models.diseases_model import Disease
+from disease.models.news_model import News
 from disease.serializer.news import NewsSerializer
 from users.serializers.user import UserSerialize
 

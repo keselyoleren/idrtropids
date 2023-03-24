@@ -2,7 +2,7 @@ import contextlib
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.models import BaseModel
-from disease.models.diseases import Disease
+from disease.models.diseases_model import Disease
 from helper.choices import StatusChoice
 from users.models import UserAccount
 from django.utils.text import slugify

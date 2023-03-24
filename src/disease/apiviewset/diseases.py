@@ -6,8 +6,8 @@ from rest_framework import (
     views,
     response,
 )
-from disease.models.diseases import Disease
-from disease.models.references import Article, Report
+from disease.models.diseases_model import Disease
+from disease.models.references_model import Article, Report
 from disease.serializer.article import ArticleSerializer, GetArticleSerialize
 from disease.serializer.diseases import DiseasesSerializer, GetDiseasesRetriveSerialize
 from disease.serializer.report import GetReportSerialize, ReportSerializer

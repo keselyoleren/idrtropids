@@ -2,7 +2,7 @@ from csv import excel
 from dataclasses import fields
 from rest_framework import serializers
 
-from disease.models.disqus import Answer, Question
+from disease.models.disqus_model import Answer, Question
 from users.serializers.user import UserSerialize
 
 

@@ -1,6 +1,6 @@
 
 from admin.form.news_form import NewsForm
-from disease.models.news import News
+from disease.models.news_model import News
 
 from django.views.generic import (
     ListView,

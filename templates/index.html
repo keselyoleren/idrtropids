@@ -510,40 +510,66 @@
 	</section>
 	<!-- ##### END TESTIMONIALS #####-->
 	<!-- ##### CALL ACTION #####-->
-	<section class="space-top">
-		<div class="call-to-action">
-		<div class="container fixed-width-md-up">
-			<div class="root">
-			<div class="wow fadeInUpShort" data-wow-offset="40" data-wow-delay="0.3s" data-wow-duration="0.5s">
-				<div class="card paper">
-				<div class="row align-items-center">
-					<div class="col-md-8 px-sm-6">
-					<h4 class="use-text-title2 pb-2">Berminat untuk menjadi kontributor kami?</h4>
-					<p>Let's contribute. We make it simple to get healthcare whenever and wherever you want</p>
-					</div>
-					<div class="col-md-4 px-sm-0">
-					<div class="d-flex align-items-center justify-content-center"><a class="waves-effect btn button white block" href="contact.html">Daftar jadi kontributor!</a></div>
-					</div>
-				</div>
-				</div>
-			</div>
-			</div>
-		</div>
-		</div>
-	</section>
 	<!-- ##### END CALL ACTION #####-->
 	<!-- ##### CLINICS #####-->
 	<section class="space-top-short space-bottom-short" id="clinics">
 		<div class="root">
 		<div class="container mq-md-up" data-class="fixed-width">
 			<div class="pa-3">
-			<h4 class="use-text-title text-capitalize">Forum diskusi</h4>
-			<p class="use-text-subtitle2">Dapatkan informasi seputarkesehatan, kandungan, aturan, petunjuk penggunaan obat dan vitamin di sini</p>
+				<h4 class="use-text-title text-capitalize">Forum diskusi</h4>
+				<p class="use-text-subtitle2">Dapatkan informasi seputarkesehatan, kandungan, aturan, petunjuk penggunaan obat dan vitamin di sini</p>
 			</div>
+			<div class="comment">
+                <a class="btn waves-effect primary show-sm-up" href="">Ajukan Pertanyaan</a>
+                <div class="collection border-0">
+                    <div class="comments-style">
+                        {% for question in questions  %}
+                        <div class="comment-list">
+                            <div class="collection-item avatar">
+                                <img class="circle" src="{{ question.user.profile.profile_pic }}" alt="John Doe" /> 
+                                <span class="title font-weight-medium">{{ question.title }}</span>
+                                <div>
+                                <span class="caption"> Oleh {{ question.user.username }}  {{ question.created_at }}</span>
+                                <p class="mt-2"> Di jwaab oleh Dr.Supratman</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-card">
+                                <p class="text">{{ question.question|safe }}</p>
+                            </div>
+                            <hr class="divider" />
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+          </div>
 		</div>
 		</div>
 	</section>
 	<!-- ##### END CLINICS #####-->
+
+	<section class="space-top">
+		<div class="call-to-action">
+			<div class="container fixed-width-md-up">
+				<div class="root">
+					<div class="wow fadeInUpShort" data-wow-offset="40" data-wow-delay="0.3s" data-wow-duration="0.5s">
+						<div class="card paper">
+							<div class="row align-items-center">
+								<div class="col-md-8 px-sm-6">
+									<h4 class="use-text-title2 pb-2">Berminat untuk menjadi kontributor kami?</h4>
+									<p>Let's contribute. We make it simple to get healthcare whenever and wherever you want</p>
+								</div>
+								<div class="col-md-4 px-sm-0">
+									<div class="d-flex align-items-center justify-content-center">
+										<a class="waves-effect btn button white block" href="contact.html">Daftar jadi kontributor!</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 	
 
 	{% endblock  %}

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from disease.models.references import Report
+from disease.models.references_model import Report
 from disease.serializer.keyword import KeywordSerialize
 
 
