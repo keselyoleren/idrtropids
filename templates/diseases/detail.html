@@ -22,7 +22,9 @@
                 <div class="comment-list">
                   <div class="collection-item avatar">
                     <img class="circle" src="{{ question.user.profile.profile_pic }}" alt="John Doe" /> 
-                    <span class="title font-weight-medium">{{ question.title }}</span>
+                    <a href="{% url 'answer_question_diseases'  question.id %}">
+                      <span class="title font-weight-medium">{{ question.title }}</span>
+                    </a>
                     <div>
                       <span class="caption"> Oleh {{ question.user.username }}  {{ question.created_at }}</span>
                       <p class="mt-2"> </p>
