@@ -12,6 +12,7 @@ from django.views.generic import (
     DetailView
 )
 from django.contrib import messages
+from helper.choices import StatusChoice
 
 from helper.permission import LoginAdminRequiredMixin, LoginRequiredMixin
 
@@ -23,7 +24,7 @@ class ListQuestionView(LoginAdminRequiredMixin, ListView):
 
     def get_queryset(self):
         if self.request.user.profile.status_verified == 'Verified':
-            return Question.objects.filter(asign_to__in=[self.request.user]).order_by('created_at')
+            return Question.objects.filter(asign_to__in=[self.request.user], status=StatusChoice.APROVED).order_by('created_at')
         else:    
             return Question.objects.filter(user=self.request.user).order_by('created_at')
     
