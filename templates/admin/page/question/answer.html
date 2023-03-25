@@ -1,0 +1,71 @@
+{% extends 'admin/layout/main.html' %}
+{% load static %}
+{% block css %}{{ form.media.css }}{% endblock %}
+{% load humanize %}
+
+{% block page_header %}
+    <div class="page-header d-print-none">
+        <div class="container-xl">
+            <div class="row g-2 align-items-center">
+                <div class="col">
+                    <h2 class="page-title">
+                    {{ title }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock  %}
+
+{% block content %}
+<div class="container-xl">
+    <h5 class="mt-4 mb-2">Pertanyaan</h5>
+    <div class="card card-widget">
+        <div class="card-header">
+            <div class="user-block">
+                <img class="img-circle" src="{{ question.user.profile.profile_pic.url }}" alt="User Image" />
+                <span class="username"><a href="#">{{ question.user.profile.full_name }}</a></span>
+                <span class="description">{{ question.created_at|naturaltime }}</span>
+            </div>
+        </div>
+    
+        <div class="card-body" style="display: block;">
+            <strong>{{ question.title|safe }}</strong> <hr>
+            {{ question.question|safe }}
+        </div>
+    
+    </div>
+    <hr>
+      
+    <div id="content-main" class="col-12">
+        <form action="." method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <div class="card-title">Jawaban</div>
+                </div>
+                <div class="card-body">
+                    {% for fields in form.visible_fields %}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <span class="text-red">{{ fields.errors }}</span>
+                                    {{ fields }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="form-group">
+                        <input type="submit" value="Kirim Jawaban" class="btn btn-outline-success form-control">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+{% endblock  %}
+{% block js %}
+{{ form.media.js }}
+{% endblock  %}

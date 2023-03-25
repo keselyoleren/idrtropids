@@ -34,7 +34,8 @@
             </div>
         </div>
         
-        <div class="card  full">
+        {% for item in answer  %}
+        <div class="card full">
             <div class="properties">
                 <div class="card-content desc">
                     <div class="comment">
@@ -43,15 +44,15 @@
                             <div class="comments-style">
                                 <div class="comment-list">
                                     <div class="collection-item avatar">
-                                        <img class="circle" src="{{ answer.author.profile.profile_pic.url }}" alt="John Doe" /> 
-                                        <span class="title font-weight-medium">{{ answer.author.profile.full_name }}</span>
+                                        <img class="circle" src="{{ item.author.profile.profile_pic.url }}" alt="John Doe" /> 
+                                        <span class="title font-weight-medium">{{ item.author.profile.full_name }}</span>
                                         <div>
-                                        <span class="caption"> {{ answer.created_at|naturaltime }}</span>
+                                        <span class="caption"> {{ item.created_at|naturaltime }}</span>
                                         <p class="mt-2"> </p>
                                         </div>
                                     </div>
                                     <div class="testimonial-card">
-                                        <p class="text">{{ answer.answer|safe }}</p>
+                                        <p class="text">{{ item.answer|safe }}</p>
                                     </div>
                                     <hr class="divider" />
                                 </div>
@@ -61,7 +62,9 @@
                 </div>
             </div>
         </div>          
-    
+        
+        {% endfor %}
+
     </div>
 </div>
 {% endblock %}

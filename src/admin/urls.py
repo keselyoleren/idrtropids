@@ -1,7 +1,9 @@
 
 from django.urls import path, include
+from admin.views.answer_views import CreateAnswerView
 from admin.views.book_views import *
 from admin.views.diseases_views import *
+from admin.views.question_views import DeleteQuestionView, DetailQuestionView, ListQuestionView, UpdateQuestionView
 from admin.views.report_views import *
 from admin.views.news_views import *
 from admin.views.article_views import *
@@ -31,4 +33,13 @@ urlpatterns = [
     path("diseases/add/", CreateDiseases.as_view(), name="contributor_add_diseases"),
     path("diseases/<int:pk>/edit/", UpdateDiseases.as_view(), name="contributor_update_diseases"),
     path("diseases/<int:pk>/delete/", DeleteDiseases.as_view(), name="contributor_delete_diseases"),
+    
+    # disqus
+    path("question/lists/", ListQuestionView.as_view(), name="list_question"),
+    path("question/<int:pk>/detail/", DetailQuestionView.as_view(), name="detail_question"),
+    path("question/<int:pk>/delete/", DeleteQuestionView.as_view(), name="delete_question"),
+    path("question/<int:pk>/update/", UpdateQuestionView.as_view(), name="update_question"),
+    path("question/<int:question_id>/answer/", CreateAnswerView.as_view(), name="create_answer"),
+
+
 ]

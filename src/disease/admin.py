@@ -58,4 +58,4 @@ class QuestionAdminView(admin.ModelAdmin):
 
 @admin.register(Answer)
 class AnswerAdminView(admin.ModelAdmin):
-    list_display = ['id', 'question', 'answer']
+    list_display = ['id', 'question']

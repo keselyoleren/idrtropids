@@ -47,7 +47,7 @@ class HomeView(ListView):
         context['diseases_count'] = Disease.objects.filter(status=StatusChoice.APROVED).count()
         context['book_count'] = Book.objects.filter(status=StatusChoice.APROVED).count()
         context['user_count'] = UserAccount.objects.count()
-        context['questions'] = Question.objects.filter(is_validate=True).order_by('created_at')[:5]
+        context['questions'] = Question.objects.filter(status=StatusChoice.APROVED).order_by('created_at')[:5]
         return context
 
 class HomeDetailView(DetailView):       

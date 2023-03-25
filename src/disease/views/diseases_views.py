@@ -65,5 +65,5 @@ class DiseasesDetailView(DetailView):
         context =  super().get_context_data(**kwargs)
         with contextlib.suppress(Exception):
             context['latest_post'] = Disease.objects.filter(status=StatusChoice.APROVED).order_by('-created_at')[:5]
-            context['questions'] = Question.objects.filter(diseases=instance)[:5]
+            context['questions'] = Question.objects.filter(status=StatusChoice.APROVED, diseases=instance)[:5]
         return context

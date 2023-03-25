@@ -23,7 +23,7 @@ class QuestionDiseasesListView(ListView):
     
     def get_queryset(self):
         instance_diseases = self.get_instance_diseases(self.kwargs['diseases'])
-        return Question.objects.filter(diseases=instance_diseases).order_by('created_at')
+        return Question.objects.filter(status=StatusChoice.APROVED, diseases=instance_diseases).order_by('created_at')
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -85,6 +85,6 @@ class QuestionDiseasesAnswerDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Ajukan Pertanyan'
-        context['answer'] =  Answer.objects.filter(question=self.get_object()).first()
+        context['answer'] =  Answer.objects.filter(question=self.get_object())
         return context
     

@@ -17,6 +17,7 @@ class QuestionForm(forms.ModelForm):
         self.fields['parent'].widget = forms.HiddenInput()
         self.fields['user'].widget = forms.HiddenInput()
         self.fields['is_validate'].widget = forms.HiddenInput()
+        self.fields['asign_to'].widget = forms.HiddenInput()
         self.fields['question'].widget.attrs['class'] = 'materialize-textarea'
 
 class AnswerForm(forms.ModelForm):
