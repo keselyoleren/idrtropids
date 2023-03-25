@@ -19,7 +19,13 @@ class QuestionDiseasesApiView(generics.ListAPIView, generics.CreateAPIView, gene
     queryset = Question.objects.all()
     pagination_class = ResponsePagination
     
-        
+    
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [permissions.AllowAny()]
+        else:
+            return [permissions.IsAuthenticated()]
+            
     def get_permissions(self):
         if self.action in ['list', 'retrieve']:
             return [permissions.AllowAny()]

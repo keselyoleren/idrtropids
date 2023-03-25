@@ -16,6 +16,12 @@ class ReportApiView(generics.ListAPIView, generics.RetrieveAPIView, viewsets.Mod
     queryset = Report.objects.all()
     pagination_class = ResponsePagination
 
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [permissions.AllowAny()]
+        else:
+            return [permissions.IsAuthenticated()]
+
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
