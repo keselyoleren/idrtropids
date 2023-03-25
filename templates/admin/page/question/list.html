@@ -74,8 +74,7 @@
                                     {% if request.user.profile.status_verified == 'Verified' %}
                                         {% if item.status == 'Approved' %}
                                             <a href="{% url 'create_answer' item.id %}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Jawab Pertanyaan</a>
-                                        {% elif %}
-                                        
+                                        {% else %}
                                         {% endif %}
                                     {% else %}
                                         {% if item.status == 'Revisi' %}
