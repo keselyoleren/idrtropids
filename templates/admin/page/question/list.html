@@ -72,10 +72,14 @@
                                 </td>
                                 <td style="text-align: right;">
                                     {% if request.user.profile.status_verified == 'Verified' %}
-                                        <a href="{% url 'create_answer' item.id %}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Jawab Pertanyaan</a>
+                                        {% if item.status == 'Approved' %}
+                                            <a href="{% url 'create_answer' item.id %}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Jawab Pertanyaan</a>
+                                        {% elif %}
+                                        
+                                        {% endif %}
                                     {% else %}
                                         {% if item.status == 'Revisi' %}
-                                        <a href="{% url 'update_question' item.id %}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Update</a>
+                                            <a href="{% url 'update_question' item.id %}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Update</a>
                                         {% endif %}
                                         <a href="{% url 'detail_question' item.id %}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Lihat</a>
                                         <a href="{% url 'delete_question' item.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Hapus</a>
