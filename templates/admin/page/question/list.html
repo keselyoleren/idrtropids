@@ -72,10 +72,7 @@
                                 </td>
                                 <td style="text-align: right;">
                                     {% if request.user.profile.status_verified == 'Verified' %}
-                                        {% if item.status == 'Approved' %}
-                                            <a href="{% url 'create_answer' item.id %}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Jawab Pertanyaan</a>
-                                        {% else %}
-                                        {% endif %}
+                                        <a href="{% url 'create_answer' item.id %}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Jawab Pertanyaan</a>
                                     {% else %}
                                         {% if item.status == 'Revisi' %}
                                             <a href="{% url 'update_question' item.id %}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Update</a>
