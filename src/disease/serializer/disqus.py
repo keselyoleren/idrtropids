@@ -15,7 +15,7 @@ class QuestionReadOnlySerialize(serializers.ModelSerializer):
     user = UserSerialize()
     class Meta:
         model = Question
-        fields ="__all__"
+        exclude = ['asign_to', 'is_validate', 'status', 'parent']
 
 class AnswerSerialize(serializers.ModelSerializer):
     class Meta:

@@ -10,6 +10,7 @@ from rest_framework import (
 from disease.models.diseases_model import Disease
 from disease.models.disqus_model import Answer, Question
 from disease.serializer.disqus import AnswerReadonlySerialize, QuestionReadOnlySerialize, QuestionSerialize
+from helper.choices import StatusChoice
 from helper.pagination import ResponsePagination
 
 
@@ -17,16 +18,18 @@ class QuestionDiseasesApiView(generics.ListAPIView, generics.CreateAPIView, gene
     serializer_class = QuestionSerialize
     queryset = Question.objects.all()
     pagination_class = ResponsePagination
-    permission_classes = (permissions.IsAuthenticated, )
-
-    # def get_permissions(self):
-    #     if self.request.method == 'GET':
-    #         return [permissions.AllowAny(), ]
-    #     return super().get_permissions()
+    
+        
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [permissions.AllowAny()]
+        else:
+            return [permissions.IsAuthenticated()]
+        
 
     def list(self, request, *args, **kwargs):
         diseases = get_object_or_404(Disease, id=kwargs['diseases_id'])
-        queryset = self.queryset.filter(diseases=diseases)
+        queryset = self.queryset.filter(diseases=diseases, status=StatusChoice.APROVED)
         page = self.paginate_queryset(queryset)
         if page is not None:
             serializer = QuestionReadOnlySerialize(page, many=True)
