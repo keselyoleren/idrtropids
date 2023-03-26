@@ -31,9 +31,11 @@ class CreateAnswerView(IsContributor, CreateView):
     
     
     def get_context_data(self, **kwargs):
+        question = self.get_instance_questions(self.kwargs['question_id'])
         context = super().get_context_data(**kwargs)
         context['title'] = 'Jawaban'
-        context['question'] =  self.get_instance_questions(self.kwargs['question_id'])
+        context['question'] =  question
+        context['diseases'] = question.diseases
         return context
 
     def form_valid(self, form):

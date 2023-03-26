@@ -45,10 +45,10 @@ urlpatterns = [
     path('article/<slug:slug>/', ArticleDetailView.as_view(), name='detail-article'),
     path('report/', ReportListView.as_view(), name='report'),
     path('report/<slug:slug>/', ReportDetailView.as_view(), name='detail-report'),
-    path('disqus/question/<str:diseases>/', QuestionDiseasesCreateView.as_view(), name='create_question_diseases'),
-    path('disqus/question/add/', QuestionCreateView.as_view(), name='create_diseases'),
+    path('disqus/question/create/', QuestionCreateView.as_view(), name='create_diseases'),
     path('disqus/question/list/<str:diseases>/', QuestionDiseasesListView.as_view(), name='list_question_diseases'),
     path('disqus/question/<int:pk>/answer/', QuestionDiseasesAnswerDetailView.as_view(), name='answer_question_diseases'),
+    path('disqus/question/<str:diseases>/', QuestionDiseasesCreateView.as_view(), name='create_question_diseases'),
     path('search', SearchView.as_view(), name='search')
 
 ]

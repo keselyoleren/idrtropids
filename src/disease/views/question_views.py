@@ -85,6 +85,8 @@ class QuestionDiseasesAnswerDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Ajukan Pertanyan'
+        context['questions'] = Question.objects.filter(status=StatusChoice.APROVED).order_by('created_at')[:5]
         context['answer'] =  Answer.objects.filter(question=self.get_object())
+        context['diseases'] = self.get_object().diseases or ""
         return context
     
