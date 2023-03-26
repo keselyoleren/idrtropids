@@ -11,5 +11,5 @@ class ReportSerializer(serializers.ModelSerializer):
 class GetReportSerialize(serializers.ModelSerializer):
     keyword = KeywordSerialize(many=True)
     class Meta:
-        mdoel = Report
+        model = Report
         fields = "__all__"
