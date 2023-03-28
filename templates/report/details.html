@@ -8,11 +8,13 @@
             <!-- ##### report ##### -->
             <div class="col-md-8 px-0 px-sm-3">
                 <div class="blog-style">
+                    <h1 class="use-text-primary use-text-bold mb-3">{{ report.title }}</h1><br>
                     <report class="blog-content">
-                        <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">{{ report.title }}</h4>
                         {{ report.content|safe }}
                     </report>
-                    <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">Abstract</h4>
+                    {% if report.abstract %}
+                        <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">Abstract</h4>
+                    {% endif %}
                     <report class="blog-content">
                         {{ report.abstract|safe }}
                     </report>
