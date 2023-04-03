@@ -16,7 +16,7 @@
 
                 <h3 class="use-text-title2 text-center mb-6">Result returned for {{ key_result }}</h3>
                 {% for item in object_diseases %}
-                    <div class="pb-4">
+                    <div class="pb-4 mb-4">
                         <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
                             <a href="{% url 'diseases-detail' item.slug %}">{{ item.disease_name }}</a>
                         </h1>
@@ -26,7 +26,7 @@
                     </div>
                 {% endfor %}
                 {% for item in object_news %}
-                    <div class="pb-4">
+                    <div class="pb-4 mb-4">
                         <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
                             <a href="{% url 'news-detail' item.slug %}">{{ item.title }}</a>
                         </h1>
@@ -36,7 +36,7 @@
                     </div>
                 {% endfor %}
                 {% for item in object_report %}
-                    <div class="pb-4">
+                    <div class="pb-4 mb-4">
                         <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
                             <a href="{% url 'report-detail' item.slug %}">{{ item.title }}</a>
                         </h1>
@@ -46,7 +46,7 @@
                     </div>
                 {% endfor %}
                 {% for item in object_book %}
-                    <div class="pb-4">
+                    <div class="pb-4 mb-4">
                         <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
                             <a href="{% url 'report-detail' item.slug %}">{{ item.title }}</a>
                         </h1>
@@ -56,7 +56,7 @@
                     </div>
                 {% endfor %}
                 {% for item in object_artikel %}
-                    <div class="pb-4">
+                    <div class="pb-4 mb-4">
                         <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
                             <a href="{% url 'report-detail' item.slug %}">{{ item.title }}</a>
                         </h1>
