@@ -4,6 +4,11 @@
 
 {% block content %}
 <div class="container container-front">
+   <!-- #### SEARCH ####-->
+   {% block search %}
+   {% include '../layouts/search.html' %}
+   {% endblock %}
+   <!-- #### END SEARCH ####-->
   <div class="container-wrap">
     <!-- #### SEARCH #### -->
     <div class="hero-banner-wrap">
@@ -17,26 +22,54 @@
         <div class="">
           <div class="space-top-short" id="post_p">
             <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">Berita</h4>
-            <div class="row">
-              {% for item in news %}
-              <div class="col-sm-4 px-0 px-sm-2" data-index="0">
-                <div class="card post-card portrait full">
-                  <div class="card-image figure">
-                    <div class="responsive-img" style="background-image:url({{ item.thumbnail.url }});"></div>
+
+             <!-- #### LIST ####-->
+            <div class="search-content">
+              <div class="container">
+                <!-- #### SORTER ####-->
+                <div class="row sorter align-items-center flex-sm-row-reverse">
+                  <div class="col-lg-3 col-sm-8 py-1 px-0">
+                    <div class="d-flex justify-content-sm-end justify-content-center align-items-center"><a class="modal-trigger btn btn-outlined primary waves-effect me-4 show-sm-down" id="open_filter" href="#modal_filter"><i class="material-icons left">filter_list</i>Filter</a>
+                      <div class="toggle-btn-group me-4 show-sm-up" id="switch_view"><button class="btn btn-outlined primary active" type="button" data-value="grid"><i class="material-icons">grid_on</i></button> <button class="btn btn-outlined primary" type="button" data-value="list"><i class="material-icons">view_list</i></button></div>
+                    </div>
                   </div>
-                  <div class="properties">
-                    <div class="use-text-subtitle2 text-truncate">
-                      <strong>{{ item.title }}</strong>
-                    </div>
-                    <div class="caption py-4">{{ item.visits }} views {{ item.created_at|naturaltime }} </div>
-                    <div class="card-action">
-                      <a class="btn btn-outlined primary action-btn
-                        waves-effect" href="{% url 'detail-news' item.slug %}">read more</a>
-                    </div>
+                  <div class="col-lg-9 col-sm-4 py-1 px-0">
                   </div>
                 </div>
+                <div class="row align-items-start justify-content-start">
+                  <!-- ##### ITEM LIST #####-->
+                  <div class="col-lg-12 col-md-10 px-sm-3 px-0">
+                    <div class="row" id="product_result">
+                      {% for item in news %}
+                        <div class="col col-lg-4 col-sm-6 px-sm-3 px-0">
+                          <div class="card product-card portrait full">
+                            <a class="waves-effect hidden-link" href="{% url 'detail-news' item.slug %}">&nbsp;</a>
+                            <div class="figure">
+                              <div class="responsive-img" style="background-image:url({{ item.thumbnail.url }});"></div>
+                            </div>
+                            <div class="desc">
+                              <div class="text" style="max-width:600px;">
+                                <h6 class="title pb-2 text-truncate" title="{{ item.title }}">{{ item.title }}</h6>
+                                <p class="use-text-paragraph">{{ item.visits }} views {{ item.created_at|naturaltime }}</p>
+                              </div>
+                              <div>
+                                <div class="property">
+                                  <a class="btn btn-outlined primary button block" href="{% url 'detail-news' item.slug %}">see detail</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <!-- ##### END ITEM LIST #####-->
+                </div>
               </div>
-              {% endfor %}
+            </div>
+            <!-- #### END LIST ####-->
+
+            <div class="row">
               {% if is_paginated %}
               <ul class="slick-dots" style="" role="tablist">
                 {% for i in page_range %} 

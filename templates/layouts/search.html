@@ -1,0 +1,29 @@
+{% load static %}
+{% load costom_tag %}
+<!-- #### SEARCH ####-->
+<div class="hero-banner-wrap">
+    <div class="deco-wrap">
+      <div class="deco bottom s1">&nbsp;</div>
+      <div class="deco top s1">&nbsp;</div>
+    </div>
+    <div class="container">
+      <section class="search-banner">
+        <div class="container max-md">
+          <div class="row search-block align-items-center justify-content-center">
+            <col-sm-12>
+              <h2 class="use-text-title2 text-center">Milion of resources for everyone</h2>
+              <h3 class="use-text-subtitle2 text-center">Browse over million all about disease. Quickly find whatever you want.</h3>
+              <div class="search">
+                <div class="input-field">
+                    <form action="{% url 'search' %}" method="GET">
+                        <i class="material-icons search-icon prefix">search</i> 
+                        <input type="text" name="keyword" placeholder="Search whatever you want...">
+                    </form>
+                </div>
+              </div>
+            </col-sm-12>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>

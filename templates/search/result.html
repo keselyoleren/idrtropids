@@ -1,5 +1,6 @@
 {% extends 'layouts/main.html' %}
 {% load static %}
+{% load costom_tag %}
 
 {% block content %}
 
@@ -7,16 +8,13 @@
     <div class="container pt-3">
         <div class="search-component">
             <div class="container max-md">
-                <div class="search">
-                    <div class="input-field">
-                        <form action="{% url 'search' %}" method="GET">
-                            <i class="material-icons search-icon prefix">search</i> 
-                            <input type="text" name="keyword" placeholder="Search whatever you want...">
-                        </form>
-                    </div>
-                </div>
+                <!-- #### SEARCH ####-->
+                {% block search %}
+                {% include '../layouts/search.html' %}
+                {% endblock %}
+                <!-- #### END SEARCH ####-->
 
-                <h6>Result returned for {{ key_result }}</h6> <br>
+                <h3 class="use-text-title2 text-center mb-6">Result returned for {{ key_result }}</h3>
                 {% for item in object_diseases %}
                     <div class="pb-4">
                         <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
