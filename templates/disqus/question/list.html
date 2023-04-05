@@ -12,8 +12,8 @@
             </div>
           </div>
           <div class="comment">
-                <h1 class="use-text-primary use-text-bold mb-3">Diskusi Terkait {{ diseases }}</h1>
-                <a class="btn waves-effect primary show-sm-up" href="{% url 'create_question_diseases' diseases.slug  %}">Ajukan Pertanyaan</a>
+                <h1 class="use-text-primary use-text-bold mb-3">Related Discussion : {{ diseases }}</h1>
+                <a class="btn waves-effect primary show-sm-up" href="{% url 'create_question_diseases' diseases.slug  %}">Ask a question</a>
                 <div class="collection border-0">
                     <div class="comments-style">
                         {% for question in questions  %}
@@ -33,7 +33,7 @@
                         </div>
                         {% endfor %}
                     </div>
-                    <a class="btn waves-effect primary show-sm-up" href="{% url 'create_question_diseases' diseases.slug  %}">Selanjutnya >></a>
+                    <a class="btn waves-effect primary show-sm-up" href="{% url 'create_question_diseases' diseases.slug  %}">Next >></a>
                 </div>
           </div>
     </div>

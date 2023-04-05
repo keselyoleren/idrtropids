@@ -57,7 +57,7 @@
 						<div class="col-md-7 col-lg-6 px-sm-6 px-0 d-flex align-items-center order-md-last">
 						  <div class="text">
 							<h4 class="use-text-title">IDRTROPIDS Tropical Infection Disease</h4>
-							<h5 class="use-text-subtitle">Your one stop disease information.</h5>
+							<h5 class="use-text-subtitle">Your one stop trusted information source all about health and kind of disease.</h5>
 							<div class="btn-area"><a class="btn-flat waves-effect btn-large button primary use-text-secondary" href="#">see detail</a> <a class="btn waves-effect button btn-large primary" href="register.html">get started</a></div>
 						  </div>
 						</div>
@@ -75,7 +75,7 @@
 						<div class="col-xs-12 px-md-12">
 						  <div class="text text-center">
 							<h4 class="use-text-title">IDRTROPIDS Tropical Infection Disease</h4>
-							<h5 class="use-text-subtitle">Your one stop disease information.</h5>
+							<h5 class="use-text-subtitle">Your one stop support forum to answer all of your questions.</h5>
 							<div class="btn-area"><a class="btn-flat waves-effect btn-large button primary use-text-secondary" href="#">see detail</a> <a class="btn waves-effect button btn-large primary" href="register.html">get started</a></div>
 						  </div>
 						</div>
@@ -116,7 +116,7 @@
 					<h6 class="use-text-subtitle">Disease</h6>
 				</div>
 				</div>
-				<p class="text-center">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam.</p>
+				<p class="text-center">Information and disease data that has been recorded in our system.</p>
 			</div>
 			<div class="col-sm-4 col-lg-3 px-6">
 				<div class="counter-item"><span class="icon ion-ios-bookmarks-outline use-text-primary-color"></span>
@@ -125,7 +125,7 @@
 					<h6 class="use-text-subtitle">Books</h6>
 				</div>
 				</div>
-				<p class="text-center">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam.</p>
+				<p class="text-center">Books that are registered in our system as trusted references.</p>
 			</div>
 			<div class="col-sm-4 col-lg-3 px-6">
 				<div class="counter-item"><span class="icon ion-ios-people-outline use-text-primary-color"></span>
@@ -134,7 +134,7 @@
 					<h6 class="use-text-subtitle">Kontributor</h6>
 				</div>
 				</div>
-				<p class="text-center">Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam.</p>
+				<p class="text-center">Professionals and experts who have joined as contributors to our system.</p>
 			</div>
 			</div>
 		</div>
@@ -165,7 +165,7 @@
 							{% comment %} {{ item.abstract|safe|truncatechars:50 }} {% endcomment %}
 							{{ item.visits }} views {{ item.created_at|naturaltime }} 
 						</div>
-						<a class="btn waves-effect block secondary button" href="{% url 'detail-article' item.slug %}">See Detail</a>
+						<a class="btn waves-effect block secondary button" href="{% url 'detail-article' item.slug %}">read...</a>
 					</div>
 				</div>
 				{% endfor %}
@@ -197,9 +197,9 @@
 		<div class="container">
 			<div class="row spacing8">
 			<div class="col-md-6 px-sm-12">
-				<h4 class="use-text-title">Temukan Buku rujukan terpercaya</h4>
-				<p class="desc use-text-subtitle2">The doctors at The Online Clinic are all registered on the General Medical Council.</p>
-				<a class="btn waves-effect button btn-large primary" href="{% url 'book' %}" tabindex="-1">Explore Book</a>
+				<h4 class="use-text-title">Find a trusted reference book</h4>
+				<p class="desc use-text-subtitle2">find a kind of trusted reference books from trusted sources.</p>
+				<a class="btn waves-effect button btn-large primary" href="{% url 'book' %}" tabindex="-1">Explore more Book</a>
 			</div>
 			<div class="col-md-6 px-6 show-sm-up">
 				<div class="circle-wave">
@@ -378,11 +378,11 @@
 		<div class="root">
 			<div class="container mq-md-up" data-class="fixed-width">
 				<div class="pa-3">
-					<h4 class="use-text-title text-capitalize">Forum diskusi</h4>
-					<p class="use-text-subtitle2">Dapatkan informasi seputarkesehatan, kandungan, aturan, petunjuk penggunaan obat dan vitamin di sini</p>
+					<h4 class="use-text-title text-capitalize">Discussion forum</h4>
+					<p class="use-text-subtitle2">Get information about health, ingredients, rules, instructions for using drugs and vitamins here</p>
 				</div>
 				<div class="comment">
-					<a class="btn waves-effect primary show-sm-up" href="{% url 'create_diseases' %}">Ajukan Pertanyaan</a>
+					<a class="btn waves-effect primary show-sm-up" href="{% url 'create_diseases' %}">ask a questions</a>
 					<div class="collection border-0">
 						<div class="comments-style">
 							{% for question in questions  %}
@@ -393,7 +393,7 @@
 										<span class="title font-weight-medium">{{ question.title }}</span>
 									</a>
 									<div>
-										<span class="caption"> Oleh {{ question.user.username }}  {{ question.created_at }}</span>
+										<span class="caption"> Question from {{ question.user.username }}  {{ question.created_at }}</span>
 										<p class="mt-2"> </p>
 									</div>
 								</div>
@@ -419,12 +419,12 @@
 						<div class="card paper">
 							<div class="row align-items-center">
 								<div class="col-md-8 px-sm-6">
-									<h4 class="use-text-title2 pb-2">Berminat untuk menjadi kontributor kami?</h4>
-									<p>Let's contribute. We make it simple to get healthcare whenever and wherever you want</p>
+									<h4 class="use-text-title2 pb-2">Interested in becoming our contributor?</h4>
+									<p>Let's contribute. We make it simple to provide trusted informations whenever and wherever.</p>
 								</div>
 								<div class="col-md-4 px-sm-0">
 									<div class="d-flex align-items-center justify-content-center">
-										<a class="waves-effect btn button white block" href="/accounts/google/login/">Daftar jadi kontributor!</a>
+										<a class="waves-effect btn button white block" href="/accounts/google/login/">Register as a contributor!</a>
 									</div>
 								</div>
 							</div>

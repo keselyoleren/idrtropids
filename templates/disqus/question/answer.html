@@ -4,13 +4,18 @@
 
 {% block content %}
 
-<div class="container-general pt-12">
+<div class="container-general">
+    <!-- #### SEARCH ####-->
+    {% block search %}
+    {% include '../../layouts/search.html' %}
+    {% endblock %}
+    <!-- #### END SEARCH ####-->
     <div class="container pt-3">
         <div class="row">
             <!-- ##### book ##### -->
             <div class="col-md-8 px-0 px-sm-3">
                 <div class="comment">
-                    <h1 class="use-text-primary use-text-bold mb-3">Diskusi {{ diseases }}</h1>
+                    <h1 class="use-text-primary use-text-bold mb-3">Discussion : {{ diseases }}</h1>
                     <div class="collection border-0">
                         <div class="comments-style">
                             <div class="comment-list">
@@ -18,7 +23,7 @@
                                     <img class="circle" src="{{ question.user.profile.profile_pic.url }}" alt="John Doe" /> 
                                     <span class="title font-weight-medium">{{ question.title }}</span>
                                     <div>
-                                    <span class="caption"> Oleh {{ question.user.username }}  {{ question.created_at }}</span>
+                                    <span class="caption"> from {{ question.user.username }}  {{ question.created_at }}</span>
                                     <p class="mt-2"> </p>
                                     </div>
                                 </div>
@@ -36,7 +41,7 @@
                         <div class="properties">
                             <div class="card-content desc">
                                 <div class="comment">
-                                    <h6 class="use-text-primary use-text-bold mb-3">Dijawab Oleh</h6>
+                                    <h6 class="use-text-primary use-text-bold mb-3">Answered by</h6>
                                     <div class="collection border-0">
                                         <div class="comments-style">
                                             <div class="comment-list">
@@ -71,7 +76,7 @@
                                     <i class="material-icons small">bookmark</i>
                                 </div>
                                 <div class="card-content">
-                                    <span class="card-title">Pertanyaan lainnya</span>
+                                    <span class="card-title">Another question</span>
                                 </div>
                             </header>
                             <div class="content">
