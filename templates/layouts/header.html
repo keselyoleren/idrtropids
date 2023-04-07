@@ -6,67 +6,15 @@
     <div class="side-multilv">
       <div class="collection side-multilv">
         <ul class="collapsible expandable">
-          <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="#facility">Home</a></li>
+          <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="/">Home</a></li>
           <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="{% url 'diseases' %}">Infectious Diseases</a></li>
-          <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="#Article">Article</a></li>
-          <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="#Reports">Reports</a></li>
-          {% comment %} <li class="collection-item group-child has-child">
-            <div class="collapsible-header"><a class="waves-effect text-truncate menu-list" href="#!">inner Page <i class="material-icons right">keyboard_arrow_down</i></a></div>
-            <div class="collapsible-body">
-              <div class="collection side-group">
-                <ul class="group-child">
-                  <li class="collection-header">
-                    <div class="title-mega">Company</div>
-                  </li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="about.html">about</a></li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="about-team.html">team</a></li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="blog.html">blog</a></li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="detail-blog.html">blog detail</a></li>
-                </ul>
-                <ul class="group-child">
-                  <li class="collection-header">
-                    <div class="title-mega">Form</div>
-                  </li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="login.html">login</a></li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="register.html">register</a></li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="contact.html">contact</a></li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="contact-map.html">contact map</a></li>
-                </ul>
-                <ul class="group-child">
-                  <li class="collection-header">
-                    <div class="title-mega">Items</div>
-                  </li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="collection.html">card</a></li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="products.html">product</a></li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="product-detail.html">product detail</a></li>
-                </ul>
-                <ul class="group-child">
-                  <li class="collection-header">
-                    <div class="title-mega">Utilities</div>
-                  </li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="pricing.html">pricing</a></li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="faq.html">faq</a></li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="maintenance.html">maintenance</a></li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="coming-soon.html">coming soon</a></li>
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="404.html">error</a></li>
-                </ul>
-              </div>
-            </div>
-          </li> {% endcomment %}
+          <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="{% url 'article' %}">Article</a></li>
+          <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="{% url 'report' %}">Reports</a></li>
+          <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="{% url 'book' %}">Books</a></li>
+          <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="{% url 'news' %}">News</a></li>
         </ul>
       </div>
       <div class="dropdown-divider"></div>
-      <div class="collection">
-        <ul>
-        {% if user.is_authenticated %}
-        <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="{% url 'account_logout' %}">Logout</a></li>
-        <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="{% url 'contributor_profile' %}">Profile</a></li>
-        {% else %}
-        <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="/accounts/google/login/">Login</a></li>
-        <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="/accounts/google/login/">register</a></li>
-        {% endif %}
-        </ul>
-      </div>
     </div>
   </div>
   <header class="app-bar header" id="header">
@@ -84,654 +32,77 @@
                 <li><a class="btn btn-flat anchor-link waves-effect" href="{% url 'report' %}">Reports</a></li>
                 <li><a class="btn btn-flat anchor-link waves-effect" href="{% url 'book' %}">Books</a></li>
                 <li><a class="btn btn-flat anchor-link waves-effect" href="{% url 'news' %}">News</a></li>
-                {% comment %} <li><button class="btn btn-flat megamenu-trigger-click waves-effect" data-target="sample-page">inner Page <i class="material-icons right icon">keyboard_arrow_down</i></button>
-                  <div class="mega-menu-root dropdown-content" id="sample-page">
-                    <div class="mega-menu">
-                      <div class="container max-md">
-                        <div class="row">
-                          <div class="col-sm-3 mb-6">
-                            <div class="title-mega">Company</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_marketing_2x_fxhtru.jpg" alt="thumbnail">
-                            <ul>
-                              <li class="waves-effect"><a class="menu-list" href="about.html">about</a></li>
-                              <li class="waves-effect"><a class="menu-list" href="about-team.html">team and culture</a></li>
-                              <li class="waves-effect"><a class="menu-list" href="blog.html">blog home</a></li>
-                              <li class="waves-effect"><a class="menu-list" href="detail-blog.html">blog detail</a></li>
-                            </ul>
-                          </div>
-                          <div class="col-sm-3 mb-6">
-                            <div class="title-mega">Form</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_education_2x_qviwhv.jpg" alt="thumbnail">
-                            <ul>
-                              <li class="waves-effect"><a class="menu-list" href="login.html">login</a></li>
-                              <li class="waves-effect"><a class="menu-list" href="register.html">register</a></li>
-                              <li class="waves-effect"><a class="menu-list" href="contact.html">contact</a></li>
-                              <li class="waves-effect"><a class="menu-list" href="contact-map.html">contact with map</a></li>
-                            </ul>
-                          </div>
-                          <div class="col-sm-3 mb-6">
-                            <div class="title-mega">Items</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_pos_2x_mwdism.jpg" alt="thumbnail">
-                            <ul>
-                              <li class="waves-effect"><a class="menu-list" href="collection.html">card collection</a></li>
-                              <li class="waves-effect"><a class="menu-list" href="products.html">product with filter</a></li>
-                              <li class="waves-effect"><a class="menu-list" href="product-detail.html">detail product</a></li>
-                            </ul>
-                          </div>
-                          <div class="col-sm-3 mb-6">
-                            <div class="title-mega">Utilities</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_saas2_2x_uml9de.jpg" alt="thumbnail">
-                            <ul>
-                              <li class="waves-effect"><a class="menu-list" href="pricing.html">pricing and faq</a></li>
-                              <li class="waves-effect"><a class="menu-list" href="faq.html">frequently answer &amp; questions</a></li>
-                              <li class="waves-effect"><a class="menu-list" href="maintenance.html">maintenance</a></li>
-                              <li class="waves-effect"><a class="menu-list" href="coming-soon.html">coming soon</a></li>
-                              <li class="waves-effect"><a class="menu-list" href="404.html">error not found</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li> {% endcomment %}
               </ul>
             </div>
           </div>
-          <div class="header-mega header-component flex-grow-1">
-            <div class="scrollactive-nav show-lg-up multi-menu">
-              <div class="multi-menu">
-                <ul>
-                  <li><a class="btn btn-flat megamenu-trigger-click waves-effect" href="#!" data-target="first_menu">First Menu <i class="material-icons right icon">keyboard_arrow_down</i></a>
-                    <div class="mega-menu-root dropdown-content" id="first_menu">
-                      <div class="mega-menu">
-                        <div class="container max-md">
-                          <div class="row">
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_pos_2x_mwdism.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">In Lorem</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_education_2x_qviwhv.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_saas2_2x_uml9de.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Praesent Tristique</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_marketing_2x_fxhtru.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613841416/skyrev/ui/team_2d_2x_aknhlt.png" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">In Lorem</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613841417/skyrev/ui/team_3d_2x_otcrq3.png" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_agency_2x_cffzbh.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Praesent Tristique</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_cloud_2x_ibpr8i.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li><a class="btn btn-flat megamenu-trigger-click waves-effect" href="#!" data-target="second_menu">Second Menu <i class="material-icons right icon">keyboard_arrow_down</i></a>
-                    <div class="mega-menu-root dropdown-content" id="second_menu">
-                      <div class="mega-menu">
-                        <div class="container max-md">
-                          <div class="row">
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_crypto_2x_limt8a.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">In Lorem</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_education_2x_qviwhv.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_finance_2x_y4v2fl.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Praesent Tristique</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_pos_2x_mwdism.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_marketing_2x_fxhtru.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">In Lorem</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840772/skyrev/ui/menu_medical_2x_r4t5yx.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_pos_2x_mwdism.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Praesent Tristique</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_saas_2x_fclhag.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li><a class="btn btn-flat megamenu-trigger-click waves-effect" href="#!" data-target="third_menu">Third Menu <i class="material-icons right icon">keyboard_arrow_down</i></a>
-                    <div class="mega-menu-root dropdown-content" id="third_menu">
-                      <div class="mega-menu">
-                        <div class="container max-md">
-                          <div class="row">
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_saas2_2x_uml9de.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">In Lorem</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_social_2x_gxr0ov.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_other_2x_t3ky8e.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Praesent Tristique</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_crypto_2x_limt8a.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_education_2x_qviwhv.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">In Lorem</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_finance_2x_y4v2fl.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_pos_2x_mwdism.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Praesent Tristique</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_education_2x_qviwhv.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li><a class="btn btn-flat megamenu-trigger-click waves-effect" href="#!" data-target="fourth_menu">Fourth Menu <i class="material-icons right icon">keyboard_arrow_down</i></a>
-                    <div class="mega-menu-root dropdown-content" id="fourth_menu">
-                      <div class="mega-menu">
-                        <div class="container max-md">
-                          <div class="row">
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_pos_2x_mwdism.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">In Lorem</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_marketing_2x_fxhtru.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840772/skyrev/ui/menu_medical_2x_r4t5yx.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Praesent Tristique</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_pos_2x_mwdism.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_saas_2x_fclhag.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">In Lorem</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613841417/skyrev/ui/team_3d_2x_otcrq3.png" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Eu Rhoncus Odio</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_agency_2x_cffzbh.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Praesent Tristique</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_cloud_2x_ibpr8i.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="#">Vivamus Condimentum</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Lorem</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="#">Praesent Tristique</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li><a class="btn btn-flat megamenu-trigger-click waves-effect" href="#!" data-target="sample_pages">Sample Pages <i class="material-icons right icon">keyboard_arrow_down</i></a>
-                    <div class="mega-menu-root dropdown-content" id="sample_pages">
-                      <div class="mega-menu">
-                        <div class="container max-md">
-                          <div class="row">
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Company</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_marketing_2x_fxhtru.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="about.html">about</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="about-team.html">team</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="blog.html">blog</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="detail-blog.html">blog detail</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Form</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840771/skyrev/ui/menu_education_2x_qviwhv.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="login.html">login</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="register.html">register</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="contact.html">contact</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="contact-map.html">contact map</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Items</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_pos_2x_mwdism.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="collection.html">card</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="products.html">product</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="product-detail.html">product detail</a></li>
-                              </ul>
-                            </div>
-                            <div class="col-sm-3 mb-6">
-                              <div class="title-mega">Utilities</div><img class="thumb-menu" src="https://res.cloudinary.com/skyrev/image/upload/v1613840773/skyrev/ui/menu_saas2_2x_uml9de.jpg" alt="thumbnail">
-                              <ul>
-                                <li class="waves-effect"><a class="menu-list" href="pricing.html">pricing</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="faq.html">faq</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="maintenance.html">maintenance</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="coming-soon.html">coming soon</a></li>
-                                <li class="waves-effect"><a class="menu-list" href="404.html">error</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="header-droplist header-component flex-grow-1">
-            <div class="scrollactive-nav show-lg-up multi-menu">
-              <div class="multi-menu">
-                <ul class="multi-menu-root">
-                  <li><a class="btn btn-flat waves-effect" href="#">First Menu</a></li>
-                  <li><a class="btn btn-flat droplist-trigger-click waves-effect" href="#!" data-target="id_2">Second Menu <i class="material-icons right icon">keyboard_arrow_down</i></a>
-                    <ul class="dropdown-content" id="id_2">
-                      <li><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_2_1">In Lorem <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="id_2_1">
-                          <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                          <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_2_1_1">2Lorem <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                            <ul class="dropdown-content child-menu" id="id_2_1_1">
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                            </ul>
-                          </li>
-                          <li><a class="menu-list" href="#">3Eu Rhoncus Odio</a></li>
-                          <li><a class="menu-list" href="#">4Praesent Tristique</a></li>
-                        </ul>
-                      </li>
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_2_2">Eu Rhoncus Odio <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="id_2_2">
-                          <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                          <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_2_2_1">2Lorem <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                            <ul class="dropdown-content child-menu" id="id_2_2_1">
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                            </ul>
-                          </li>
-                          <li><a class="menu-list" href="#">3Eu Rhoncus Odio</a></li>
-                          <li><a class="menu-list" href="#">4Praesent Tristique</a></li>
-                        </ul>
-                      </li>
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_2_3">Praesent Tristique <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="id_2_3">
-                          <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                          <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_2_3_1">2Lorem <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                            <ul class="dropdown-content child-menu" id="id_2_3_1">
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                            </ul>
-                          </li>
-                          <li><a class="menu-list" href="#">3Eu Rhoncus Odio</a></li>
-                          <li><a class="menu-list" href="#">4Praesent Tristique</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a class="btn btn-flat droplist-trigger-click waves-effect" href="#!" data-target="id_3">Third Menu <i class="material-icons right icon">keyboard_arrow_down</i></a>
-                    <ul class="dropdown-content" id="id_3">
-                      <li><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_3_1">In Lorem <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="id_3_1">
-                          <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                          <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_3_1_1">2Lorem <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                            <ul class="dropdown-content child-menu" id="id_3_1_1">
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                            </ul>
-                          </li>
-                          <li><a class="menu-list" href="#">3Eu Rhoncus Odio</a></li>
-                          <li><a class="menu-list" href="#">4Praesent Tristique</a></li>
-                        </ul>
-                      </li>
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_3_2">Eu Rhoncus Odio <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="id_3_2">
-                          <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                          <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_3_2_1">2Lorem <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                            <ul class="dropdown-content child-menu" id="id_3_2_1">
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                            </ul>
-                          </li>
-                          <li><a class="menu-list" href="#">3Eu Rhoncus Odio</a></li>
-                          <li><a class="menu-list" href="#">4Praesent Tristique</a></li>
-                        </ul>
-                      </li>
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_3_3">Praesent Tristique <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="id_3_3">
-                          <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                          <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_3_3_1">2Lorem <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                            <ul class="dropdown-content child-menu" id="id_3_3_1">
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                            </ul>
-                          </li>
-                          <li><a class="menu-list" href="#">3Eu Rhoncus Odio</a></li>
-                          <li><a class="menu-list" href="#">4Praesent Tristique</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a class="btn btn-flat droplist-trigger-click waves-effect" href="#!" data-target="id_4">Fourth Menu <i class="material-icons right icon">keyboard_arrow_down</i></a>
-                    <ul class="dropdown-content" id="id_4">
-                      <li><a class="menu-list" href="#">Eu Rhoncus Odio</a></li>
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_4_1">In Lorem <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="id_4_1">
-                          <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                          <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_4_1_1">2Lorem <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                            <ul class="dropdown-content child-menu" id="id_4_1_1">
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                            </ul>
-                          </li>
-                          <li><a class="menu-list" href="#">3Eu Rhoncus Odio</a></li>
-                          <li><a class="menu-list" href="#">4Praesent Tristique</a></li>
-                        </ul>
-                      </li>
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_4_2">Eu Rhoncus Odio <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="id_4_2">
-                          <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                          <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_4_2_1">2Lorem <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                            <ul class="dropdown-content child-menu" id="id_4_2_1">
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                            </ul>
-                          </li>
-                          <li><a class="menu-list" href="#">3Eu Rhoncus Odio</a></li>
-                          <li><a class="menu-list" href="#">4Praesent Tristique</a></li>
-                        </ul>
-                      </li>
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_4_3">Praesent Tristique <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="id_4_3">
-                          <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                          <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="id_4_3_1">2Lorem <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                            <ul class="dropdown-content child-menu" id="id_4_3_1">
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                              <li><a class="menu-list" href="#">1Vivamus Condimentum</a></li>
-                            </ul>
-                          </li>
-                          <li><a class="menu-list" href="#">3Eu Rhoncus Odio</a></li>
-                          <li><a class="menu-list" href="#">4Praesent Tristique</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a class="btn btn-flat droplist-trigger-click waves-effect" href="#!" data-target="sample_pages">inner Pages <i class="material-icons right icon">keyboard_arrow_down</i></a>
-                    <ul class="dropdown-content" id="sample_pages">
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="company">Company <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="company">
-                          <li><a class="menu-list" href="about.html">about</a></li>
-                          <li><a class="menu-list" href="about-team.html">team</a></li>
-                          <li><a class="menu-list" href="blog.html">blog</a></li>
-                          <li><a class="menu-list" href="detail-blog.html">blog detail</a></li>
-                        </ul>
-                      </li>
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="form">Form <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="form">
-                          <li><a class="menu-list" href="login.html">login</a></li>
-                          <li><a class="menu-list" href="register.html">register</a></li>
-                          <li><a class="menu-list" href="contact.html">contact</a></li>
-                          <li><a class="menu-list" href="contact-map.html">contact map</a></li>
-                        </ul>
-                      </li>
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="items">Items <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="items">
-                          <li><a class="menu-list" href="collection.html">card</a></li>
-                          <li><a class="menu-list" href="products.html">product</a></li>
-                          <li><a class="menu-list" href="product-detail.html">product detail</a></li>
-                        </ul>
-                      </li>
-                      <li><a class="menu-list droplist-trigger-click-child" href="#!" data-target="utilities">Utilities <i class="material-icons right arrow-icon">keyboard_arrow_right</i></a>
-                        <ul class="dropdown-content child-menu" id="utilities">
-                          <li><a class="menu-list" href="pricing.html">pricing</a></li>
-                          <li><a class="menu-list" href="faq.html">faq</a></li>
-                          <li><a class="menu-list" href="maintenance.html">maintenance</a></li>
-                          <li><a class="menu-list" href="coming-soon.html">coming soon</a></li>
-                          <li><a class="menu-list" href="404.html">error</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="header-navscroll header-component flex-grow-1">
-            <div class="scrollactive-nav scrollnav show-lg-up main-menu">
-              <ul class="main-menu">
-                <li><a class="btn btn-flat anchor-link waves-effect" href="#facility">Home</a></li>
-                <li><a class="btn btn-flat anchor-link waves-effect" href="#ask-doctors">Infectious Diseases</a></li>
-                <li><a class="btn btn-flat anchor-link waves-effect" href="#Article">Article</a></li>
-                <li><a class="btn btn-flat anchor-link waves-effect" href="#Reports">Reports</a></li>
-                {% comment %} <li><a class="btn btn-flat waves-effect" href="/">inner Page</a></li> {% endcomment %}
-              </ul>
-            </div>
-          </div>
-          <div class="header-search header-component flex-grow-1">
-            <div class="hidden-xs-down">
-              <div class="search">
-                <div class="input-field"><i class="material-icons search-icon prefix">search</i> <input type="text" placeholder="I'm looking for..."></div>
+          <div class="hidden-xs-down">
+            <div class="search short">
+              <div class="input-field">
+                <i class="material-icons search-icon prefix">search</i> 
+                <input type="text" placeholder="I'm looking for...">
               </div>
             </div>
           </div>
           <div class="header-hamburger header-component flex-grow-1"></div>
           <div class="header-basic header-component flex-grow-1"></div>
-          <nav class="user-menu">
-          {% if user.is_authenticated %}
-          <a class="btn-flat primary waves-effect" href="{% url 'account_logout' %}">Logout</a> 
-          <a class="btn waves-effect primary show-sm-up" href="{% url 'contributor_profile' %}">Profile</a>
-          {% else %}
-          <a class="btn-flat primary waves-effect" href="/accounts/google/login/">Login</a> 
-          <a class="btn waves-effect primary show-sm-up" href="/accounts/google/login/">register</a>
-          {% endif %}
-          </nav>
+          <div class="menu-setting">
+            <div class="setting">
+              <button class="btn btn-icon waves-effect btn-small dropdown-trigger ma-1" data-target="dropdown_config" data-align="left" type="button"><i class="icon material-icons" id="setting_icon">settings</i></button><div class="dropdown-content setting" id="dropdown_config" tabindex="0" style="">
+                <ul class="collection with-header" tabindex="0">
+                  <li class="collection-header">theme mode</li>
+                  <li class="collection-item no-hover pl-4">
+                    <div class="flex-menu">
+                      <div class="switch">
+                        <label>light<input id="theme_switcher" type="checkbox" /><span class="lever"></span> dark</label>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="dropdown-divider" tabindex="0"></div>
+                <ul class="collection with-header lang-menu" id="lang_menu" tabindex="0">
+                  {% if user.is_authenticated %}
+                  <li class="collection-item lang-list waves-effect avatar">
+                    <a href="{% url 'contributor_profile' %}">
+                      <div class="circle">
+                        <i class="">
+                          <span class="material-symbols-outlined">account_box</span>
+                        </i>
+                      </div>
+                      <span class="content  text-truncate">Profile</span>
+                    </a>
+                  </li>
+
+                  <li class="collection-item lang-list waves-effect avatar">
+                    <a href="{% url 'account_logout' %}">
+                      <div class="circle">
+                        <i class="">
+                          <span class="material-symbols-outlined">logout</span>
+                        </i>
+                      </div>
+                      <span class="content  text-truncate">Logout</span>
+                    </a>
+                  </li>
+                  {% else %}
+                  <li class="collection-item lang-list waves-effect avatar">
+                    <a href="/accounts/google/login/">
+                      <div class="circle">
+                        <i class="">
+                          <span class="material-symbols-outlined">login</span>
+                        </i>
+                      </div>
+                      <span class="content text-truncate">Join</span>
+                    </a>
+                  </li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
         </nav>
         <div id="container_menu"></div>
       </div>
     </div>
-    <div class="header-search header-component">
-      <div class="hidden-sm-up">
-        <div class="search">
-          <div class="input-field"><i class="material-icons search-icon prefix">search</i> <input type="text" placeholder="I'm looking for..."></div>
-        </div>
-      </div>
-    </div>
+    <div class="hidden-sm-up"><div class="search"><div class="input-field"><i class="material-icons search-icon prefix">search</i> <input type="text" placeholder="I'm looking for..."></div></div></div>
   </header>
   <div class="paper-nav" id="main_menu">
     <div class="full-nav">

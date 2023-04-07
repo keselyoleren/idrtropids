@@ -61,7 +61,7 @@ class HomeDetailView(DetailView):
 class NewsListView(ListView):
     model = News
     context_object_name = 'news'
-    template_name = "news/list.html"
+    template_name = "news/index.html"
     paginate_by = 12
     ordering = "-created_at"
 
@@ -78,7 +78,36 @@ class NewsListView(ListView):
 
         # Add the page range to the context
         context['page_range'] = range(first_page_in_range, paginator.num_pages + 1)[:page_numbers_range*2]
+        context['title'] = 'Berita'
+        context['url'] = 'berita-category'
         return context
+
+class NewsCategoryListView(ListView):
+    model = News
+    context_object_name = 'news'
+    template_name = "news/list.html"
+    paginate_by = 12
+    ordering = "-created_at"
+
+    def get_queryset(self):
+        return News.objects.filter(status=StatusChoice.APROVED, category__name=self.kwargs['category']).order_by('-created_at')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        paginator = context['paginator']
+        page_numbers_range = 5  # Display 5 pages range by default
+        # Calculate the current page number and the index of the first page in the range
+        current_page = context['page_obj'].number
+        first_page_in_range = max(current_page - page_numbers_range, 1)
+
+        # Add the page range to the context
+        context['page_range'] = range(first_page_in_range, paginator.num_pages + 1)[:page_numbers_range*2]
+        context['title'] = 'Berita'
+        context['url'] = 'berita-category'
+        context['penyakit'] = self.kwargs['category']
+        return context
+
+
 
 class NewsDdetailView(DetailView):
     model = News

@@ -2,7 +2,7 @@ import contextlib
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.models import BaseModel
-from disease.models.diseases_model import Disease
+from disease.models.diseases_model import Category, Disease
 from helper.choices import StatusChoice
 from users.models import UserAccount
 from django.utils.text import slugify
@@ -23,7 +23,7 @@ class Keyword(BaseModel):
         return self.name
 
 class News(BaseModel):
-    # disease = models.ForeignKey(Disease, on_delete=models.CASCADE, blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to="thumbnail/", default='thumbnail/default-thumbnail.png')
     title = models.CharField(_("News Title"),max_length=200)
     content = RichTextField(_('News Content'))
