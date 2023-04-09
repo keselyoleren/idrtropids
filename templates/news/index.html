@@ -3,21 +3,19 @@
 {% load humanize %}
 
 {% block content %}
-  <div class="container container-front">
-    <!-- #### SEARCH ####-->
-    {% comment %} {% block search %}
-    {% include '../layouts/search.html' %}
-    {% endblock %} {% endcomment %}
-    <!-- #### END SEARCH ####-->
-    <div class="container-wrap">
-      <!-- #### SEARCH #### -->
-      <div class="search-content">
-        <div>
-          <div class="">
-            <div class="space-top-short" id="post_p">
-              <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">Infectious Diseases</h4>
-
-              <!-- #### LIST ####-->
+<div class="container container-front">
+   <!-- #### SEARCH ####-->
+   {% block search %}
+   {% include '../layouts/search.html' %}
+   {% endblock %}
+   <!-- #### END SEARCH ####-->
+  <div class="container-wrap">
+    <div class="search-content">
+      <div>
+        <div class="">
+          <div class="space-top-short" id="post_p">
+            <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">Recent News</h4>
+            <!-- #### LIST ####-->
             <div class="search-content">
               <div class="container">
                 <!-- #### SORTER ####-->
@@ -34,21 +32,21 @@
                   <!-- ##### ITEM LIST #####-->
                   <div class="col-lg-12 col-md-10 px-sm-3 px-0">
                     <div class="row" id="product_result">
-                      {% for item in diseases %}
+                      {% for item in news %}
                         <div class="col col-lg-4 col-sm-6 px-sm-3 px-0">
                           <div class="card product-card portrait full">
-                            <a class="waves-effect hidden-link" href="{% url 'diseases-detail' item.slug %}">&nbsp;</a>
+                            <a class="waves-effect hidden-link" href="{% url 'detail-news' item.slug %}">&nbsp;</a>
                             <div class="figure">
                               <div class="responsive-img" style="background-image:url({{ item.thumbnail.url }});"></div>
                             </div>
                             <div class="desc">
                               <div class="text" style="max-width:600px;">
-                                <h6 class="title pb-2 text-truncate" title="{{ item.disease_name }}">{{ item.disease_name }}</h6>
+                                <h6 class="title pb-2 text-truncate" title="{{ item.title }}">{{ item.title }}</h6>
                                 <p class="use-text-paragraph">{{ item.visits }} views {{ item.created_at|naturaltime }}</p>
                               </div>
                               <div>
                                 <div class="property">
-                                  <a class="btn btn-outlined primary button block" href="{% url 'diseases-detail' item.slug %}">see detail</a>
+                                  <a class="btn btn-outlined primary button block" href="{% url 'detail-article' item.slug %}">see detail</a>
                                 </div>
                               </div>
                             </div>
@@ -62,26 +60,10 @@
               </div>
             </div>
             <!-- #### END LIST ####-->
-                {% if is_paginated %}
-                <ul class="slick-dots" style="" role="tablist">
-                  {% for i in page_range %} 
-                    {% if page_obj.number == i %}
-                      <li role="presentation" class="slick-active">
-                        <button type="button" role="tab" id="slick-slide-control43" aria-controls="slick-slide43" aria-label="4 of 3" tabindex="0" aria-selected="true">4</button>
-                      </li>
-                    {% else %}
-                      <li class="" role="presentation">
-                        <a href="?page={{ i }}" id="slick-slide-control{{i}}"  aria-controls="slick-slide{{i}}" role="tab" tabindex="-1">{{ i }}</a>
-                      </li>  
-                    {% endif %}
-                  {% endfor %}
-                {% endif %}       
-                <br><br><br>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 {% endblock %}

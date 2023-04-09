@@ -2,7 +2,7 @@ import contextlib
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.models import BaseModel
-from disease.models.diseases_model import Disease
+from disease.models.diseases_model import Category, Disease
 from disease.models.news_model import Keyword
 from helper.choices import StatusChoice
 from users.models import UserAccount
@@ -13,10 +13,11 @@ from django.conf import settings
 
 
 class Article(BaseModel):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to="thumbnail/", default='thumbnail/default-thumbnail.png')
     title = models.CharField(_("Title"),max_length=200)
     slug = models.CharField(unique=True, max_length=255, blank=True, null=True)
-    abstract = RichTextField(_("Abstract"))
+    content = RichTextField(_("Content"))
     volume = models.CharField(_("Volume"), max_length=100, blank=True, null=True)
     pages_article = models.CharField(_("Pages Article"), max_length=100, blank=True, null=True)
     publication = models.CharField(_("Publication"), max_length=100, blank=True, null=True)
@@ -47,8 +48,10 @@ class Article(BaseModel):
         verbose_name_plural = 'Article'
 
 class Book(BaseModel):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to="thumbnail/", default='thumbnail/default-thumbnail.png')
     title = models.CharField(_("Title"),max_length=200)
+    content = RichTextField(_("Content"), blank=True, null=True)
     slug = models.CharField(unique=True, max_length=255, blank=True, null=True)
     year_publish = models.DateField(blank=True, null=True)
     pages = models.CharField(_("Pages"), max_length=100, blank=True, null=True)
@@ -58,7 +61,6 @@ class Book(BaseModel):
     publication = models.CharField(_("Publication"), max_length=100, blank=True, null=True)
     url = models.URLField(blank=True, null=True)
     issn = models.CharField(_("Issn"), max_length=100, blank=True, null=True)
-    abstract = RichTextField(_("Abstract"), blank=True, null=True)
     created_by = models.ForeignKey(UserAccount, on_delete=models.CASCADE, blank=True, null=True)
     visits = models.PositiveIntegerField(default=0, blank=True, null=True)
     status = models.CharField(_("Status"), max_length=100,  choices=StatusChoice.choices, default=StatusChoice.PENDING, blank=True, null=True)
@@ -80,9 +82,9 @@ class Book(BaseModel):
         verbose_name_plural = 'Book'
 
 class Report(BaseModel):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to="thumbnail/", default='thumbnail/default-thumbnail.png')
     title = models.CharField(_("Report Title"), max_length=200)
-    abstract = RichTextField(_("Abstract"), blank=True, null=True)
     content = RichTextField(_("Content Report"), blank=True, null=True)
     slug = models.CharField(unique=True, max_length=255, blank=True, null=True)
     institution = models.CharField(_("Report institution"), max_length=200, blank=True, null=True)

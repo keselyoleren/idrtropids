@@ -14,12 +14,27 @@ from disease.models.references_model import *
 class ArticleView(ListView):
     model = Article
     context_object_name = 'articles'
+    template_name = "articles/index.html"
+    ordering = "-created_at"
+
+    def get_queryset(self):
+        return Article.objects.filter(status=StatusChoice.APROVED).order_by('-created_at')[:6]
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Artikel'
+        context['url'] = 'article-category'
+        return context
+
+class ArticleCategoryView(ListView):
+    model = Article
+    context_object_name = 'articles'
     template_name = "articles/list.html"
     paginate_by = 12
     ordering = "-created_at"
 
     def get_queryset(self):
-        return Article.objects.filter(status=StatusChoice.APROVED).order_by('-created_at')
+        return Article.objects.filter(status=StatusChoice.APROVED, category__name=self.kwargs['category']).order_by('-created_at')
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -31,7 +46,11 @@ class ArticleView(ListView):
 
         # Add the page range to the context
         context['page_range'] = range(first_page_in_range, paginator.num_pages + 1)[:page_numbers_range*2]
+        context['title'] = 'Artikel'
+        context['url'] = 'article-category'
+        context['penyakit'] = self.kwargs['category']
         return context
+
 
 class ArticleDetailView(DetailView):
     model = Article

@@ -9,13 +9,6 @@
             <div class="col-md-8 px-0 px-sm-3">
                 <div class="blog-style">
                     <h1 class="use-text-primary use-text-bold mb-3">{{ report.title }}</h1><br>
-                    {% if report.abstract %}
-                        <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">Abstract</h4>
-                    {% endif %}
-                    <report class="blog-content">
-                        {{ report.abstract|safe }}
-                    </report>
-
                     <report class="blog-content">
                         {{ report.content|safe }}
                     </report>

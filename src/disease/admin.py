@@ -13,7 +13,7 @@ class CategoryAdminView(admin.ModelAdmin):
 
 @admin.register(Disease)
 class DiseaseAdminView(admin.ModelAdmin):
-    list_display = ['disease_name', 'disease_prevention', 'description', 'medicine', 'diagnose', 'lab_check', 'cause_of_disease']
+    list_display = ['disease_name', 'created_by', 'created_at', 'status']
 
 @admin.register(Report)
 class ReportAdminView(admin.ModelAdmin):

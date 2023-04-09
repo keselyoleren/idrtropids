@@ -5,89 +5,158 @@
 {% block content %}
 <div class="container container-front">
    <!-- #### SEARCH ####-->
-   {% block search %}
+   {% comment %} {% block search %}
    {% include '../layouts/search.html' %}
-   {% endblock %}
+   {% endblock %} {% endcomment %}
    <!-- #### END SEARCH ####-->
+  <br><br>
   <div class="container-wrap">
-    <!-- #### SEARCH #### -->
-    <div class="hero-banner-wrap">
-      <div class="deco-wrap">
-        <div class="deco bottom s1">&nbsp;</div>
-        <div class="deco top s1">&nbsp;</div>
-      </div>
-    </div>
-    <div class="search-content">
-      <div>
-        <div class="">
-          <div class="space-top-short" id="post_p">
-            <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">News</h4>
-
-             <!-- #### LIST ####-->
-            <div class="search-content">
-              <div class="container">
-                <!-- #### SORTER ####-->
-                <div class="row sorter align-items-center flex-sm-row-reverse">
-                  <div class="col-lg-3 col-sm-8 py-1 px-0">
-                    <div class="d-flex justify-content-sm-end justify-content-center align-items-center"><a class="modal-trigger btn btn-outlined primary waves-effect me-4 show-sm-down" id="open_filter" href="#modal_filter"><i class="material-icons left">filter_list</i>Filter</a>
-                      <div class="toggle-btn-group me-4 show-sm-up" id="switch_view"><button class="btn btn-outlined primary active" type="button" data-value="grid"><i class="material-icons">grid_on</i></button> <button class="btn btn-outlined primary" type="button" data-value="list"><i class="material-icons">view_list</i></button></div>
+    <div class="row">
+      <div class="col-md-8 px-0 px-sm-3">
+        <div class="search-content">
+          <div>
+            <div class="">
+              <div class="space-top-short" id="post_p">
+                <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">Berita Terkait {{ penyakit }}</h4>
+                <!-- #### LIST ####-->
+                <div class="search-content">
+                  <div class="container">
+                    <!-- #### SORTER ####-->
+                    <div class="row sorter align-items-center flex-sm-row-reverse">
+                      <div class="col-lg-3 col-sm-8 py-1 px-0">
+                        <div class="d-flex justify-content-sm-end justify-content-center align-items-center"><a class="modal-trigger btn btn-outlined primary waves-effect me-4 show-sm-down" id="open_filter" href="#modal_filter"><i class="material-icons left">filter_list</i>Filter</a>
+                          <div class="toggle-btn-group me-4 show-sm-up" id="switch_view"><button class="btn btn-outlined primary active" type="button" data-value="grid"><i class="material-icons">grid_on</i></button> <button class="btn btn-outlined primary" type="button" data-value="list"><i class="material-icons">view_list</i></button></div>
+                        </div>
+                      </div>
+                      <div class="col-lg-9 col-sm-4 py-1 px-0">
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-lg-9 col-sm-4 py-1 px-0">
-                  </div>
-                </div>
-                <div class="row align-items-start justify-content-start">
-                  <!-- ##### ITEM LIST #####-->
-                  <div class="col-lg-12 col-md-10 px-sm-3 px-0">
-                    <div class="row" id="product_result">
-                      {% for item in news %}
-                        <div class="col col-lg-4 col-sm-6 px-sm-3 px-0">
-                          <div class="card product-card portrait full">
-                            <a class="waves-effect hidden-link" href="{% url 'detail-news' item.slug %}">&nbsp;</a>
-                            <div class="figure">
-                              <div class="responsive-img" style="background-image:url({{ item.thumbnail.url }});"></div>
-                            </div>
-                            <div class="desc">
-                              <div class="text" style="max-width:600px;">
-                                <h6 class="title pb-2 text-truncate" title="{{ item.title }}">{{ item.title }}</h6>
-                                <p class="use-text-paragraph">{{ item.visits }} views {{ item.created_at|naturaltime }}</p>
-                              </div>
-                              <div>
-                                <div class="property">
-                                  <a class="btn btn-outlined primary button block" href="{% url 'detail-news' item.slug %}">see detail</a>
+                    <div class="row align-items-start justify-content-start">
+                      <!-- ##### ITEM LIST #####-->
+                      <div class="col-lg-12 col-md-10 px-sm-3 px-0">
+                        <div class="row" id="product_result">
+                          {% for item in news %}
+                            <div class="col col-lg-4 col-sm-6 px-sm-3 px-0">
+                              <div class="card product-card portrait full">
+                                <a class="waves-effect hidden-link" href="{% url 'detail-news' item.slug %}">&nbsp;</a>
+                                <div class="figure">
+                                  <div class="responsive-img" style="background-image:url({{ item.thumbnail.url }});"></div>
+                                </div>
+                                <div class="desc">
+                                  <div class="text" style="max-width:600px;">
+                                    <h6 class="title pb-2 text-truncate" title="{{ item.title }}">{{ item.title }}</h6>
+                                    <p class="use-text-paragraph">{{ item.visits }} views {{ item.created_at|naturaltime }}</p>
+                                  </div>
+                                  <div>
+                                    <div class="property">
+                                      <a class="btn btn-outlined primary button block" href="{% url 'detail-article' item.slug %}">see detail</a>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          {% endfor %}
                         </div>
-                      {% endfor %}
+                      </div>
+                      <!-- ##### END ITEM LIST #####-->
                     </div>
                   </div>
-                  <!-- ##### END ITEM LIST #####-->
+                </div>
+                <!-- #### END LIST ####-->
+    
+                <div class="row">
+                  {% if is_paginated %}
+                  <ul class="slick-dots" style="" role="tablist">
+                    {% for i in page_range %} 
+                      {% if page_obj.number == i %}
+                        <li role="presentation" class="slick-active">
+                          <button type="button" role="tab" id="slick-slide-control43" aria-controls="slick-slide43" aria-label="4 of 3" tabindex="0" aria-selected="true">4</button>
+                        </li>
+                      {% else %}
+                        <li class="" role="presentation">
+                          <a href="?page={{ i }}" id="slick-slide-control{{i}}"  aria-controls="slick-slide{{i}}" role="tab" tabindex="-1">{{ i }}</a>
+                        </li>  
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}       
+                  <br><br><br>
                 </div>
               </div>
             </div>
-            <!-- #### END LIST ####-->
-
-            <div class="row">
-              {% if is_paginated %}
-              <ul class="slick-dots" style="" role="tablist">
-                {% for i in page_range %} 
-                  {% if page_obj.number == i %}
-                    <li role="presentation" class="slick-active">
-                      <button type="button" role="tab" id="slick-slide-control43" aria-controls="slick-slide43" aria-label="4 of 3" tabindex="0" aria-selected="true">4</button>
-                    </li>
-                  {% else %}
-                    <li class="" role="presentation">
-                      <a href="?page={{ i }}" id="slick-slide-control{{i}}"  aria-controls="slick-slide{{i}}" role="tab" tabindex="-1">{{ i }}</a>
-                    </li>  
-                  {% endif %}
-                {% endfor %}
-              {% endif %}       
-              <br><br><br>
-            </div>
           </div>
         </div>
+      </div>
+      <br>
+      <div class="col-md-4 px-0 px-sm-3">
+        <div class="blog-style">
+          <div class="sidebar">
+              <div class="py-3"></div>
+              <div class="card paper">
+                <header>
+                  <div class="icon">
+                    <i class="material-icons small">folder</i>
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title">Archived</span>
+                  </div>
+                </header>
+                <div class="content">
+                  <div>
+                    <div class="collection">
+                      <a class="waves-effect collection-item" href="#!">
+                          <span class="use-text-medium">October 2018</span>
+                          <span class="secondary-content">
+                              <i class="material-icons icon primary">keyboard_arrow_right</i>
+                          </span>
+                      </a>
+                      <a class="waves-effect collection-item" href="#!">
+                          <span class="use-text-medium">September 2018</span>
+                          <span class="secondary-content">
+                              <i class="material-icons icon primary">keyboard_arrow_right</i>
+                          </span>
+                      </a>
+                      <a class="waves-effect collection-item" href="#!">
+                          <span class="use-text-medium">August 2018</span>
+                          <span class="secondary-content">
+                              <i class="material-icons icon primary">keyboard_arrow_right</i>
+                          </span>
+                      </a>
+                      <a class="waves-effect collection-item" href="#!">
+                          <span class="use-text-medium">July 2018</span>
+                          <span class="secondary-content">
+                              <i class="material-icons icon primary">keyboard_arrow_right</i>
+                          </span>
+                      </a>
+                      <a class="waves-effect collection-item" href="#!">
+                          <span class="use-text-medium">June 2018</span>
+                          <span class="secondary-content">
+                              <i class="material-icons icon primary">keyboard_arrow_right</i>
+                          </span>
+                      </a>
+                      <a class="waves-effect collection-item" href="#!">
+                          <span class="use-text-medium">April 2018</span>
+                          <span class="secondary-content">
+                              <i class="material-icons icon primary">keyboard_arrow_right</i>
+                          </span>
+                      </a>
+                      <a class="waves-effect collection-item" href="#!">
+                          <span class="use-text-medium">March 2018</span>
+                          <span class="secondary-content">
+                              <i class="material-icons icon primary">keyboard_arrow_right</i>
+                          </span>
+                      </a>
+                      <a class="waves-effect collection-item" href="#!">
+                          <span class="use-text-medium">Febuary 2018</span>
+                          <span class="secondary-content">
+                              <i class="material-icons icon primary">keyboard_arrow_right</i>
+                          </span>
+                      </a>
+                    </div>
+                  </div><a class="btn waves-effect btn-flat primary-text block">see all</a>
+                </div>
+              </div>              
+          </div>
+      </div>
       </div>
     </div>
   </div>
