@@ -64,6 +64,7 @@ INSTALLED_APPS = [
 
     'users.apps.UsersConfig',
     'disease.apps.DiseaseConfig',
+    'home'
 ]
 
 MIDDLEWARE = [

@@ -27,6 +27,7 @@ from rest_framework import permissions
 
 from disease.views.news_views import HomeDetailView, HomeView
 from disease.urls import page_urls
+from home.urls import home_url
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -60,6 +61,7 @@ urlpatterns = [
     ])),
 
     path('api/v1/', include([
+        path('home/', include(home_url)),
         path('page/', include(page_urls)),
         path('auth/', include('users.urls')),
     ]))
