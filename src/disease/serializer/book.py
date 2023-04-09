@@ -7,7 +7,7 @@ from disease.models.references_model import Article, Book
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        exclude = ("abstract", )
+        exclude = ("content", )
 
 class BookRetriefSerialize(serializers.ModelSerializer):
     class Meta:

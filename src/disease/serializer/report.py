@@ -6,10 +6,11 @@ from disease.serializer.keyword import KeywordSerialize
 class ReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = Report
-        exclude = ("abstract", 'content')
+        exclude = ("content", )
 
 class GetReportSerialize(serializers.ModelSerializer):
     keyword = KeywordSerialize(many=True)
     class Meta:
         model = Report
         fields = "__all__"
+

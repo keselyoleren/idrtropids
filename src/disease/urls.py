@@ -1,6 +1,7 @@
 from rest_framework import routers
 from disease.apiviewset.article import ArticleApiView
 from disease.apiviewset.book import BookApiView
+from disease.apiviewset.category_views import CategoryApiView
 from disease.apiviewset.diseases import DiseasesApiView
 from disease.apiviewset.disqus.answer import AnswerApiView
 from disease.apiviewset.disqus.question_diseases import QuestionDiseasesApiView
@@ -28,6 +29,7 @@ route.register('diseases', DiseasesApiView)
 route.register('book', BookApiView)
 route.register('report', ReportApiView)
 route.register('article', ArticleApiView)
+route.register('category', CategoryApiView)
 route.register('search', SearchApiView, basename='api-serach')
 
 page_urls = route.urls

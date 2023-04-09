@@ -6,14 +6,13 @@ from rest_framework import (
     views,
     response,
 )
-
-from home.models import Carousel
-from ..serialize.carousel_serialize import CarouselSerialize
+from disease.models.diseases_model import Category
+from disease.serializer.category import CategorySerializer
 from helper.pagination import ResponsePagination
 
-class CarouselApiView(viewsets.ModelViewSet):
-    serializer_class = CarouselSerialize
-    queryset = Carousel.objects.all()
+class CategoryApiView(viewsets.ModelViewSet):
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
     pagination_class = ResponsePagination
 
     def list(self, request, *args, **kwargs):
