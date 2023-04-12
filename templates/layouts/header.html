@@ -38,8 +38,11 @@
           <div class="hidden-xs-down">
             <div class="search short">
               <div class="input-field">
-                <i class="material-icons search-icon prefix">search</i> 
-                <input type="text" placeholder="I'm looking for...">
+                <form action="{% url 'search' %}" method="GET">
+                  <i class="material-icons search-icon prefix">search</i> 
+                  <input type="text" name="keyword" placeholder="Search {{search_catagory}} ...">
+                  <input type="hidden" name="category" value="{{ search_catagory }}">
+                </form>
               </div>
             </div>
           </div>

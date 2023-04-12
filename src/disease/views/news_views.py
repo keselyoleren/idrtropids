@@ -80,6 +80,7 @@ class NewsListView(ListView):
         context['page_range'] = range(first_page_in_range, paginator.num_pages + 1)[:page_numbers_range*2]
         context['title'] = 'Berita'
         context['url'] = 'berita-category'
+        context['search_catagory'] = 'berita'
         return context
 
 class NewsCategoryListView(ListView):
@@ -105,6 +106,7 @@ class NewsCategoryListView(ListView):
         context['title'] = 'Berita'
         context['url'] = 'berita-category'
         context['penyakit'] = self.kwargs['category']
+        context['search_catagory'] = 'berita'
         return context
 
 
@@ -122,6 +124,8 @@ class NewsDdetailView(DetailView):
         instance.save()
         context =  super().get_context_data(**kwargs)
         context['headline_news'] = self.get_queryset()[:5]
+        context['url'] = 'berita-category'
+        context['search_catagory'] = 'berita'
         return context
 
 class NewsApiView(generics.ListAPIView, generics.RetrieveAPIView, viewsets.ModelViewSet):

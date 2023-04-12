@@ -29,6 +29,7 @@ class ReportListView(ListView):
         context['page_range'] = range(first_page_in_range, paginator.num_pages + 1)[:page_numbers_range*2]
         context['title'] = 'Laporan'
         context['url'] = 'report-category'
+        context['search_catagory'] = 'laporan'
         return context
 
 class ReportCategoryListView(ListView):
@@ -54,6 +55,7 @@ class ReportCategoryListView(ListView):
         context['title'] = 'Laporan'
         context['url'] = 'report-category'
         context['penyakit'] = self.kwargs['category']
+        context['search_catagory'] = 'laporan'
         return context
 
 class ReportDetailView(DetailView):
@@ -67,4 +69,7 @@ class ReportDetailView(DetailView):
         instance = self.get_object()
         instance.visits += 1
         instance.save()
-        return super().get_context_data(**kwargs)
+        context =  super().get_context_data(**kwargs)
+        context['url'] = 'report-category'
+        context['search_catagory'] = 'laporan'
+        return context

@@ -8,13 +8,8 @@
     <div class="container pt-3">
         <div class="search-component">
             <div class="container max-md">
-                <!-- #### SEARCH ####-->
-                {% block search %}
-                {% include '../layouts/search.html' %}
-                {% endblock %}
-                <!-- #### END SEARCH ####-->
-
-                <h3 class="use-text-title2 text-center mb-6">Result returned for " {{ key_result }} "</h3>
+                
+                <h3 class="use-text-title2 text-center mb-6">Hasil Pencarian dari " {{ key_result }} "</h3>
                 {% for item in object_diseases %}
                     <div class="pb-4 mb-4">
                         <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
@@ -28,7 +23,7 @@
                 {% for item in object_news %}
                     <div class="pb-4 mb-4">
                         <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
-                            <a href="{% url 'news-detail' item.slug %}">{{ item.title }}</a>
+                            <a href="{% url 'detail-news' item.slug %}">{{ item.title }}</a>
                         </h1>
                         <div class="text-base leading-5 tracking-wide text-gray-500">
                             <span class="bg-brand-100 text-brand-900 px-2">News</span>  {{item.created_at}} —  {{ item.title }}
@@ -38,7 +33,7 @@
                 {% for item in object_report %}
                     <div class="pb-4 mb-4">
                         <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
-                            <a href="{% url 'report-detail' item.slug %}">{{ item.title }}</a>
+                            <a href="{% url 'detail-report' item.slug %}">{{ item.title }}</a>
                         </h1>
                         <div class="text-base leading-5 tracking-wide text-gray-500">
                             <span class="bg-brand-100 text-brand-900 px-2">Reports</span>  {{item.created_at}} —  {{ item.title }}
@@ -48,20 +43,20 @@
                 {% for item in object_book %}
                     <div class="pb-4 mb-4">
                         <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
-                            <a href="{% url 'report-detail' item.slug %}">{{ item.title }}</a>
+                            <a href="{% url 'detail-book' item.slug %}">{{ item.title }}</a>
                         </h1>
                         <div class="text-base leading-5 tracking-wide text-gray-500">
-                            <span class="bg-brand-100 text-brand-900 px-2">Reports</span>  {{item.created_at}} —  {{ item.title }}
+                            <span class="bg-brand-100 text-brand-900 px-2">Buku</span>  {{item.created_at}} —  {{ item.title }}
                         </div>
                     </div>
                 {% endfor %}
                 {% for item in object_artikel %}
                     <div class="pb-4 mb-4">
                         <h1 class="text-xl text-bold text-brand-900 hover:text-teal-700">
-                            <a href="{% url 'report-detail' item.slug %}">{{ item.title }}</a>
+                            <a href="{% url 'detail-article' item.slug %}">{{ item.title }}</a>
                         </h1>
                         <div class="text-base leading-5 tracking-wide text-gray-500">
-                            <span class="bg-brand-100 text-brand-900 px-2">Reports</span>  {{item.created_at}} —  {{ item.title }}
+                            <span class="bg-brand-100 text-brand-900 px-2">Artikel</span>  {{item.created_at}} —  {{ item.title }}
                         </div>
                     </div>
                 {% endfor %}

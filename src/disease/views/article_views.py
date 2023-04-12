@@ -24,6 +24,7 @@ class ArticleView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Artikel'
         context['url'] = 'article-category'
+        context['search_catagory'] = 'artikel'
         return context
 
 class ArticleCategoryView(ListView):
@@ -48,6 +49,7 @@ class ArticleCategoryView(ListView):
         context['page_range'] = range(first_page_in_range, paginator.num_pages + 1)[:page_numbers_range*2]
         context['title'] = 'Artikel'
         context['url'] = 'article-category'
+        context['search_catagory'] = 'artikel'
         context['penyakit'] = self.kwargs['category']
         return context
 
@@ -63,4 +65,7 @@ class ArticleDetailView(DetailView):
         instance = self.get_object()
         instance.visits += 1
         instance.save()
-        return super().get_context_data(**kwargs)
+        context =  super().get_context_data(**kwargs)
+        context['url'] = 'article-category'
+        context['search_catagory'] = 'artikel'
+        return context
