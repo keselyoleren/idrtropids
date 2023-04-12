@@ -1,0 +1,30 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+<div class="container container-front">
+   <!-- #### SEARCH ####-->
+   {% block search %}
+   {% include '../layouts/search.html' %}
+   {% endblock %}
+   <!-- #### END SEARCH ####-->
+  <div class="container-wrap">
+    <div class="search-content">
+      <div>
+        <div class="">
+          <div class="space-top-short" id="post_p">
+            <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">Informations</h4>
+            <!-- #### INFO ####-->
+            <div class="pa-3">
+                <h4 class="use-text-title text-capitalize">Information title</h4>
+                <p class="use-text-subtitle2">Get information about health, ingredients, rules, instructions for using drugs and vitamins here</p>
+            </div>
+            <!-- #### END INFO ####-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

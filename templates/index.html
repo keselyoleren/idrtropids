@@ -7,7 +7,7 @@
 	<!-- ##### BANNER #####-->
 	<section id="banner">
 		<div class="banner-slider">
-		  <div class="banner-wrap">
+		  <div class="banner-wrap pb-10">
 			<div class="carousel slide" data-bs-ride="carousel">
 			  <div class="slider-deco" id="slider_deco">
 				<div class="slide">
@@ -30,7 +30,7 @@
 				  <div class="inner">&nbsp;</div>
 				</div>
 			  </div>
-			  <div class="slider" id="banner_slider">
+			  <div class="slider banner_slider" id="banner_slider">
 				<div class="slide" id="slide1">
 				  <div class="inner">
 					<div class="img background-banner"><img class="img-2d3d" src="https://res.cloudinary.com/skyrev/image/upload/v1613843545/skyrev/medical/background_3d_2x_aq4umx.png" data-2d="https://res.cloudinary.com/skyrev/image/upload/v1613843545/skyrev/medical/background_2d_2x_h9lqd2.png" data-3d="https://res.cloudinary.com/skyrev/image/upload/v1613843545/skyrev/medical/background_3d_2x_aq4umx.png" alt="background"></div>
@@ -88,7 +88,7 @@
 				</div>
 			  </div>
 			</div>
-			<div class="search-component">
+			{% comment %} <div class="search-component">
 			  <div class="container max-md">
 				  <div class="search">
 					<div class="input-field">
@@ -99,7 +99,7 @@
 					</div>
 				  </div>
 			  </div>
-			</div>
+			</div> {% endcomment %}
 		  </div>
 		</div>
 	</section>
@@ -437,3 +437,13 @@
 	
 
 	{% endblock  %}
+	{% comment %} {% block js %}
+		<script>
+			window.onload=function(){
+				$('.slider').slick({
+					autoplay: true,
+					dots: true,
+				});
+			};
+	  </script>
+	{% endblock js %} {% endcomment %}

@@ -2,7 +2,7 @@
 {% load costom_tag %}
 
 <!-- #### HEADER ####-->
-<div class="sidenav mobile-nav" id="slide_menu">
+  <div class="sidenav mobile-nav" id="slide_menu">
     <div class="side-multilv">
       <div class="collection side-multilv">
         <ul class="collapsible expandable">
@@ -12,6 +12,19 @@
           <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="{% url 'report' %}">Reports</a></li>
           <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="{% url 'book' %}">Books</a></li>
           <li class="collection-item"><a class="sidenav-close waves-effect menu-list" href="{% url 'news' %}">News</a></li>
+          <li class="collection-item group-child has-child">
+            <div class="collapsible-header"><a class="waves-effect text-truncate menu-list" href="#!">Informations <i class="material-icons right icon">keyboard_arrow_down</i></a></div>
+            <div class="collapsible-body">
+              <div class="collection side-group">
+                <ul class="collapsible expandable">
+                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="#">About Us</a></li>
+                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="#">Contact</a></li>
+                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="#">Join Contributor</a></li>
+                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="/contributor">Contributors</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
       <div class="dropdown-divider"></div>
@@ -22,24 +35,35 @@
       <div class="header-content">
         <nav class="nav-menu"><button class="btn-icon waves-effect sidenav-trigger hamburger hamburger--spin show-md-down" id="mobile_menu" type="button" data-target="slide_menu"><span class="hamburger-box"><span class="bar hamburger-inner"></span></span></button>
           <div class="header-hamburger header-component"><button class="btn-icon waves-effect hamburger hamburger--spin mobile-menu" id="hamburger_menu"><span class="hamburger-box"><span class="bar hamburger-inner"></span></span></button></div>
-          <div class="logo"><a href="#"><span class="logo-main landscape medium"><img src="{% static '/assets/images/logo-medical.png' %}" alt="logo">IDRTROPIDS</span></a></div>
+          <div class="logo"><a href="/"><span class="logo-main landscape medium"><img src="{% static '/assets/images/logo-medical.png' %}" alt="logo">IDRTROPIDS</span></a></div>
           <div class="header-mixed header-component flex-grow-1 active">
             <div class="scrollactive-nav scrollnav show-lg-up multi-menu">
               <ul class="main-menu">
-                <li><a class="btn btn-flat anchor-link waves-effect" href="/">Home</a></li>
+                {% comment %} <li><a class="btn btn-flat anchor-link waves-effect" href="/">Home</a></li> {% endcomment %}
                 <li><a class="btn btn-flat anchor-link waves-effect" href="{% url 'diseases' %}">Infectious Diseases</a></li>
                 <li><a class="btn btn-flat anchor-link waves-effect" href="{% url 'article' %}">Article</a></li>
                 <li><a class="btn btn-flat anchor-link waves-effect" href="{% url 'report' %}">Reports</a></li>
                 <li><a class="btn btn-flat anchor-link waves-effect" href="{% url 'book' %}">Books</a></li>
                 <li><a class="btn btn-flat anchor-link waves-effect" href="{% url 'news' %}">News</a></li>
+                <li>
+                  <a class="btn btn-flat anchor-link droplist-trigger-click waves-effect" href="#!" data-target="id_2">Info <i class="material-icons right icon">keyboard_arrow_down</i></a>
+                  <ul class="dropdown-content" id="id_2">
+                    <li class="menu-list"><a class="waves-effect text-truncate menu-list" href="#">About Us</a></li>
+                    <li class="menu-list"><a class="waves-effect text-truncate menu-list" href="#">Contact</a></li>
+                    <li class="menu-list"><a class="waves-effect text-truncate menu-list" href="#">Join Contributor</a></li>
+                    <li class="menu-list"><a class="waves-effect text-truncate menu-list" href="/contributor">Contributors</a></li>
+                  </ul>
+              </li>
               </ul>
             </div>
           </div>
           <div class="hidden-xs-down">
             <div class="search short">
               <div class="input-field">
-                <i class="material-icons search-icon prefix">search</i> 
-                <input type="text" placeholder="I'm looking for...">
+                <form action="{% url 'search' %}" method="GET">
+                  <i class="material-icons search-icon prefix">search</i> 
+                  <input type="text" name="keyword" placeholder="Search whatever you want...">
+                </form>
               </div>
             </div>
           </div>
