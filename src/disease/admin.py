@@ -31,7 +31,7 @@ class NewsAdminView(admin.ModelAdmin):
 @admin.register(Article)
 class ArticleAdminView(admin.ModelAdmin):
     list_display = ['title', 'volume', 'publication', 'author']
-
+    list_filter = ['created_at', ]
     def get_form(self, request, obj=None, **kwargs):
         self.exclude = ("slug", )
         return super(ArticleAdminView, self).get_form(request, obj, **kwargs)
