@@ -3,21 +3,20 @@
 {% load humanize %}
 
 {% block content %}
-<div class="container container-front">
    <!-- #### SEARCH ####-->
    {% comment %} {% block search %}
    {% include '../layouts/search.html' %}
    {% endblock %} {% endcomment %}
    <!-- #### END SEARCH ####-->
-  <br><br>
-  <div class="container-wrap">
+<div class="container-general pt-12">
+  <div class="container pt-3">
     <div class="row">
       <div class="col-md-8 px-0 px-sm-3">
         <div class="search-content">
           <div>
             <div class="">
               <div class="space-top-short" id="post_p">
-                <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">Berita Terkait {{ penyakit }}</h4>
+                <h4 class="use-text-subtitle use-text-primary mb-3 ms-3">Related News {{ penyakit }}</h4>
                 <!-- #### LIST ####-->
                 <div class="search-content">
                   <div class="container">
@@ -43,7 +42,7 @@
                                   <div class="responsive-img" style="background-image:url({{ item.thumbnail.url }});"></div>
                                 </div>
                                 <div class="desc">
-                                  <div class="text" style="max-width:600px;">
+                                  <div class="text" style="max-width:300px;">
                                     <h6 class="title pb-2 text-truncate" title="{{ item.title }}">{{ item.title }}</h6>
                                     <p class="use-text-paragraph">{{ item.visits }} views {{ item.created_at|naturaltime }}</p>
                                   </div>
@@ -86,11 +85,10 @@
           </div>
         </div>
       </div>
-      <br>
       <div class="col-md-4 px-0 px-sm-3">
         <div class="blog-style">
           <div class="sidebar">
-              <div class="py-3"></div>
+              <div class="py-20"></div>
               <div class="card paper">
                 <header>
                   <div class="icon">
@@ -156,7 +154,6 @@
                 </div>
               </div>              
           </div>
-      </div>
       </div>
     </div>
   </div>

@@ -6,12 +6,14 @@ from disease.apiviewset.diseases import DiseasesApiView
 from disease.apiviewset.disqus.answer import AnswerApiView
 from disease.apiviewset.disqus.question_diseases import QuestionDiseasesApiView
 from disease.apiviewset.disqus.question_public import QuestionApiView
+from disease.apiviewset.info_views import InfoApiView
 from disease.apiviewset.news import NewsApiView
 from disease.apiviewset.report import ReportApiView
 from disease.apiviewset.search import SearchApiView
 from disease.views.article_views import ArticleCategoryView, ArticleDetailView, ArticleView
 from disease.views.book_views import BookCategoryListView, BookDetailView, BookListView
 from disease.views.diseases_views import  DiseasesDetailView, DiseasesListView
+from disease.views.info_views import InfoDetailView
 
 from disease.views.news_views import NewsCategoryListView, NewsDdetailView, NewsListView
 from django.urls import path, include
@@ -30,6 +32,7 @@ route.register('book', BookApiView)
 route.register('report', ReportApiView)
 route.register('article', ArticleApiView)
 route.register('category', CategoryApiView)
+route.register('info', InfoApiView)
 route.register('search', SearchApiView, basename='api-serach')
 
 page_urls = route.urls
@@ -39,6 +42,7 @@ page_urls = route.urls
 urlpatterns = [
     path('diseases/', DiseasesListView.as_view(), name='diseases'),
     path('diseases/<slug:slug>/', DiseasesDetailView.as_view(), name='diseases-detail'),
+    path('info/<slug:slug>/', InfoDetailView.as_view(), name="info-detail"),
     path('news/', include([
         path('', NewsListView.as_view(), name='news'),
         path('<slug:slug>/', NewsDdetailView.as_view(), name='detail-news'),

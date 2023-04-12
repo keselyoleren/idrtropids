@@ -1,0 +1,23 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+<div class="container container-front">
+  <div class="container-wrap">
+    <div class="search-content">
+      <div>
+        <div class="container inner-wrap max-md">
+          <div class="space-top-short" id="post_p">
+            <!-- #### INFO ####-->
+            <div class="pa-4">
+                {{ info.content|safe }}
+            </div>
+            <!-- #### END INFO ####-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

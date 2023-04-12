@@ -302,13 +302,17 @@
   <script src="{% static '/assets/js/medical-bundle.min.js' %}"></script>
   <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
   <script>
-	window.onload=function(){
-		$('.carousel').slick({
-			autoplay:true
-		});
-	  };
+    {% comment %} window.onload=function(){ {% endcomment %}
+      $('.slider').slick({
+        autoplay: true,
+        dots: true,
+        slidesToScroll: 1,
+        focusOnSelect: true
+      });
+    {% comment %} }; {% endcomment %}
   </script>
-  {% block js %}{% endblock  %}
+  {% block js %}
+  {% endblock  %}
 </body>
 
 </html>

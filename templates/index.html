@@ -1,13 +1,13 @@
 {% extends 'layouts/main.html' %}
 {% load static %}
 {% load humanize %}
-
+{% load costom_tag %}
 
 {% block content %}
 	<!-- ##### BANNER #####-->
 	<section id="banner">
 		<div class="banner-slider">
-		  <div class="banner-wrap">
+		  <div class="banner-wrap pb-10">
 			<div class="carousel slide" data-bs-ride="carousel">
 			  <div class="slider-deco" id="slider_deco">
 				<div class="slide">
@@ -30,7 +30,8 @@
 				  <div class="inner">&nbsp;</div>
 				</div>
 			  </div>
-			  <div class="slider" id="banner_slider">
+			  {% comment %} carausel {% endcomment %}
+			  {% comment %} <div class="slider banner_slider" id="banner_slider">
 				<div class="slide" id="slide1">
 				  <div class="inner">
 					<div class="img background-banner"><img class="img-2d3d" src="https://res.cloudinary.com/skyrev/image/upload/v1613843545/skyrev/medical/background_3d_2x_aq4umx.png" data-2d="https://res.cloudinary.com/skyrev/image/upload/v1613843545/skyrev/medical/background_2d_2x_h9lqd2.png" data-3d="https://res.cloudinary.com/skyrev/image/upload/v1613843545/skyrev/medical/background_3d_2x_aq4umx.png" alt="background"></div>
@@ -86,18 +87,32 @@
 					</div>
 				  </div>
 				</div>
-			  </div>
-			</div>
-			<div class="search-component">
-			  <div class="container max-md">
-				  <div class="search">
-					<div class="input-field">
-						<form action="{% url 'search' %}" method="GET">
-							<i class="material-icons search-icon prefix">search</i> 
-							<input type="text" name="keyword" placeholder="Search whatever you want...">
-						</form>
+			  </div> {% endcomment %}
+			  <br><br>
+			  <div class="slider banner_slider" id="banner_slider">
+				{% for item in costom_tag|get_carousel  %}
+					<div class="slide center-content" id="slide3">
+						<div class="inner">
+							<div class="container max-md">
+								<div class="row justify-content-center">
+								<div class="col-xs-12 px-md-12">
+									<div class="text text-center">
+										<h4 class="use-text-title">{{ item.title }}</h4>
+										<h5 class="use-text-subtitle">{{ item.content }}</h5>
+									</div>
+								</div>
+								<div class="col-12">
+									<div class="img h-banner">
+										<img class="img-2d3d" src="https://res.cloudinary.com/skyrev/image/upload/v1613843546/skyrev/medical/banner3_3D_2x_zkgpnl.png" 
+											data-2d="https://res.cloudinary.com/skyrev/image/upload/v1613843546/skyrev/medical/banner3_2D_2x_yrejyj.png" 
+											data-3d="https://res.cloudinary.com/skyrev/image/upload/v1613843546/skyrev/medical/banner3_3D_2x_zkgpnl.png" 
+											alt="banner 3 3D"></div>
+								</div>
+								</div>
+							</div>
+						</div>
 					</div>
-				  </div>
+				{% endfor %}
 			  </div>
 			</div>
 		  </div>
@@ -437,3 +452,13 @@
 	
 
 	{% endblock  %}
+	{% comment %} {% block js %}
+		<script>
+			window.onload=function(){
+				$('.slider').slick({
+					autoplay: true,
+					dots: true,
+				});
+			};
+	  </script>
+	{% endblock js %} {% endcomment %}
