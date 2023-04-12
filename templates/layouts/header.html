@@ -18,7 +18,7 @@
               <div class="collection side-group">
                 <ul class="collapsible expandable">
                   {% for item in costom_tag|get_info  %}
-                    <li class="menu-list"><a class="collection-item side-group-link" href="{% url 'info-detail' item.slug %}">{{ item.title }}</a></li>
+                    <li class="menu-list"><a class="collection-item side-group-link" href="{% url 'detail-info' item.slug %}">{{ item.title }}</a></li>
                   {% endfor %}
                   <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="/contributor">Contributors</a></li>
                 </ul>
@@ -49,7 +49,7 @@
                   <a class="btn btn-flat anchor-link droplist-trigger-click waves-effect" href="#!" data-target="id_2">Info <i class="material-icons right icon">keyboard_arrow_down</i></a>
                   <ul class="dropdown-content" id="id_2">
                     {% for item in costom_tag|get_info  %}
-                      <li class="menu-list"><a class="waves-effect menu-list" href="{% url 'info-detail' item.slug %}">{{ item.title }}</a></li>
+                      <li class="menu-list"><a class="waves-effect menu-list" href="{% url 'detail-info' item.slug %}">{{ item.title }}</a></li>
                     {% endfor %}
                     <li class="menu-list"><a class="waves-effect text-truncate menu-list" href="/contributor">Contributors</a></li>
                   </ul>

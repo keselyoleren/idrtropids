@@ -42,7 +42,7 @@ page_urls = route.urls
 urlpatterns = [
     path('diseases/', DiseasesListView.as_view(), name='diseases'),
     path('diseases/<slug:slug>/', DiseasesDetailView.as_view(), name='diseases-detail'),
-    path('info/<slug:slug>/', InfoDetailView.as_view(), name="info-detail"),
+    path('info/<slug:slug>/', InfoDetailView.as_view(), name="detail-info"),
     path('news/', include([
         path('', NewsListView.as_view(), name='news'),
         path('<slug:slug>/', NewsDdetailView.as_view(), name='detail-news'),
