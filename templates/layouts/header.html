@@ -20,7 +20,7 @@
                   {% for item in costom_tag|get_info  %}
                     <li class="menu-list"><a class="collection-item side-group-link" href="{% url 'detail-info' item.slug %}">{{ item.title }}</a></li>
                   {% endfor %}
-                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="/contributor">Contributors</a></li>
+                  <li class="collection-item side-group-link"><a class="waves-effect text-truncate menu-list" href="{% url 'page-contributor' %}">Contributors</a></li>
                 </ul>
               </div>
             </div>
@@ -51,7 +51,7 @@
                     {% for item in costom_tag|get_info  %}
                       <li class="menu-list"><a class="waves-effect menu-list" href="{% url 'detail-info' item.slug %}">{{ item.title }}</a></li>
                     {% endfor %}
-                    <li class="menu-list"><a class="waves-effect text-truncate menu-list" href="/contributor">Contributors</a></li>
+                    <li class="menu-list"><a class="waves-effect text-truncate menu-list" href="{% url 'page-contributor' %}">Contributors</a></li>
                   </ul>
               </li>
               </ul>
