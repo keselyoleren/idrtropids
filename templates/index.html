@@ -6,7 +6,7 @@
 {% block content %}
 	<!-- ##### BANNER #####-->
 	<section id="banner">
-		<div class="banner-slider">
+		<div class="banner-slider mb-30">
 		  <div class="banner-wrap pb-10">
 			<div class="carousel slide" data-bs-ride="carousel">
 			  <div class="slider-deco" id="slider_deco">
@@ -91,25 +91,23 @@
 			  <br><br>
 			  <div class="slider banner_slider" id="banner_slider">
 				{% for item in costom_tag|get_carousel  %}
-					<div class="slide center-content" id="slide3">
+					<div class="slide" id="slide1">
 						<div class="inner">
-							<div class="container max-md">
-								<div class="row justify-content-center">
-								<div class="col-xs-12 px-md-12">
-									<div class="text text-center">
-										<h4 class="use-text-title">{{ item.title }}</h4>
-										<h5 class="use-text-subtitle">{{ item.content }}</h5>
-									</div>
+						  {% comment %} <div class="img background-banner"><img class="img-2d3d" src="https://res.cloudinary.com/skyrev/image/upload/v1613843545/skyrev/medical/background_3d_2x_aq4umx.png" data-2d="https://res.cloudinary.com/skyrev/image/upload/v1613843545/skyrev/medical/background_2d_2x_h9lqd2.png" data-3d="https://res.cloudinary.com/skyrev/image/upload/v1613843545/skyrev/medical/background_3d_2x_aq4umx.png" alt="background"></div> {% endcomment %}
+						  <div class="container">
+							<div class="row">
+							  <div class="col-md-7 col-lg-6 px-sm-6 px-0 d-flex align-items-center">
+								<div class="text">
+								  <h4 class="use-text-title">{{ item.title }}</h4>
+								  <h5 class="use-text-subtitle">{{ item.content }}</h5>
+								  <div class="btn-area"><a class="btn-flat waves-effect btn-large button primary use-text-secondary" href="/page/info/tentang-kami/">see detail</a> <a class="btn waves-effect button btn-large primary" href="/accounts/google/login/">get started</a></div>
 								</div>
-								<div class="col-12">
-									<div class="img h-banner">
-										<img class="img-2d3d" src="https://res.cloudinary.com/skyrev/image/upload/v1613843546/skyrev/medical/banner3_3D_2x_zkgpnl.png" 
-											data-2d="https://res.cloudinary.com/skyrev/image/upload/v1613843546/skyrev/medical/banner3_2D_2x_yrejyj.png" 
-											data-3d="https://res.cloudinary.com/skyrev/image/upload/v1613843546/skyrev/medical/banner3_3D_2x_zkgpnl.png" 
-											alt="banner 3 3D"></div>
-								</div>
-								</div>
+							  </div>
+							  <div class="col-md-5 col-lg-6">
+								<div class="img"><img class="img-2d3d mq-lg-up" src="https://res.cloudinary.com/skyrev/image/upload/v1613843545/skyrev/medical/banner2_3D_2x_wa7zml.png" data-2d="https://res.cloudinary.com/skyrev/image/upload/v1613843544/skyrev/medical/banner2_2D_2x_sjhh6y.png" data-3d="https://res.cloudinary.com/skyrev/image/upload/v1613843545/skyrev/medical/banner2_3D_2x_wa7zml.png" alt="banner 2 3D" data-class="float-right mr-sm-12"></div>
+							  </div>
 							</div>
+						  </div>
 						</div>
 					</div>
 				{% endfor %}
@@ -117,6 +115,20 @@
 			</div>
 		  </div>
 		</div>
+		<!-- ##### SEARCH #####-->
+		<div class="search-component">
+			<div class="container max-md">
+				<div class="search my-10">
+					<div class="input-field">
+						<form action="{% url 'search' %}" method="GET">
+							<i class="material-icons search-icon prefix">search</i> 
+							<input type="text" name="keyword" placeholder="Search whatever you want...">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ##### END SEARCH #####-->
 	</section>
 	<!-- ##### END BANNER #####-->
 	<!-- ##### COUNTER #####-->
