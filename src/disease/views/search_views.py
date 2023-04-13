@@ -24,21 +24,22 @@ class SearchView(View):
         #     object_book = Book.objects.none()
         #     object_report = Report.objects.none()
         #     object_news = News.objects.none()
-
+        context = {}
         if query:
-            object_diseases = Disease.objects.filter(disease_name__icontains=query, status=StatusChoice.APROVED)
-            object_book = Book.objects.filter(title__icontains=query, status=StatusChoice.APROVED)
-            object_artikel = Article.objects.filter(title__icontains=query, status=StatusChoice.APROVED)
-            object_report = Report.objects.filter(title__icontains=query, status=StatusChoice.APROVED)
-            object_news = News.objects.filter(title__icontains=query, status=StatusChoice.APROVED)
-            # context = {
-            #     'key_result':query,
-            #     'object_diseases': object_diseases,
-            #     'object_news': object_news,
-            #     'object_report': object_report,
-            #     'object_artikel': object_artikel,
-            #     'object_book': object_book,
-            # }
+            if not category:
+                object_diseases = Disease.objects.filter(disease_name__icontains=query, status=StatusChoice.APROVED)
+                object_book = Book.objects.filter(title__icontains=query, status=StatusChoice.APROVED)
+                object_artikel = Article.objects.filter(title__icontains=query, status=StatusChoice.APROVED)
+                object_report = Report.objects.filter(title__icontains=query, status=StatusChoice.APROVED)
+                object_news = News.objects.filter(title__icontains=query, status=StatusChoice.APROVED)
+                context = {
+                    'key_result':query,
+                    'object_diseases': object_diseases,
+                    'object_news': object_news,
+                    'object_report': object_report,
+                    'object_artikel': object_artikel,
+                    'object_book': object_book,
+                }
 
             if category == 'penyakit menular':
                 object_diseases = Disease.objects.filter(disease_name__icontains=query, status=StatusChoice.APROVED)
@@ -56,7 +57,6 @@ class SearchView(View):
 
             if category == 'artikel':
                 object_artikel = Article.objects.filter(title__icontains=query, status=StatusChoice.APROVED)
-                print('object article', object_artikel)
                 context = {
                     'key_result':query,
                     'object_artikel': object_artikel,
