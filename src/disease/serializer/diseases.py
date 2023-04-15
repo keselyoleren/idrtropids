@@ -2,6 +2,7 @@ from dataclasses import fields
 from rest_framework import serializers
 from disease.models.diseases_model import Disease
 from disease.models.news_model import News
+from disease.serializer.category import CategorySerializer
 from disease.serializer.news import NewsSerializer
 from users.serializers.user import UserSerialize
 
@@ -19,6 +20,7 @@ class DiseaseSerialize(serializers.ModelSerializer):
 
 class DiseasesSerializer(serializers.ModelSerializer):
     created_by = UserSerialize(many=False)
+    category = CategorySerializer()
     class Meta:
         model = Disease
         exclude = ('content',)
