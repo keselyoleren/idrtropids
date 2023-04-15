@@ -5,6 +5,7 @@ from disease.models.news_model import News
 from disease.serializer.category import CategorySerializer
 from disease.serializer.news import NewsSerializer
 from users.serializers.user import UserSerialize
+from django.conf import settings
 
 class DiseaseSerialize(serializers.ModelSerializer):
     news = serializers.SerializerMethodField()
@@ -28,6 +29,11 @@ class DiseasesSerializer(serializers.ModelSerializer):
 class GetDiseasesRetriveSerialize(serializers.ModelSerializer):
     created_by = UserSerialize(many=False)
     category = CategorySerializer()
+    thumbnail = serializers.SerializerMethodField()
+    
     class Meta:
         model = Disease
         fields = "__all__"
+
+    def get_thumbnail(self, obj):
+        return f"{settings.APP_URL}{obj.thumbnail.url}"

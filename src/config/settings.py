@@ -33,6 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+APP_URL = config('APP_URL')
+
 # Application definition
 
 INSTALLED_APPS = [
