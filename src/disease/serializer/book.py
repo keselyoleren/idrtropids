@@ -12,6 +12,7 @@ class BookSerializer(serializers.ModelSerializer):
         exclude = ("content", )
 
 class BookRetriefSerialize(serializers.ModelSerializer):
+    category = CategorySerializer()
     class Meta:
         model = Book
         fields = "__all__"

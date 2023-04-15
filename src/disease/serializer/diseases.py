@@ -27,6 +27,7 @@ class DiseasesSerializer(serializers.ModelSerializer):
 
 class GetDiseasesRetriveSerialize(serializers.ModelSerializer):
     created_by = UserSerialize(many=False)
+    category = CategorySerializer()
     class Meta:
         model = Disease
         fields = "__all__"

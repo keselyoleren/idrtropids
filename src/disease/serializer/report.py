@@ -12,6 +12,7 @@ class ReportSerializer(serializers.ModelSerializer):
 
 class GetReportSerialize(serializers.ModelSerializer):
     keyword = KeywordSerialize(many=True)
+    category = CategorySerializer()
     class Meta:
         model = Report
         fields = "__all__"

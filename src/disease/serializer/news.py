@@ -17,6 +17,7 @@ class NewsSerializer(serializers.ModelSerializer):
 class GetNewsSerialize(serializers.ModelSerializer):
     keyword = KeywordSerialize(many=True)
     created_by = UserSerialize(many=False)
+    category = CategorySerializer()
     class Meta:
         model = News
         fields = "__all__"
