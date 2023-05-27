@@ -1,3 +1,4 @@
+import contextlib
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from config.models import BaseModel
@@ -18,7 +19,8 @@ class Question(BaseModel):
     status = models.CharField(_("Status"), max_length=100,  choices=StatusChoice.choices, default=StatusChoice.PENDING, blank=True, null=True)
 
     def __str__(self) -> str:
-        return self.title
+        with contextlib.suppress(Exception):
+            return self.title
     
     class Meta:
         verbose_name = 'Question'
