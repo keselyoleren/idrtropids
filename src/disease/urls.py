@@ -46,7 +46,7 @@ urlpatterns = [
     path('news/', include([
         path('', NewsListView.as_view(), name='news'),
         path('<slug:slug>/', NewsDdetailView.as_view(), name='detail-news'),
-        path('category/<str:category>//', NewsCategoryListView.as_view(), name='berita-category'),
+        path('category/<str:category>/', NewsCategoryListView.as_view(), name='berita-category'),
     ])),
     
     path('book/', include([

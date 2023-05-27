@@ -48,6 +48,7 @@ class HomeView(ListView):
         context['book_count'] = Book.objects.filter(status=StatusChoice.APROVED).count()
         context['user_count'] = UserAccount.objects.count()
         context['questions'] = Question.objects.filter(status=StatusChoice.APROVED).order_by('created_at')[:5]
+        context['url'] = 'berita-category'
         return context
 
 class HomeDetailView(DetailView):       

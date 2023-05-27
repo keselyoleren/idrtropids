@@ -15,7 +15,7 @@
               <br>
               <div class="">
                 {% for item in costom_tag|get_category %}
-                <a class="btn btn-outlined waves-effect primary show-sm-up" href="{% url item.name %}">
+                <a class="btn btn-outlined waves-effect primary show-sm-up" href="{% url 'berita-category' item.name %}">
                   <span class="hidden-xs-down">{{item.name}}</span>
                 </a>
                 {% endfor %}  
