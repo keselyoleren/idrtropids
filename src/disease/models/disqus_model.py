@@ -20,7 +20,7 @@ class Question(BaseModel):
 
     def __str__(self) -> str:
         with contextlib.suppress(Exception):
-            return self.title
+            return str(self.title)
     
     class Meta:
         verbose_name = 'Question'
@@ -34,7 +34,7 @@ class Answer(BaseModel):
 
     def __str__(self) -> str:
         with contextlib.suppress(Exception):
-            return self.question.title
+            return str(self.question.title)
     
     class Meta:
         verbose_name = 'Answer'
