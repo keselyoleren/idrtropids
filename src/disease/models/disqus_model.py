@@ -18,9 +18,9 @@ class Question(BaseModel):
     is_validate = models.BooleanField(default=False)
     status = models.CharField(_("Status"), max_length=100,  choices=StatusChoice.choices, default=StatusChoice.PENDING, blank=True, null=True)
 
-    # def __str__(self) -> str:
-    #     with contextlib.suppress(Exception):
-    #         return self.title
+    def __str__(self) -> str:
+        with contextlib.suppress(Exception):
+            return self.title
     
     class Meta:
         verbose_name = 'Question'
@@ -33,7 +33,8 @@ class Answer(BaseModel):
     answer = RichTextField()
 
     def __str__(self) -> str:
-        return self.question.title
+        with contextlib.suppress(Exception):
+            return self.question.title
     
     class Meta:
         verbose_name = 'Answer'

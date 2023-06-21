@@ -3,7 +3,7 @@ from dataclasses import fields
 from rest_framework import serializers
 
 from disease.models.disqus_model import Answer, Question
-from disease.serializer.diseases import DiseasesSerializer
+from disease.serializer.diseases import DiseasesSerializer, GetDiseasesSerialize
 from users.serializers.user import UserSerialize
 
 
@@ -12,9 +12,11 @@ class QuestionSerialize(serializers.ModelSerializer):
         model = Question
         fields = ("__all__")
 
+
+
 class QuestionReadOnlySerialize(serializers.ModelSerializer):
     user = UserSerialize()
-    diseases = DiseasesSerializer()
+    diseases = GetDiseasesSerialize()
     class Meta:
         model = Question
         exclude = ['asign_to', 'is_validate', 'status', 'parent']

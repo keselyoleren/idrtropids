@@ -26,6 +26,11 @@ class DiseasesSerializer(serializers.ModelSerializer):
         model = Disease
         exclude = ('content',)
 
+class GetDiseasesSerialize(serializers.ModelSerializer):
+    class Meta:
+        model = Disease
+        fields = ('id', 'disease_name')
+
 class GetDiseasesRetriveSerialize(serializers.ModelSerializer):
     created_by = UserSerialize(many=False)
     category = CategorySerializer()
