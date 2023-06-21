@@ -18,8 +18,17 @@ class AnswerApiView(viewsets.ModelViewSet):
     serializer_class = AnswerSerialize
     queryset = Answer.objects.all()
     pagination_class = ResponsePagination
-    permission_classes = (permissions.IsAuthenticated, )
         
+    
+    def get_queryset(self):
+        question = get_object_or_404(Question, id=self.kwargs['question_id'])
+        return super().get_queryset().filter(question=question).order_by('created_at')
+
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [permissions.AllowAny()]
+        else:
+            return [permissions.IsAuthenticated()]
     
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
