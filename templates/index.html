@@ -100,7 +100,15 @@
 								<div class="text">
 								  <h4 class="use-text-title">{{ item.title }}</h4>
 								  <h5 class="use-text-subtitle">{{ item.content }}</h5>
-								  <div class="btn-area"><a class="btn-flat waves-effect btn-large button primary use-text-secondary" href="/page/info/tentang-kami/">see detail</a> <a class="btn waves-effect button btn-large primary" href="/accounts/google/login/">get started</a></div>
+								  <div class="btn-area">
+									<a class="btn-flat waves-effect btn-large button primary use-text-secondary" href="/page/info/tentang-kami/">see detail</a> 
+									{% if user.is_authenticated %}
+									{% else %}
+										<a class="btn waves-effect button btn-large primary" href="/accounts/google/login/">get started</a> 
+									{% endif %}
+									
+								</div>
+								
 								</div>
 							  </div>
 							  <div class="col-md-5 col-lg-6">

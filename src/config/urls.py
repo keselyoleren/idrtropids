@@ -28,6 +28,7 @@ from rest_framework import permissions
 from disease.views.news_views import HomeDetailView, HomeView
 from disease.urls import page_urls
 from home.urls import home_url
+from users.views.contributor_views import ContributorProfileVIew
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -40,27 +41,21 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
-    # path("<int:pk>/", HomeDetailView.as_view(), name='detail'),
     path("", HomeView.as_view(), name='home'),
     
     path("test-login/", TemplateView.as_view(template_name='auth.html')),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+
     
     path('page/', include([
         path('', include('disease.urls')),
         path("contributor/", TemplateView.as_view(template_name='contributor/index.html'), name='page-contributor'),
-        
     ])),
 
-    
-
     path('contributor/', include([
-        path("", TemplateView.as_view(template_name='admin/page/profile.html'), name='contributor_profile'),
-        path("profile", TemplateView.as_view(template_name='admin/page/profile.html'), name='contributor_profile'),
+        path("", ContributorProfileVIew.as_view(template_name='admin/page/profile.html'), name='contributor_profile'),
         path("page/", include('admin.urls')),
-        path("qna", TemplateView.as_view(template_name='admin/page/qna/list.html'), name='contributor_list_qna'),
-        path("disiases", TemplateView.as_view(template_name='admin/page/disiases/list.html'), name='contributor_list_disiases'),
     ])),
 
     path('api/v1/', include([

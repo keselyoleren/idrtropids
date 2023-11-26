@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sign in - Ruang lab</title>
+    <!-- CSS files -->
+    <link href="{% static '/tabler/css/tabler.min.css'%}" rel="stylesheet" />
+    <link href="{% static '/tabler/css/tabler.min.css'%}" rel="stylesheet" />
+    <link href="{% static '/tabler/css/tabler-flags.min.css'%}" rel="stylesheet" />
+    <link href="{% static '/tabler/css/tabler-payments.min.css'%}" rel="stylesheet" />
+    <link href="{% static '/tabler/css/tabler-vendors.min.css'%}" rel="stylesheet" />
+    <link href="{% static '/tabler/css/demo.min.css'%}" rel="stylesheet" />
+    <link rel="shortcut icon" href="/static/logo/logo%20ruanglab_back%20putih.png" type="image/x-icon" />
+    <style>
+        /* styles.css */
+        .google-login-button {
+            display: flex;
+            align-items: center;
+            background: #4285F4;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .google-login-button .google-icon {
+            background: url('path/to/google-icon.png') center/cover no-repeat;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .google-login-button:hover {
+            background: #357AE8;
+        }
+
+        .custom-login-button {
+            /* Add your custom styles for the regular login button here */
+        }
+    </style>
+  </head>
+  <body class="antialiased border-top-wide border-primary d-flex flex-column">
+    <div class="page page-center">
+      <div class="container-tight py-4">
+        <div class="text-center mb-4">
+          <a href="."><img src="/static/assets/images/logo-medical.png" height="75" alt="" /></a>
+        </div>
+        <form class="card card-md" method="POST">
+          {% csrf_token %}
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Login to your account</h2>
+            <div class="form-footer">
+              <button type="submit" class="btn btn-default w-100"> <img src="https://img.icons8.com/color/16/000000/google-logo.png">&nbsp; Login dengan google</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Libs JS -->
+    <!-- Tabler Core -->
+    <script src="{% static '/static/js/tabler.min.js'%}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  </body>
+</html>
